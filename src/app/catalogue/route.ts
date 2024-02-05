@@ -12,43 +12,66 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse,
 ) {
+    const itemId = req.query.itemId as string;
     switch (req.method) {
         case METHOD_POST:
             try {
-                //databse:
-                // const newItem = new itemModel(req, res);
-                // const savedItem = await newItem.save();
                 const data = addItem(req.body);
                 res.status(201).json(data);
-            } catch (error) {
-                res.status(500).json({ error: 'Internal Server Error' });
+            } catch (error: any) {
+                if (error.status === 500) {
+                    res.status(500).json({ error: 'Internal Server Error' });
+                } else {
+                    res.status(error.status).json({
+                        message: error.message,
+                    });
+                }
             }
             break;
 
         case METHOD_GET:
             try {
-                const data = getItem();
+                const data = getItem(itemId);
                 res.status(200).json(data);
-            } catch (error) {
-                res.status(500).json({ error: 'Internal Server Error' });
+            } catch (error: any) {
+                if (error.status === 500) {
+                    res.status(500).json({ error: 'Internal Server Error' });
+                } else {
+                    res.status(error.status).json({
+                        message: error.message,
+                    });
+                }
             }
             break;
 
         case METHOD_PUT:
             try {
-                const data = updateItem(req.body);
+                const newData = req.body;
+                const data = updateItem(itemId, newData);
                 res.status(200).json(data);
-            } catch (error) {
-                res.status(500).json({ error: 'Internal Server Error' });
+            } catch (error: any) {
+                if (error.status === 500) {
+                    res.status(500).json({ error: 'Internal Server Error' });
+                } else {
+                    res.status(error.status).json({
+                        message: error.message,
+                    });
+                }
             }
             break;
 
         case METHOD_DELETE:
             try {
-                const data = deleteItem();
+                const data = deleteItem(itemId);
                 res.status(200).json(data);
-            } catch (error) {
-                res.status(500).json({ error: 'Internal Server Error' });
+            } catch (error: any) {
+                if (error.status === 500) {
+                    res.status(500).json({ error: 'Internal Server Error' });
+                } else {
+                    res.status(error.status).json({
+                        message: error.message,
+                    });
+                }
             }
             break;
 
