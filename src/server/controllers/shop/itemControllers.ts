@@ -1,7 +1,4 @@
 import { Item, itemModel } from '@/server/models/item';
-import { NextApiRequest, NextApiResponse } from 'next';
-
-const data = {};
 
 const addItem = async (data: Item) => {
     try {
@@ -9,7 +6,7 @@ const addItem = async (data: Item) => {
         const savedItem = await newItem.save();
 
         if (!savedItem._id) {
-            throw new Error('Failed to add item');
+            throw { message: 'Failed to add item', status: 500 };
         }
         return savedItem;
     } catch (error) {
@@ -25,7 +22,7 @@ const updateItem = async (itemId: string, newData: Partial<Item>) => {
         });
 
         if (!updatedItem._id) {
-            throw new Error('Item not found or failed to update');
+            throw { message: 'Failed to update item', status: 500 };
         }
 
         return updatedItem;
@@ -39,7 +36,7 @@ const getAllItems = async () => {
         const allItems = await itemModel.find();
 
         if (!allItems) {
-            throw new Error('Items not found.');
+            throw { message: 'Failed to get items', status: 500 };
         }
 
         return allItems;
@@ -53,7 +50,7 @@ const getItem = async (itemId: string) => {
         const item = await itemModel.findByIt(itemId);
 
         if (!item._id) {
-            throw new Error('Item not found.');
+            throw { message: 'Failed to get item', status: 500 };
         }
 
         return item;
@@ -67,7 +64,7 @@ const deleteItem = async (itemId: string) => {
         const deletedItem = await itemModel.findByIdAndDelete(itemId);
 
         if (!deletedItem._id) {
-            throw new Error('Item not deleted.');
+            throw { message: 'Failed to delete item', status: 500 };
         }
 
         return deletedItem;

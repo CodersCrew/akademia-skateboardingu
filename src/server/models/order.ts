@@ -33,6 +33,4 @@ const orderSchema = new mongoose.Schema({
     paymentMethod: PaymentMethod,
 });
 
-const orderModel = mongoose.model('comments', orderSchema);
-
-export { orderModel };
+export const orderModel = mongoose.model('comments', orderSchema);
