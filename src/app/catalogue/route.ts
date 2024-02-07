@@ -1,17 +1,12 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { ControllerError } from '@/types/ControllerError';
+import { NextResponse } from 'next/server';
 import {
-    ControllerError,
-    handleControllerError,
-} from '@/types/ControllerError';
-
-const {
     addItem,
     updateItem,
-    getAllItems,
     getItem,
     deleteItem,
-} = require('../../../server/controllers/itemControllers');
-const { itemModel } = require('../../../server/models/item');
+} from '../../server/controllers/shop/itemControllers';
 
 export default async function handler(
     req: NextApiRequest,
@@ -26,7 +21,11 @@ export default async function handler(
 
                 res.status(201).json(data);
             } catch (error) {
-                handleControllerError(error, res);
+                const { message, status } = error as ControllerError;
+                NextResponse.json(
+                    { message: message || 'Internal Server Error' },
+                    { status: status || 500 },
+                );
             }
             break;
 
@@ -36,7 +35,11 @@ export default async function handler(
 
                 res.status(200).json(data);
             } catch (error) {
-                handleControllerError(error, res);
+                const { message, status } = error as ControllerError;
+                NextResponse.json(
+                    { message: message || 'Internal Server Error' },
+                    { status: status || 500 },
+                );
             }
             break;
 
@@ -47,7 +50,11 @@ export default async function handler(
 
                 res.status(200).json(data);
             } catch (error) {
-                handleControllerError(error, res);
+                const { message, status } = error as ControllerError;
+                NextResponse.json(
+                    { message: message || 'Internal Server Error' },
+                    { status: status || 500 },
+                );
             }
             break;
 
@@ -57,7 +64,11 @@ export default async function handler(
 
                 res.status(200).json(data);
             } catch (error) {
-                handleControllerError(error, res);
+                const { message, status } = error as ControllerError;
+                NextResponse.json(
+                    { message: message || 'Internal Server Error' },
+                    { status: status || 500 },
+                );
             }
             break;
 

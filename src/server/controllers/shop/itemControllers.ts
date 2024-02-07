@@ -1,6 +1,6 @@
 import { Item, itemModel } from '@/server/models/item';
 
-const addItem = async (data: Item) => {
+export const addItem = async (data: Item) => {
     try {
         const newItem = new itemModel(data);
         const savedItem = await newItem.save();
@@ -14,7 +14,7 @@ const addItem = async (data: Item) => {
     }
 };
 
-const updateItem = async (itemId: string, newData: Partial<Item>) => {
+export const updateItem = async (itemId: string, newData: Partial<Item>) => {
     try {
         const updatedItem = await itemModel.findByIdAndUpdate(itemId, newData, {
             new: true,
@@ -31,7 +31,7 @@ const updateItem = async (itemId: string, newData: Partial<Item>) => {
     }
 };
 
-const getAllItems = async () => {
+export const getAllItems = async () => {
     try {
         const allItems = await itemModel.find();
 
@@ -45,7 +45,7 @@ const getAllItems = async () => {
     }
 };
 
-const getItem = async (itemId: string) => {
+export const getItem = async (itemId: string) => {
     try {
         const item = await itemModel.findByIt(itemId);
 
@@ -59,7 +59,7 @@ const getItem = async (itemId: string) => {
     }
 };
 
-const deleteItem = async (itemId: string) => {
+export const deleteItem = async (itemId: string) => {
     try {
         const deletedItem = await itemModel.findByIdAndDelete(itemId);
 
@@ -71,12 +71,4 @@ const deleteItem = async (itemId: string) => {
     } catch (error) {
         throw error;
     }
-};
-
-module.exports = {
-    addItem,
-    updateItem,
-    getAllItems,
-    getItem,
-    deleteItem,
 };
