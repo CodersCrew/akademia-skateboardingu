@@ -6,7 +6,7 @@ import {
     updateItem,
     getItem,
     deleteItem,
-} from '../../server/controllers/shop/itemControllers';
+} from '../../server/controllers/shop/itemController';
 
 export default async function handler(
     req: NextApiRequest,
