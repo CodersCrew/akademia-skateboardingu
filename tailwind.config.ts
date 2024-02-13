@@ -12,6 +12,9 @@ module.exports = {
         transparent: 'transparent',
         current: 'currentColor',
         extend: {
+            fontFamily: {
+                inter: 'var(--font-inter)',
+            },
             colors: {
                 // light mode
                 tremor: {

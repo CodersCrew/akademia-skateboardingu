@@ -5,6 +5,8 @@ export const metadata = {
 
 import './globals.css';
 
+import fonts from './fonts';
+
 export default function RootLayout({
     children,
 }: {
@@ -12,7 +14,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className="m-0 p-0">{children}</body>
+            <body className={fonts}>{children}</body>
         </html>
     );
 }
