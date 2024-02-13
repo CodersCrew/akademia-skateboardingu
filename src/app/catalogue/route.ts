@@ -19,7 +19,7 @@ export default async function handler(
             try {
                 const data = addItem(req.body);
 
-                res.status(201).json(data);
+                NextResponse.status(201).json(data);
             } catch (error) {
                 const { message, status } = error as ControllerError;
                 NextResponse.json(
