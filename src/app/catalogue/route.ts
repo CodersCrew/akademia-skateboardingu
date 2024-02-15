@@ -7,19 +7,17 @@ import {
     getItem,
     deleteItem,
 } from '../../server/controllers/shop/itemController';
+import * as constants from '../../utils/constants';
 
-export default async function handler(
-    req: NextApiRequest,
-    res: NextApiResponse,
-) {
+export default async function handler(req: NextApiRequest, res: NextResponse) {
     const itemId = req.query.itemId as string;
 
     switch (req.method) {
-        case METHOD_POST:
+        case constants.METHOD_POST:
             try {
                 const data = addItem(req.body);
 
-                NextResponse.status(201).json(data);
+                NextResponse.json({ data: data }, { status: 201 });
             } catch (error) {
                 const { message, status } = error as ControllerError;
                 NextResponse.json(
@@ -29,11 +27,11 @@ export default async function handler(
             }
             break;
 
-        case METHOD_GET:
+        case constants.METHOD_GET:
             try {
                 const data = getItem(itemId);
 
-                res.status(200).json(data);
+                NextResponse.json({ data: data }, { status: 200 });
             } catch (error) {
                 const { message, status } = error as ControllerError;
                 NextResponse.json(
@@ -43,12 +41,12 @@ export default async function handler(
             }
             break;
 
-        case METHOD_PUT:
+        case constants.METHOD_PUT:
             try {
                 const newData = req.body;
                 const data = updateItem(itemId, newData);
 
-                res.status(200).json(data);
+                NextResponse.json({ data: data }, { status: 200 });
             } catch (error) {
                 const { message, status } = error as ControllerError;
                 NextResponse.json(
@@ -58,11 +56,11 @@ export default async function handler(
             }
             break;
 
-        case METHOD_DELETE:
+        case constants.METHOD_DELETE:
             try {
                 const data = deleteItem(itemId);
 
-                res.status(200).json(data);
+                NextResponse.json({ data: data }, { status: 200 });
             } catch (error) {
                 const { message, status } = error as ControllerError;
                 NextResponse.json(
@@ -73,6 +71,9 @@ export default async function handler(
             break;
 
         default:
-            res.status(405).json({ error: 'Method Not Allowed' });
+            NextResponse.json({
+                message: 'Method Not Allowed',
+                status: 405,
+            });
     }
 }

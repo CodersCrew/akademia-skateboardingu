@@ -1,7 +1,7 @@
-const METHOD_GET = 'Get';
-const METHOD_POST = 'Post';
-const METHOD_PUT = 'Patch';
-const METHOD_DELETE = 'Delete';
+export const METHOD_GET: string = 'Get';
+export const METHOD_POST: string = 'Post';
+export const METHOD_PUT: string = 'Patch';
+export const METHOD_DELETE: string = 'Delete';
 
-const APP_URL_ITEM = 'app/catalgue';
-const CONTENT_TYPE_JSON = "'Content-Type': 'application/json'";
+export const APP_URL_ITEM: string = 'app/catalgue';
+export const CONTENT_TYPE_JSON: string = "'Content-Type': 'application/json'";

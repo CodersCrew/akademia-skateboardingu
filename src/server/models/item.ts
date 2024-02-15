@@ -1,27 +1,30 @@
 const mongoose = require('mongoose');
 
 export interface Item {
-    name: string;
-    description: string;
-    price: number;
-    isAvailable: boolean;
-    photos: [string];
-    category: string;
+    name: string; //PRODUCT
+    description: string; //DESCRIPTION
+    added: Date; // ADDED added
+    price: number; //PRICE
+    quantity: number; // QUANTITY added
+    isAvailable: string; // STATUS
+    category: string; //CATEGORY
     priceHistory: [
+        //PRICE_HISTORY
         {
             date: Date;
             price: number;
         },
     ];
-    tags: [string];
+    photos: [string]; //PHOTOS
 }
 
 const itemSchema = new mongoose.Schema({
     name: String,
     description: String,
+    added: Date,
     price: Number,
-    isAvailable: Boolean,
-    photos: [String],
+    quantity: Number,
+    isAvailable: String,
     category: String,
     priceHistory: [
         {
@@ -29,7 +32,7 @@ const itemSchema = new mongoose.Schema({
             price: Number,
         },
     ],
-    tags: [String],
+    photos: [String],
 });
 
 const itemModel = mongoose.model('Item', itemSchema);
