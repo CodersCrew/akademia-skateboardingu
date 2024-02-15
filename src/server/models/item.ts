@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 export interface Item {
+    [x: string]: any;
     name: string; //PRODUCT
     description: string; //DESCRIPTION
     added: Date; // ADDED added

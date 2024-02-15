@@ -20,6 +20,9 @@ import { Item } from '@/server/models/item';
 import { Title } from '../../components/utils/constants';
 import {
     RiAddCircleFill,
+    RiDeleteBin6Fill,
+    RiDeleteBin7Fill,
+    RiDeleteBin7Line,
     RiEditBoxLine,
     RiPulseFill,
     RiSearch2Line,
@@ -85,7 +88,7 @@ const ButtonProduct = () => {
 
 const TableHeadComponent = () => {
     return (
-        <TableHead className="border">
+        <TableHead className="border bg-tremor-background-subtle">
             <TableRow>
                 {Object.values(Title).map((item) => (
                     <TableHeaderCell key={item}>{item}</TableHeaderCell>
@@ -97,7 +100,7 @@ const TableHeadComponent = () => {
 
 const TableBodyComponent = ({ items }: ItemProps) => {
     return (
-        <TableBody>
+        <TableBody className="border">
             {items ? (
                 items.map((item: Item, id) => (
                     <TableRow key={id}>
@@ -115,24 +118,27 @@ const TableBodyComponent = ({ items }: ItemProps) => {
                         ))}
                         <TableCell>{item.photos}</TableCell>
                         <TableCell>
-                            <Icon icon={RiEditBoxLine} />
+                            <Icon icon={RiEditBoxLine} tooltip="Edytuj" />
+                            <Icon icon={RiDeleteBin7Line} tooltip="Usuń" />
                         </TableCell>
                     </TableRow>
                 ))
             ) : (
-                <div>No items to display.</div>
+                <div>Brak produktów do wyświetlenia.</div>
             )}
         </TableBody>
     );
 };
+{
+}
 
 export const Dashboard: React.FC = () => {
     // const [items, setItems] = useState<Item[]>([]);
 
     const items: Item[] = [
         {
-            name: 'skate',
-            description: 'skate',
+            name: 'board',
+            description: 'board',
             added: new Date(),
             price: 250,
             quantity: 20,
@@ -142,6 +148,22 @@ export const Dashboard: React.FC = () => {
                 {
                     date: new Date(),
                     price: 300,
+                },
+            ],
+            photos: ['-'],
+        },
+        {
+            name: 'wheels',
+            description: 'skate',
+            added: new Date(),
+            price: 50,
+            quantity: 100,
+            isAvailable: 'available',
+            category: 'boards',
+            priceHistory: [
+                {
+                    date: new Date(),
+                    price: 50,
                 },
             ],
             photos: ['-'],
