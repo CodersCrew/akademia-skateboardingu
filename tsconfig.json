@@ -29,7 +29,8 @@
         ".next/types/**/*.ts",
         "src/components/header/test.js",
         "server/db.js",
-        "server/models/user.js"
+        "server/models/user.js",
+        "src/pages/index.js"
     ],
     "exclude": ["node_modules"]
 }
