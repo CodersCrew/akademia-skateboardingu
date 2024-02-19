@@ -1,34 +1,22 @@
+'use client';
 import Image from 'next/image';
-import Link from 'next/link';
 import { MdShoppingCart } from 'react-icons/md';
+import NavItem from '../NavItem/NavItem';
+import { usePathname } from 'next/navigation';
 
-type NavItemProps = {
-  name: string;
-  pathname: string;
-  isCurrentPath: boolean;
-};
-
-const navItems = [
-  { name: 'DESKI', pathname: '/' },
-  { name: 'DECKI', pathname: '' },
-  { name: 'AKCESORIA', pathname: '' },
-  { name: 'AKADEMIA', pathname: '' },
-  { name: 'BLOG', pathname: '' }
+const shopNavItems = [
+  { name: 'Deski', pathname: '/' },
+  { name: 'Decki', pathname: '' },
+  { name: 'Akcesoria', pathname: '' },
 ];
 
-const NavItem = ({ name, pathname, isCurrentPath }: NavItemProps) => (
-  <Link
-    href={pathname}
-    className={`px-8 py-4 text-xl
-        ${isCurrentPath ? 'text-highlight' : 'text-black'}`}
-  >
-    {name}
-  </Link>
-);
+const academyNavItems = [
+  { name: 'Akademia', pathname: '' },
+  { name: 'Blog', pathname: '' },
+];
 
 const Navbar = () => {
-  // placeholder
-  const currentPath = '/';
+  const currentPath = usePathname();
 
   return (
     <div className="m-0 p-0">
@@ -54,22 +42,22 @@ const Navbar = () => {
       </div>
       <div className="flex items-center justify-between bg-white py-6 pl-6 pr-5">
         <div className="flex gap-10">
-          {navItems.slice(0, 3).map(i => (
+          {shopNavItems.map(({name, pathname}) => (
             <NavItem
-              name={i.name}
-              pathname={i.pathname}
-              isCurrentPath={i.pathname === currentPath}
-              key={i.name}
+              name={name}
+              pathname={pathname}
+              isCurrentPath={pathname === currentPath}
+              key={name}
             />
           ))}
         </div>
         <div className="flex gap-10">
-          {navItems.slice(3).map(i => (
+          {academyNavItems.map(({name, pathname}) => (
             <NavItem
-              name={i.name}
-              pathname={i.pathname}
-              isCurrentPath={i.pathname === currentPath}
-              key={i.name}
+              name={name}
+              pathname={pathname}
+              isCurrentPath={pathname === currentPath}
+              key={name}
             />
           ))}
         </div>
