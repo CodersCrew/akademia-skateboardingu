@@ -1,63 +1,61 @@
 import sgMail from '@sendgrid/mail';
+import {
+    SENDGRID_API_KEY,
+    SENDGRID_FROM,
+    SENDGRID_ORDER_CONFIRMATION_TEMPLATE,
+    SENGDGRID_SUBSCRIPTION_TEMPLATE,
+} from '../../../../environment';
 
 const templates = {
-    orderConfirmation: process.env
-        .SENDGRID_ORDER_CONFIRMATION_TEMPLATE as string,
-    subscription: process.env.SENDGRID_SUBSCRIPTION_TEMPLATE as string,
+    orderConfirmation: SENDGRID_ORDER_CONFIRMATION_TEMPLATE,
+    subscription: SENGDGRID_SUBSCRIPTION_TEMPLATE,
 };
 
-type TemplateType = 'orderConfirmation' | 'subscription';
-
-type OrderConfirmationData = {
-    first_name: string;
-    last_name: string;
-    street_name: string;
-    street_number: number;
-    city: string;
-    zip_code: string;
-    phone_number: string;
-    order_number: string;
-    subtotal: string;
-    shipping: string;
-    total: string;
-    // for now it's any, didn't know what type to use
-    products: any;
-};
-
-type SubscriptionData = {
-    product_name: string;
-};
-
-interface MailRecipient {
+type Email = {
     to: string;
-}
+};
 
-interface OrderMail extends MailRecipient {
-    templateType: 'orderConfirmation';
-    templateData: OrderConfirmationData;
-}
+type OrderEmail = {
+    type: 'orderConfirmation';
+    data: {
+        first_name: string;
+        last_name: string;
+        street_name: string;
+        street_number: number;
+        city: string;
+        zip_code: string;
+        phone_number: string;
+        order_number: string;
+        subtotal: string;
+        shipping: string;
+        total: string;
+        products: any;
+    };
+};
 
-interface SubscriptionMail extends MailRecipient {
-    templateType: 'subscription';
-    templateData: SubscriptionData;
-}
+type SubscriptionEmail = {
+    type: 'subscription';
+    data: {
+        product_name: string;
+    };
+};
 
-export type MailData = OrderMail | SubscriptionMail;
+export type EmailData = Email & (OrderEmail | SubscriptionEmail);
 
 export const emailService = {
-    sendEmail: async ({ to, templateType, templateData }: MailData) => {
-        sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
+    sendEmail: async ({ to, type, data }: EmailData) => {
+        sgMail.setApiKey(SENDGRID_API_KEY);
 
         const templateId =
-            templateType === 'orderConfirmation'
+            type === 'orderConfirmation'
                 ? templates.orderConfirmation
                 : templates.subscription;
 
         const msg = {
             to,
-            from: process.env.SENDGRID_FROM as string,
+            from: SENDGRID_FROM,
             templateId,
-            dynamic_template_data: templateData,
+            dynamic_template_data: data,
         };
 
         return await sgMail.send(msg);

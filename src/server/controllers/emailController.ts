@@ -1,6 +1,6 @@
-import { MailData, emailService } from '../services/emailService';
+import { EmailData, emailService } from '../services/emailService';
 
-export const sendEmail = async (mailData: MailData) => {
+export const postEmail = async (mailData: EmailData) => {
     const response = await emailService.sendEmail(mailData);
-    return response;
+    return { response: response[0] };
 };
