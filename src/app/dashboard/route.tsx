@@ -18,14 +18,11 @@ import {
 } from '@/server/controllers/shop/itemController';
 import { Item } from '@/server/models/item';
 import { Title } from '../../components/utils/constants';
+import { AddProductForm } from '../addForm/route';
 import {
     RiAddCircleFill,
-    RiDeleteBin6Fill,
-    RiDeleteBin7Fill,
     RiDeleteBin7Line,
     RiEditBoxLine,
-    RiPulseFill,
-    RiSearch2Line,
 } from '@remixicon/react';
 
 type ButtonProps = {
@@ -222,6 +219,7 @@ export const Dashboard: React.FC = () => {
                 <TableHeadComponent />
                 <TableBodyComponent items={items} />
             </Table>
+            <AddProductForm />
         </div>
     );
 };
