@@ -106,16 +106,19 @@ const TableBodyComponent = ({ items }: ItemProps) => {
                     <TableRow key={id}>
                         <TableCell>{item.name}</TableCell>
                         <TableCell>{item.description}</TableCell>
-                        <TableCell>{item.added.toLocaleDateString()}</TableCell>
                         <TableCell>{item.price}</TableCell>
                         <TableCell>{item.quantity}</TableCell>
-                        <TableCell>{item.isAvailable}</TableCell>
+                        <TableCell>{item.visible}</TableCell>
                         <TableCell>{item.category}</TableCell>
-                        {item.priceHistory.map((entry, id) => (
-                            <TableCell key={id}>
-                                {entry.date.toLocaleDateString()}: {entry.price}
-                            </TableCell>
-                        ))}
+                        <TableCell>
+                            {item.priceHistory.map((entry, id) => (
+                                <div key={id}>
+                                    {' '}
+                                    {entry.date.toLocaleDateString()}:{' '}
+                                    {entry.price}
+                                </div>
+                            ))}
+                        </TableCell>
                         <TableCell>{item.photos}</TableCell>
                         <TableCell>
                             <Icon icon={RiEditBoxLine} tooltip="Edytuj" />
@@ -137,29 +140,31 @@ export const Dashboard: React.FC = () => {
 
     const items: Item[] = [
         {
-            name: 'board',
-            description: 'board',
-            added: new Date(),
+            name: 'deska',
+            description: 'deska',
             price: 250,
             quantity: 20,
-            isAvailable: 'available',
-            category: 'boards',
+            visible: 'tak',
+            category: 'deski',
             priceHistory: [
                 {
                     date: new Date(),
                     price: 300,
                 },
+                {
+                    date: new Date(),
+                    price: 200,
+                },
             ],
             photos: ['-'],
         },
         {
-            name: 'wheels',
-            description: 'skate',
-            added: new Date(),
+            name: 'kółka',
+            description: 'kółka',
             price: 50,
             quantity: 100,
-            isAvailable: 'available',
-            category: 'boards',
+            visible: 'tak',
+            category: 'deski',
             priceHistory: [
                 {
                     date: new Date(),

@@ -1,38 +1,34 @@
 const mongoose = require('mongoose');
 
-export interface Item {
-    [x: string]: any;
-    name: string; //PRODUCT
-    description: string; //DESCRIPTION
-    added: Date; // ADDED added
-    price: number; //PRICE
-    quantity: number; // QUANTITY added
-    isAvailable: string; // STATUS
-    category: string; //CATEGORY
-    priceHistory: [
-        //PRICE_HISTORY
-        {
-            date: Date;
-            price: number;
-        },
-    ];
-    photos: [string]; //PHOTOS
+interface PriceHistory {
+    date: Date;
+    price: number;
 }
+
+export interface Item {
+    name: string;
+    description: string;
+    price: number;
+    quantity: number;
+    visible: string;
+    category: string;
+    priceHistory: PriceHistory[];
+    photos: [string];
+}
+
+const PriceHistorySchema = new mongoose.Schema({
+    date: Date,
+    price: Number,
+});
 
 const itemSchema = new mongoose.Schema({
     name: String,
     description: String,
-    added: Date,
     price: Number,
     quantity: Number,
-    isAvailable: String,
+    visible: String,
     category: String,
-    priceHistory: [
-        {
-            date: Date,
-            price: Number,
-        },
-    ],
+    priceHistory: [PriceHistorySchema],
     photos: [String],
 });
 
