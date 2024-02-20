@@ -24,23 +24,18 @@ import {
     RiDeleteBin7Line,
     RiEditBoxLine,
 } from '@remixicon/react';
-import { usePathname, useRouter } from 'next/navigation';
-
-interface ButtonProps {
-    handleButtonClick: React.MouseEventHandler<HTMLButtonElement>;
-}
+import Link from 'next/navigation';
 
 interface ItemProps {
     items: Item[];
 }
 
-const ButtonProduct = ({ handleButtonClick }: ButtonProps) => {
+const ButtonProduct = () => {
     return (
         <Button
             variant="primary"
             className="flex justify-left mb-7"
             icon={RiAddCircleFill}
-            onClick={handleButtonClick}
         >
             Dodaj produkt
         </Button>
@@ -97,8 +92,6 @@ const TableBodyComponent = ({ items }: ItemProps) => {
 }
 
 export const Dashboard: React.FC = () => {
-    const router = useRouter();
-
     const items: Item[] = [
         {
             name: 'deska',
@@ -136,9 +129,6 @@ export const Dashboard: React.FC = () => {
         },
     ];
 
-    const handleButtonClick = () => {
-        router.push('/addForm');
-    };
     // const fetchItems = async () => {
     //     try {
     //         const items = await getAllItems();
@@ -180,7 +170,9 @@ export const Dashboard: React.FC = () => {
 
     return (
         <div className="mx-auto w-full mt-20 pl-20 pr-20">
-            <ButtonProduct handleButtonClick={handleButtonClick} />
+            <Link href="/addForm">
+                <ButtonProduct />
+            </Link>
             <Table>
                 <TableHeadComponent />
                 <TableBodyComponent items={items} />

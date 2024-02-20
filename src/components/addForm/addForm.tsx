@@ -59,7 +59,7 @@ const defaultValues: ValueFormProps = {
     Photos: '',
 };
 
-export const AddForm: React.FC = () => {
+export const AddForm = async () => {
     const [formData, setFormData] = useState(defaultValues);
 
     const handleChange = (field: keyof ValueFormProps, value: string) => {
