@@ -1,63 +1,58 @@
 import sgMail from '@sendgrid/mail';
 import {
-    SENDGRID_API_KEY,
-    SENDGRID_FROM,
-    SENDGRID_ORDER_CONFIRMATION_TEMPLATE,
-    SENGDGRID_SUBSCRIPTION_TEMPLATE,
+  SENDGRID_API_KEY,
+  SENDGRID_FROM,
+  SENDGRID_ORDER_CONFIRMATION_TEMPLATE,
+  SENGDGRID_SUBSCRIPTION_TEMPLATE
 } from '../../../../environment';
 
 const templates = {
-    orderConfirmation: SENDGRID_ORDER_CONFIRMATION_TEMPLATE,
-    subscription: SENGDGRID_SUBSCRIPTION_TEMPLATE,
+  orderConfirmation: SENDGRID_ORDER_CONFIRMATION_TEMPLATE,
+  subscription: SENGDGRID_SUBSCRIPTION_TEMPLATE
 };
 
 type Email = {
-    to: string;
+  to: string;
 };
 
 type OrderEmail = {
-    type: 'orderConfirmation';
-    data: {
-        first_name: string;
-        last_name: string;
-        street_name: string;
-        street_number: number;
-        city: string;
-        zip_code: string;
-        phone_number: string;
-        order_number: string;
-        subtotal: string;
-        shipping: string;
-        total: string;
-        products: any;
-    };
+  type: 'orderConfirmation';
+  data: {
+    first_name: string;
+    last_name: string;
+    street_name: string;
+    street_number: number;
+    city: string;
+    zip_code: string;
+    phone_number: string;
+    order_number: string;
+    subtotal: string;
+    shipping: string;
+    total: string;
+    products: any;
+  };
 };
 
 type SubscriptionEmail = {
-    type: 'subscription';
-    data: {
-        product_name: string;
-    };
+  type: 'subscription';
+  data: {
+    product_name: string;
+  };
 };
 
 export type EmailData = Email & (OrderEmail | SubscriptionEmail);
 
 export const emailService = {
-    sendEmail: async ({ to, type, data }: EmailData) => {
-        sgMail.setApiKey(SENDGRID_API_KEY);
+  sendEmail: async ({ to, type, data }: EmailData) => {
+    sgMail.setApiKey(SENDGRID_API_KEY);
 
-        const templateId =
-            type === 'orderConfirmation'
-                ? templates.orderConfirmation
-                : templates.subscription;
+    const msg = {
+      to,
+      from: SENDGRID_FROM,
+      templateId: templates[type],
+      dynamic_template_data: data
+    };
 
-        const msg = {
-            to,
-            from: SENDGRID_FROM,
-            templateId,
-            dynamic_template_data: data,
-        };
-
-        return await sgMail.send(msg);
-    },
+    return await sgMail.send(msg);
+  }
 };
