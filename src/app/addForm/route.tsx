@@ -1,95 +1,80 @@
-import { FormFields } from '@/components/utils/constants';
-import { Button, Card, TextInput } from '@tremor/react';
-import React, { ChangeEvent, useState } from 'react';
+import { NextApiRequest, NextApiResponse } from 'next';
+import { ControllerError } from '@/types/ControllerError';
+import { NextResponse } from 'next/server';
+import {
+    addItem,
+    updateItem,
+    getItem,
+    deleteItem,
+} from '../../server/controllers/shop/itemController';
+import * as constants from '../../utils/constants';
+import { AddForm } from '@/components/addForm/addForm';
 
-interface ValueFormProps {
-    Product: string;
-    Description: string;
-    Price: string;
-    Quantity: string;
-    Visible: string;
-    Category: string;
-    Photos: string;
+export default async function handler(req: NextApiRequest, res: NextResponse) {
+    const itemId = req.query.itemId as string;
+
+    switch (req.method) {
+        case constants.METHOD_POST:
+            try {
+                const data = addItem(req.body);
+
+                NextResponse.json({ data: data }, { status: 201 });
+            } catch (error) {
+                const { message, status } = error as ControllerError;
+                NextResponse.json(
+                    { message: message || 'Internal Server Error' },
+                    { status: status || 500 },
+                );
+            }
+            break;
+
+        case constants.METHOD_GET:
+            try {
+                const data = getItem(itemId);
+
+                NextResponse.json({ data: data }, { status: 200 });
+            } catch (error) {
+                const { message, status } = error as ControllerError;
+                NextResponse.json(
+                    { message: message || 'Internal Server Error' },
+                    { status: status || 500 },
+                );
+            }
+            break;
+
+        case constants.METHOD_PUT:
+            try {
+                const newData = req.body;
+                const data = updateItem(itemId, newData);
+
+                NextResponse.json({ data: data }, { status: 200 });
+            } catch (error) {
+                const { message, status } = error as ControllerError;
+                NextResponse.json(
+                    { message: message || 'Internal Server Error' },
+                    { status: status || 500 },
+                );
+            }
+            break;
+
+        case constants.METHOD_DELETE:
+            try {
+                const data = deleteItem(itemId);
+
+                NextResponse.json({ data: data }, { status: 200 });
+            } catch (error) {
+                const { message, status } = error as ControllerError;
+                NextResponse.json(
+                    { message: message || 'Internal Server Error' },
+                    { status: status || 500 },
+                );
+            }
+            break;
+
+        default:
+            NextResponse.json({
+                message: 'Method Not Allowed',
+                status: 405,
+            });
+    }
 }
-
-interface FormFieldProps {
-    description: string;
-    valueForm: ValueFormProps;
-    handleChange: (field: keyof ValueFormProps, value: string) => void;
-}
-
-const FormField = ({
-    description,
-    valueForm,
-    handleChange,
-}: FormFieldProps) => {
-    return (
-        <div className="flex flex-col gap-2 ">
-            <label
-                htmlFor={description}
-                className="text-tremor-default text-tremor-content dark:text-dark-tremor-content mt-10"
-            >
-                {description}
-            </label>
-            <TextInput
-                className="max-w-xs mt-1"
-                id={description}
-                placeholder=""
-                value={valueForm[description as keyof ValueFormProps]}
-                onChange={(e) =>
-                    handleChange(
-                        description as keyof ValueFormProps,
-                        e.target.value,
-                    )
-                }
-            />
-        </div>
-    );
-};
-
-const defaultValues: ValueFormProps = {
-    Product: '',
-    Description: '',
-    Price: '',
-    Quantity: '',
-    Visible: '',
-    Category: '',
-    Photos: '',
-};
-
-export const AddProductForm = () => {
-    const [valueForm, setValueForm] = useState(defaultValues);
-
-    const handleChange = (field: string, value: string) => {
-        setValueForm((prevValueForm) => ({
-            ...prevValueForm,
-            [field]: value,
-        }));
-    };
-
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        //submit
-    };
-    return (
-        <Card className="max-w-md mt-20">
-            <form
-                onSubmit={(e) => {
-                    handleSubmit;
-                }}
-            >
-                {Object.values(FormFields).map((item) => (
-                    <FormField
-                        key={item}
-                        description={item}
-                        valueForm={valueForm}
-                        handleChange={handleChange}
-                    />
-                ))}
-                <div className="mt-10 flex justify-start">
-                    <Button type="submit">Zapisz</Button>
-                </div>
-            </form>
-        </Card>
-    );
-};

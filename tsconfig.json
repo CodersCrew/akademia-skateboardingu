@@ -30,7 +30,7 @@
         "src/components/header/test.js",
         "server/db.js",
         "server/models/user.js",
-        "src/pages/index.js"
+        "src/app/index.js"
     ],
     "exclude": ["node_modules"]
 }

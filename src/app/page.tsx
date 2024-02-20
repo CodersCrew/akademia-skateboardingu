@@ -1,11 +1,12 @@
 import React from 'react';
-import { Dashboard } from '../app/dashboard/route';
 import '../styles/styling.css';
+import Link from 'next/link';
+import { DashboardPage } from '@/app/dashboard/route';
 
 const App = () => {
     return (
         <div>
-            <Dashboard href="/dashboard" />
+            <DashboardPage />
         </div>
     );
 };
