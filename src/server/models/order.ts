@@ -1,7 +1,22 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-const OrderStatus = [];
-const PaymentMethod = [];
+const OrderStatus: any = [];
+const PaymentMethod: any = [];
+
+export interface Order {
+    prodcuts: [
+        {
+            productId: mongoose.Types.ObjectId;
+            quantity: Number;
+            commentMagicLink: String;
+        },
+    ];
+    date: Date;
+    totalPrice: Number;
+    status: [string];
+    delivery: mongoose.Types.ObjectId;
+    paymentMethod: [string];
+}
 
 const orderSchema = new mongoose.Schema({
     prodcuts: [
@@ -18,6 +33,4 @@ const orderSchema = new mongoose.Schema({
     paymentMethod: PaymentMethod,
 });
 
-commentModel = mongoose.model('comments', commentSchema);
-
-module.exports = commentModel;
+export const orderModel = mongoose.model('comments', orderSchema);

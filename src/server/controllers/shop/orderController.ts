@@ -1,6 +1,6 @@
-const orderModel = require('../models/store');
+import { Order, orderModel } from '@/server/models/order';
 
-const createOrder = async (orderData) => {
+export const createOrder = async (orderData: Order) => {
     try {
         const newOrder = new orderModel(orderData);
         await newOrder.save();
@@ -11,7 +11,7 @@ const createOrder = async (orderData) => {
     }
 };
 
-const getAllOrders = async () => {
+export const getAllOrders = async () => {
     try {
         const orders = await orderModel.find();
         return orders;
@@ -22,9 +22,9 @@ const getAllOrders = async () => {
     }
 };
 
-const getOrderById = async (orderId) => {
+export const getOrderById = async (orderId: string) => {
     try {
-        const order = await orderModel.findBy(orderId);
+        const order = await orderModel.findById(orderId);
         if (!order) {
             return null;
         }
@@ -36,7 +36,10 @@ const getOrderById = async (orderId) => {
     }
 };
 
-const updateOrdertById = async (orderId, updates) => {
+export const updateOrdertById = async (
+    orderId: string,
+    updates: Partial<Order>,
+) => {
     try {
         const updatedOrder = await orderModel.findByIdAndUpdate(
             orderId,
@@ -57,7 +60,7 @@ const updateOrdertById = async (orderId, updates) => {
     }
 };
 
-const deleteOrderById = async (orderId) => {
+export const deleteOrderById = async (orderId: string) => {
     try {
         const deletedOrder = await orderModel.findByIdAndDelete(orderId);
 
@@ -70,12 +73,4 @@ const deleteOrderById = async (orderId) => {
     } finally {
         mongoose.connection.close();
     }
-};
-
-module.exports = {
-    createOrder,
-    getAllOrders,
-    getOrderById,
-    updateOrdertById,
-    deleteOrderById,
 };
