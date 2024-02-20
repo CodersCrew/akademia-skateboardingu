@@ -24,18 +24,23 @@ import {
     RiDeleteBin7Line,
     RiEditBoxLine,
 } from '@remixicon/react';
-import Link from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+
+interface ButtonProps {
+    handleButtonClick: React.MouseEventHandler<HTMLButtonElement>;
+}
 
 interface ItemProps {
     items: Item[];
 }
 
-const ButtonProduct = () => {
+const ButtonProduct = ({ handleButtonClick }: ButtonProps) => {
     return (
         <Button
             variant="primary"
             className="flex justify-left mb-7"
             icon={RiAddCircleFill}
+            onClick={handleButtonClick}
         >
             Dodaj produkt
         </Button>
@@ -92,6 +97,8 @@ const TableBodyComponent = ({ items }: ItemProps) => {
 }
 
 export const Dashboard: React.FC = () => {
+    const { push } = useRouter();
+
     const items: Item[] = [
         {
             name: 'deska',
@@ -129,6 +136,9 @@ export const Dashboard: React.FC = () => {
         },
     ];
 
+    const handleButtonClick = () => {
+        push('/addForm');
+    };
     // const fetchItems = async () => {
     //     try {
     //         const items = await getAllItems();
@@ -170,9 +180,7 @@ export const Dashboard: React.FC = () => {
 
     return (
         <div className="mx-auto w-full mt-20 pl-20 pr-20">
-            <Link href="/addForm">
-                <ButtonProduct />
-            </Link>
+            <ButtonProduct handleButtonClick={handleButtonClick} />
             <Table>
                 <TableHeadComponent />
                 <TableBodyComponent items={items} />
@@ -180,3 +188,6 @@ export const Dashboard: React.FC = () => {
         </div>
     );
 };
+
+// revalidatePath('/items') // Update cached posts
+// redirect(`/items/${id}`)
