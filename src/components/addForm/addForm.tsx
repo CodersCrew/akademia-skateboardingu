@@ -1,6 +1,5 @@
 'use client';
 import { FormFields } from '@/components/utils/constants';
-import { itemModel } from '@/server/models/item';
 import { Button, Card, TextInput } from '@tremor/react';
 import React, { useState } from 'react';
 

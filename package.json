@@ -11,6 +11,7 @@
     },
     "dependencies": {
         "@heroicons/react": "^1.0.6",
+        "@material/tooltip": "^14.0.0",
         "@remixicon/react": "^4.1.1",
         "@tremor/react": "^3.13.4",
         "cors": "^2.8.5",
@@ -21,6 +22,8 @@
         "node": "^18.17.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "react-icons": "^5.0.1",
+        "react-tooltip": "^5.26.3",
         "rsuite": "^5.50.0"
     },
     "devDependencies": {

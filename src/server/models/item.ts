@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-interface PriceHistory {
+export interface PriceHistory {
     date: Date;
     price: number;
 }
@@ -13,7 +13,7 @@ export interface Item {
     visible: string;
     category: string;
     priceHistory: PriceHistory[];
-    photos: [string];
+    photos: string[];
 }
 
 const PriceHistorySchema = new mongoose.Schema({
@@ -32,6 +32,6 @@ const itemSchema = new mongoose.Schema({
     photos: [String],
 });
 
-const itemModel = mongoose.model('Item', itemSchema);
+const itemModel = mongoose.model('ItemModel', itemSchema);
 
 export { itemModel };
