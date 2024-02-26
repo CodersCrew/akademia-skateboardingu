@@ -4,7 +4,7 @@ import {
   SENDGRID_FROM,
   SENDGRID_ORDER_CONFIRMATION_TEMPLATE,
   SENGDGRID_SUBSCRIPTION_TEMPLATE
-} from '../../../../environment';
+} from '@/environment';
 
 const templates = {
   orderConfirmation: SENDGRID_ORDER_CONFIRMATION_TEMPLATE,
