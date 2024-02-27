@@ -40,7 +40,7 @@ import Link from 'next/link';
 // ];
 
 export async function GET(req: Request) {
-    const response = await getAllItems();
-    const data = await response.json();
-    return <Dashboard items={items} />;
+  const response = await getAllItems();
+  const data = await response.json();
+  return <Dashboard items={items} />;
 }

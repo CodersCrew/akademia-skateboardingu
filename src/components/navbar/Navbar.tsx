@@ -7,12 +7,12 @@ import { usePathname } from 'next/navigation';
 const shopNavItems = [
   { name: 'Deski', pathname: '/' },
   { name: 'Decki', pathname: '' },
-  { name: 'Akcesoria', pathname: '' },
+  { name: 'Akcesoria', pathname: '' }
 ];
 
 const academyNavItems = [
   { name: 'Akademia', pathname: '' },
-  { name: 'Blog', pathname: '' },
+  { name: 'Blog', pathname: '' }
 ];
 
 const Navbar = () => {
@@ -42,7 +42,7 @@ const Navbar = () => {
       </div>
       <div className="flex items-center justify-between bg-white py-6 pl-6 pr-5">
         <div className="flex gap-10">
-          {shopNavItems.map(({name, pathname}) => (
+          {shopNavItems.map(({ name, pathname }) => (
             <NavItem
               name={name}
               pathname={pathname}
@@ -52,7 +52,7 @@ const Navbar = () => {
           ))}
         </div>
         <div className="flex gap-10">
-          {academyNavItems.map(({name, pathname}) => (
+          {academyNavItems.map(({ name, pathname }) => (
             <NavItem
               name={name}
               pathname={pathname}

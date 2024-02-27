@@ -7,19 +7,19 @@ import { TableHeadComponent } from './TableHead';
 import { ButtonProduct } from './ButtonProduct';
 
 export const Dashboard = ({ items }: ItemProps) => {
-    const { push } = useRouter();
+  const { push } = useRouter();
 
-    const handleButtonClick = () => {
-        push('/addForm');
-    };
+  const handleButtonClick = () => {
+    push('/addForm');
+  };
 
-    return (
-        <div className="mx-auto w-full mt-20 pl-20 pr-20">
-            <ButtonProduct handleButtonClick={handleButtonClick} />
-            <Table>
-                <TableHeadComponent />
-                <TableBodyComponent items={items} />
-            </Table>
-        </div>
-    );
+  return (
+    <div className="mx-auto mt-20 w-full pl-20 pr-20">
+      <ButtonProduct handleButtonClick={handleButtonClick} />
+      <Table>
+        <TableHeadComponent />
+        <TableBodyComponent items={items} />
+      </Table>
+    </div>
+  );
 };
