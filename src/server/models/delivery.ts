@@ -1,13 +1,11 @@
-const mongoose = require('mongoose');
-
-const deliveryMethod = [];
+import mongoose from 'mongoose';
 
 const deliverySchema = new mongoose.Schema({
-    method: deliveryMethod,
-    description: String,
-    price: Number,
+  method: [String],
+  description: String,
+  price: Number
 });
 
-deliveryModel = mongoose.model('deliveries', deliverySchema);
+const deliveryModel = mongoose.model('deliveries', deliverySchema);
 
-module.exports = deliveryModel;
+export default deliveryModel;

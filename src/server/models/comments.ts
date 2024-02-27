@@ -1,12 +1,12 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const commentSchema = new mongoose.Schema({
-    date: Date,
-    rating: Number,
-    text: String,
-    name: String,
+  date: Date,
+  rating: Number,
+  text: String,
+  name: String
 });
 
-commentModel = mongoose.model('comments', commentSchema);
+const commentModel = mongoose.model('comments', commentSchema);
 
-module.exports = commentModel;
+export default commentModel;
