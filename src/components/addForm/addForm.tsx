@@ -1,9 +1,10 @@
 'use client';
-import { FormFields } from '@/components/utils/constants';
 import { Button, Card, TextInput } from '@tremor/react';
 import React, { useState } from 'react';
 
-interface ValueFormProps {
+import { FormFields } from '@/components/utils/constants';
+
+type ValueFormProps = {
   Product: string;
   Description: string;
   Price: string;
@@ -11,39 +12,37 @@ interface ValueFormProps {
   Visible: string;
   Category: string;
   Photos: string;
-}
+};
 
-interface FormFieldProps {
+type FormFieldProps = {
   description: string;
   valueForm: ValueFormProps;
   handleChange: (field: keyof ValueFormProps, value: string) => void;
-}
+};
 
 const FormField = ({
   description,
   valueForm,
   handleChange
-}: FormFieldProps) => {
-  return (
-    <div className="flex flex-col gap-2 ">
-      <label
-        htmlFor={description}
-        className="mt-10 text-tremor-default text-tremor-content dark:text-dark-tremor-content"
-      >
-        {description}
-      </label>
-      <TextInput
-        className="mt-1 max-w-xs"
-        id={description}
-        placeholder=""
-        value={valueForm[description as keyof ValueFormProps]}
-        onChange={e =>
-          handleChange(description as keyof ValueFormProps, e.target.value)
-        }
-      />
-    </div>
-  );
-};
+}: FormFieldProps) => (
+  <div className="flex flex-col gap-2 ">
+    <label
+      htmlFor={description}
+      className="mt-10 text-tremor-default text-tremor-content dark:text-dark-tremor-content"
+    >
+      {description}
+    </label>
+    <TextInput
+      className="mt-1 max-w-xs"
+      id={description}
+      placeholder=""
+      value={valueForm[description as keyof ValueFormProps]}
+      onChange={e =>
+        handleChange(description as keyof ValueFormProps, e.target.value)
+      }
+    />
+  </div>
+);
 
 const defaultValues: ValueFormProps = {
   Product: '',

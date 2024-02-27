@@ -1,8 +1,9 @@
 'use client';
 import Image from 'next/image';
-import { MdShoppingCart } from 'react-icons/md';
-import NavItem from '../NavItem/NavItem';
 import { usePathname } from 'next/navigation';
+import { MdShoppingCart } from 'react-icons/md';
+
+import NavItem from '../NavItem/NavItem';
 
 const shopNavItems = [
   { name: 'Deski', pathname: '/' },

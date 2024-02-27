@@ -13,24 +13,15 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
+    "plugins": [{ "name": "next" }],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@/controllers/*": ["./src/server/controllers/*"],
+      "@/services/*": ["./src/server/services/*"],
+      "@/models/*": ["./src/server/models/*"],
+      "@/middlewares/*": ["./src/server/middlewares/*"]
     }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    "src/components/header/test.js",
-    "server/db.js",
-    "server/models/user.js",
-    "src/app/index.js"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }

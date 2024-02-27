@@ -1,20 +1,20 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-export interface PriceHistory {
+export type PriceHistory = {
   date: Date;
   price: number;
-}
+};
 
-export interface Item {
+export type Item = {
   name: string;
   description: string;
   price: number;
   quantity: number;
-  visible: string;
+  visible: boolean;
   category: string;
   priceHistory: PriceHistory[];
   photos: string[];
-}
+};
 
 const PriceHistorySchema = new mongoose.Schema({
   date: Date,
@@ -26,12 +26,12 @@ const itemSchema = new mongoose.Schema({
   description: String,
   price: Number,
   quantity: Number,
-  visible: String,
+  visible: Boolean,
   category: String,
   priceHistory: [PriceHistorySchema],
   photos: [String]
 });
 
-const itemModel = mongoose.model('ItemModel', itemSchema);
+const itemModel = mongoose.model('items', itemSchema);
 
 export { itemModel };

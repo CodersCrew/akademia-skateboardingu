@@ -1,12 +1,11 @@
 'use client';
-import React from 'react';
 import { Table } from '@tremor/react';
 import { useRouter } from 'next/navigation';
-import { ItemProps, TableBodyComponent } from './TableBody';
-import { TableHeadComponent } from './TableHead';
-import { ButtonProduct } from './ButtonProduct';
+import React from 'react';
 
-export const Dashboard = ({ items }: ItemProps) => {
+import { ButtonProduct, TableBody, TableHead } from '@/components/dashboard';
+
+const Dashboard = () => {
   const { push } = useRouter();
 
   const handleButtonClick = () => {
@@ -17,9 +16,11 @@ export const Dashboard = ({ items }: ItemProps) => {
     <div className="mx-auto mt-20 w-full pl-20 pr-20">
       <ButtonProduct handleButtonClick={handleButtonClick} />
       <Table>
-        <TableHeadComponent />
-        <TableBodyComponent items={items} />
+        <TableHead />
+        <TableBody items={[]} />
       </Table>
     </div>
   );
 };
+
+export default Dashboard;

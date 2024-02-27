@@ -1,8 +1,9 @@
-const mongoose = require('mongoose');
-const { MongoClient, ServerApiVersion } = require('mongodb');
+import { MongoClient, ServerApiVersion } from 'mongodb';
+import mongoose from 'mongoose';
 
-const uri =
-  'mongodb+srv://annar:QazwsxEdc@cluster0.tmkg2z6.mongodb.net/?retryWrites=true&w=majority';
+import { MONGODB_HOST, MONGODB_PASS, MONGODB_USER } from '@/environment';
+
+const uri = `mongodb+srv://${MONGODB_USER}:${MONGODB_PASS}@${MONGODB_HOST}`;
 
 const client = new MongoClient(uri, {
   serverApi: {
@@ -12,7 +13,7 @@ const client = new MongoClient(uri, {
   }
 });
 
-async function run() {
+const run = async () => {
   try {
     await client.connect();
     await client.db('admin').command({ ping: 1 });
@@ -20,6 +21,8 @@ async function run() {
   } finally {
     await client.close();
   }
-}
+};
 
-module.exports = run;
+mongoose.connect(uri);
+
+run();

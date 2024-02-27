@@ -1,25 +1,35 @@
 import mongoose from 'mongoose';
 
-const OrderStatus: any = [];
-const PaymentMethod: any = [];
+export enum OrderStatus {
+  Pending = 'Pending',
+  Shipped = 'Shipped',
+  Delivered = 'Delivered',
+  Cancelled = 'Cancelled'
+}
 
-export interface Order {
-  prodcuts: [
+export enum PaymentMethod {
+  CreditCard = 'CreditCard',
+  PayPal = 'PayPal',
+  CashOnDelivery = 'CashOnDelivery'
+}
+
+export type Order = {
+  products: [
     {
       productId: mongoose.Types.ObjectId;
-      quantity: Number;
-      commentMagicLink: String;
+      quantity: number;
+      commentMagicLink: string;
     }
   ];
   date: Date;
-  totalPrice: Number;
-  status: [string];
+  totalPrice: number;
+  status: OrderStatus;
   delivery: mongoose.Types.ObjectId;
-  paymentMethod: [string];
-}
+  paymentMethod: PaymentMethod;
+};
 
 const orderSchema = new mongoose.Schema({
-  prodcuts: [
+  products: [
     {
       productId: mongoose.Types.ObjectId,
       quantity: Number,
@@ -28,9 +38,9 @@ const orderSchema = new mongoose.Schema({
   ],
   date: Date,
   totalPrice: Number,
-  status: OrderStatus,
+  status: { type: String, enum: Object.values(OrderStatus) },
   delivery: mongoose.Types.ObjectId,
-  paymentMethod: PaymentMethod
+  paymentMethod: { type: String, enum: Object.values(PaymentMethod) }
 });
 
-export const orderModel = mongoose.model('comments', orderSchema);
+export const orderModel = mongoose.model('orders', orderSchema);
