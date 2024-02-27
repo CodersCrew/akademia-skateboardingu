@@ -1,8 +1,3 @@
-import React from 'react';
-import '../styles/styling.css';
+const Page = () => <div>Akademia skateboardingu</div>;
 
-const App = () => {
-    return <div>Main Page</div>;
-};
-
-export default App;
+export default Page;
