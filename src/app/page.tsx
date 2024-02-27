@@ -1,3 +1,3 @@
-const Page = () => <div>Akademia skateboardingu</div>;
+const AcademyPage = () => <div>Akademia</div>;
 
-export default Page;
+export default AcademyPage;

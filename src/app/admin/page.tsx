@@ -3,9 +3,9 @@ import { Table } from '@tremor/react';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 
-import { ButtonProduct, TableBody, TableHead } from '@/components/dashboard';
+import { ButtonProduct, TableBody, TableHead } from '@/components/admin';
 
-const Dashboard = () => {
+const Admin = () => {
   const { push } = useRouter();
 
   const handleButtonClick = () => {
@@ -23,4 +23,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Admin;
