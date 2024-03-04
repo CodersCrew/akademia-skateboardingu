@@ -43,15 +43,17 @@ type SubscriptionEmail = {
 
 export type EmailData = Email & (OrderEmail | SubscriptionEmail);
 
-export const sendEmail = async ({ to, type, data }: EmailData) => {
-  sgMail.setApiKey(SENDGRID_API_KEY);
+export const emailService = {
+  sendEmail: async ({ to, type, data }: EmailData) => {
+    sgMail.setApiKey(SENDGRID_API_KEY);
 
-  const msg = {
-    to,
-    from: SENDGRID_FROM,
-    templateId: templates[type],
-    dynamic_template_data: data
-  };
+    const msg = {
+      to,
+      from: SENDGRID_FROM,
+      templateId: templates[type],
+      dynamic_template_data: data
+    };
 
-  return await sgMail.send(msg);
+    return await sgMail.send(msg);
+  }
 };

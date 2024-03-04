@@ -24,20 +24,20 @@ const ActionIcons = () => (
   </div>
 );
 
-export const renderPriceHistory = (priceHistory: PriceHistory[])=>
+export const renderPriceHistory = (priceHistory: PriceHistory[]) =>
   priceHistory.map((entry, id) => (
     <div key={id}>
       {' '}
       {entry.date.toLocaleDateString()}: {entry.price}
     </div>
-  )) ;
+  ));
 
 const TableBody = ({ items }: ItemProps) => {
   const renderTableCells = (item: Item) =>
     Object.values(item).map((value, index) => (
-      // <TableCell key={index}>
-      //   {value === 'priceHistory' ? renderPriceHistory(value) : value}
-      // </TableCell>
+      <TableCell key={index}>
+        {value === 'priceHistory' ? renderPriceHistory(value) : value}
+      </TableCell>
     ));
 
   return (
