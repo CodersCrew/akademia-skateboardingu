@@ -10,7 +10,7 @@ export type Item = {
   description: string;
   price: number;
   quantity: number;
-  visible: boolean;
+  visible: string;
   category: string;
   priceHistory: PriceHistory[];
   photos: string[];
@@ -26,7 +26,7 @@ const itemSchema = new mongoose.Schema({
   description: String,
   price: Number,
   quantity: Number,
-  visible: Boolean,
+  visible: String,
   category: String,
   priceHistory: [PriceHistorySchema],
   photos: [String]

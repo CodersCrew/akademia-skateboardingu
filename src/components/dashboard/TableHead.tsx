@@ -7,7 +7,7 @@ import {
 import { Title } from '../utils/constants';
 
 const TableHead = () => (
-  <TremorTableHead className="border bg-tremor-background-subtle">
+  <TremorTableHead className="bg-tremor-background-subtle">
     <TableRow>
       {Object.values(Title).map(item => (
         <TableHeaderCell key={item}>{item}</TableHeaderCell>

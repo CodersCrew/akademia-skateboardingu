@@ -4,6 +4,10 @@ import React, { useState } from 'react';
 
 import { FormFields } from '@/components/utils/constants';
 
+type ButtonProps = {
+  handleButtonClick: React.MouseEventHandler<HTMLButtonElement>;
+};
+
 type ValueFormProps = {
   Product: string;
   Description: string;
@@ -25,7 +29,7 @@ const FormField = ({
   valueForm,
   handleChange
 }: FormFieldProps) => (
-  <div className="flex flex-col gap-2 ">
+  <div className="flex flex-col gap-2 pl-5 pr-5">
     <label
       htmlFor={description}
       className="mt-10 text-tremor-default text-tremor-content dark:text-dark-tremor-content"
@@ -33,7 +37,7 @@ const FormField = ({
       {description}
     </label>
     <TextInput
-      className="mt-1 max-w-xs"
+      className="max-w-m mt-1"
       id={description}
       placeholder=""
       value={valueForm[description as keyof ValueFormProps]}
@@ -54,7 +58,7 @@ const defaultValues: ValueFormProps = {
   Photos: ''
 };
 
-export const AddForm = async () => {
+export const AddForm = async (handleButtonClick: ButtonProps) => {
   const [formData, setFormData] = useState(defaultValues);
 
   const handleChange = (field: keyof ValueFormProps, value: string) => {
@@ -64,25 +68,24 @@ export const AddForm = async () => {
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const response = await fetch('/api/addForm/route', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    });
-
-    if (response.ok) {
-      const responseData = await response.json();
-      console.log('Form submission successful:', responseData);
-    }
+  const handleSubmit = () => {
+    // async (e: React.FormEvent<HTMLFormElement>) => {
+    //   e.preventDefault();
+    //   const response = await fetch('/api/addForm/page', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify(formData)
+    //   });
+    //   if (response.ok) {
+    //     const responseData = await response.json();
+    //     console.log('Form submission successful:', responseData);
+    //   }
   };
 
   return (
-    <Card className="mt-20 max-w-md">
+    <Card className="mt-10 max-w-lg">
       <form
         onSubmit={e => {
           handleSubmit;
@@ -96,7 +99,7 @@ export const AddForm = async () => {
             handleChange={handleChange}
           />
         ))}
-        <div className="mt-10 flex justify-start">
+        <div className="ml-5 mt-10 flex justify-start">
           <Button type="submit">Zapisz</Button>
         </div>
       </form>
