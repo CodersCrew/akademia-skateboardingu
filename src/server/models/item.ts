@@ -12,7 +12,7 @@ export type Item = {
   quantity: number;
   visible: string;
   category: string;
-  priceHistory: PriceHistory[];
+  priceHistory?: PriceHistory[];
   photos: string[];
 };
 

@@ -9,13 +9,3 @@ export enum Title {
   PHOTOS = 'ZDJĘCIA',
   ACTION = 'AKCJE'
 }
-
-export enum FormFields {
-  PRODUCT = 'Produkt',
-  DESCRIPTION = 'Opis',
-  PRICE = 'Cena',
-  QUANTITY = 'Ilość',
-  VISIBLE = 'Widoczny',
-  CATEGORY = 'Kategoria',
-  PHOTOS = 'Zdjęcia'
-}

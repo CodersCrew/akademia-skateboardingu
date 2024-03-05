@@ -1,12 +1,10 @@
 'use client';
 import { Button, Card, TextInput } from '@tremor/react';
 import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
-import { FormFields } from '@/components/utils/constants';
-
-type ButtonProps = {
-  handleButtonClick: React.MouseEventHandler<HTMLButtonElement>;
-};
+import { addItem } from '@/server/controllers/itemController';
+import { Item } from '@/server/models/item';
 
 type ValueFormProps = {
   Product: string;
@@ -18,35 +16,20 @@ type ValueFormProps = {
   Photos: string;
 };
 
-type FormFieldProps = {
-  description: string;
-  valueForm: ValueFormProps;
-  handleChange: (field: keyof ValueFormProps, value: string) => void;
-};
-
-const FormField = ({
-  description,
-  valueForm,
-  handleChange
-}: FormFieldProps) => (
-  <div className="flex flex-col gap-2 pl-5 pr-5">
-    <label
-      htmlFor={description}
-      className="mt-10 text-tremor-default text-tremor-content dark:text-dark-tremor-content"
-    >
-      {description}
-    </label>
-    <TextInput
-      className="max-w-m mt-1"
-      id={description}
-      placeholder=""
-      value={valueForm[description as keyof ValueFormProps]}
-      onChange={e =>
-        handleChange(description as keyof ValueFormProps, e.target.value)
-      }
-    />
-  </div>
-);
+export const fields = [
+  { label: 'Produkt', name: 'product', type: 'text' },
+  { label: 'Opis', name: 'description', type: 'textarea' },
+  { label: 'Kategoria', name: 'category', type: 'text' },
+  { label: 'Cena', name: 'price', type: 'number' },
+  { label: 'Ilość', name: 'quantity', type: 'number' },
+  {
+    label: 'Widoczny',
+    name: 'visible',
+    type: 'select',
+    options: ['Yes', 'No']
+  },
+  { label: 'Zdjęcia', name: 'photos', type: 'file' }
+];
 
 const defaultValues: ValueFormProps = {
   Product: '',
@@ -58,50 +41,66 @@ const defaultValues: ValueFormProps = {
   Photos: ''
 };
 
-export const AddForm = async (handleButtonClick: ButtonProps) => {
+const SaveButton = () => {
+  return (
+    <Button
+      type="submit"
+      className="mt-5 rounded-md bg-blue-500 p-2 text-white"
+    >
+      Zapisz
+    </Button>
+  );
+};
+
+export const AddForm = async () => {
   const [formData, setFormData] = useState(defaultValues);
+  const { handleSubmit, control, register } = useForm();
 
-  const handleChange = (field: keyof ValueFormProps, value: string) => {
-    setFormData({
-      ...formData,
-      [field]: value
-    });
-  };
-
-  const handleSubmit = () => {
-    // async (e: React.FormEvent<HTMLFormElement>) => {
-    //   e.preventDefault();
-    //   const response = await fetch('/api/addForm/page', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify(formData)
-    //   });
-    //   if (response.ok) {
-    //     const responseData = await response.json();
-    //     console.log('Form submission successful:', responseData);
-    //   }
+  const onSubmit = async (data: Item) => {
+    await addItem(data);
+    console.log('Submitted');
   };
 
   return (
     <Card className="mt-10 max-w-lg">
-      <form
-        onSubmit={e => {
-          handleSubmit;
-        }}
-      >
-        {Object.values(FormFields).map(item => (
-          <FormField
-            key={item}
-            description={item}
-            valueForm={formData}
-            handleChange={handleChange}
-          />
+      <form onSubmit={handleSubmit(onSubmit)} className="mx-auto mt-8 max-w-md">
+        {fields.map(({ label, name, type, options }) => (
+          <div key={name} className="mb-4 mt-5 ">
+            <label className="block text-sm font-medium text-gray-600">
+              {label}
+            </label>
+            {type === 'textarea' ? (
+              <textarea
+                {...register(name)}
+                className="mt-1 w-full rounded-md border p-2"
+              />
+            ) : type === 'select' ? (
+              <select
+                {...register(name)}
+                className="mt-1 w-full rounded-md border p-2"
+              >
+                {options.map(option => (
+                  <option key={option} value={option.toLowerCase()}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            ) : type === 'file' ? (
+              <input
+                type="file"
+                {...register(name)}
+                className="mt-1 w-full rounded-md border p-2"
+              />
+            ) : (
+              <input
+                type={type}
+                {...register(name)}
+                className="mt-1 w-full rounded-md border p-2"
+              />
+            )}
+          </div>
         ))}
-        <div className="ml-5 mt-10 flex justify-start">
-          <Button type="submit">Zapisz</Button>
-        </div>
+        <SaveButton />
       </form>
     </Card>
   );
