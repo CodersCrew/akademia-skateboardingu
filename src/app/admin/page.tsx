@@ -9,15 +9,15 @@ const Admin = () => {
   const { push } = useRouter();
 
   const handleButtonClick = () => {
-    push('/addForm');
+    push('admin/products/new');
   };
   const items = [
     {
-      name: 'deska',
+      product: 'deska',
       description: 'deski',
       price: 399,
       quantity: 150,
-      visible: 'Tak',
+      visible: true,
       category: 'deski',
       priceHistory: [
         { price: 200, date: new Date() },
@@ -26,11 +26,11 @@ const Admin = () => {
       photos: ['']
     },
     {
-      name: 'kółka',
+      product: 'kółka',
       description: 'kółka',
       price: 299,
       quantity: 250,
-      visible: 'Tak',
+      visible: true,
       category: 'kółka',
       priceHistory: [
         { price: 200, date: new Date() },
@@ -39,11 +39,11 @@ const Admin = () => {
       photos: ['']
     },
     {
-      name: 'kask',
+      product: 'kask',
       description: 'kaski',
       price: 250,
       quantity: 70,
-      visible: 'Nie',
+      visible: true,
       category: 'kaski',
       priceHistory: [
         { price: 200, date: new Date() },
@@ -52,11 +52,11 @@ const Admin = () => {
       photos: ['']
     },
     {
-      name: 'kask',
+      product: 'kask',
       description: 'kaski',
       price: 250,
       quantity: 30,
-      visible: 'Nie',
+      visible: true,
       category: 'kaski',
       priceHistory: [
         { price: 200, date: new Date() },
@@ -65,11 +65,11 @@ const Admin = () => {
       photos: ['']
     },
     {
-      name: 'kask',
+      product: 'kask',
       description: 'kaski',
       price: 250,
       quantity: 25,
-      visible: 'Tak',
+      visible: true,
       category: 'kaski',
       priceHistory: [
         { price: 200, date: new Date() },
@@ -78,11 +78,11 @@ const Admin = () => {
       photos: ['']
     },
     {
-      name: 'kask',
+      product: 'kask',
       description: 'kaski',
       price: 250,
       quantity: 35,
-      visible: 'Tak',
+      visible: true,
       category: 'kaski',
       priceHistory: [
         { price: 200, date: new Date() },
@@ -91,11 +91,11 @@ const Admin = () => {
       photos: ['']
     },
     {
-      name: 'kask',
+      product: 'kask',
       description: 'kaski',
       price: 250,
       quantity: 0,
-      visible: 'Nie',
+      visible: false,
       category: 'kaski',
       priceHistory: [
         { price: 200, date: new Date() },
@@ -104,11 +104,11 @@ const Admin = () => {
       photos: ['']
     },
     {
-      name: 'kask',
+      product: 'kask',
       description: 'kaski',
       price: 250,
       quantity: 35,
-      visible: 'Tak',
+      visible: true,
       category: 'kaski',
       priceHistory: [
         { price: 200, date: new Date() },
@@ -117,11 +117,11 @@ const Admin = () => {
       photos: ['']
     },
     {
-      name: 'kask',
+      product: 'kask',
       description: 'kaski',
       price: 250,
       quantity: 50,
-      visible: 'Tak',
+      visible: true,
       category: 'kaski',
       priceHistory: [
         { price: 200, date: new Date() },
@@ -130,11 +130,11 @@ const Admin = () => {
       photos: ['']
     },
     {
-      name: 'kask',
+      product: 'kask',
       description: 'kaski',
       price: 250,
       quantity: 15,
-      visible: 'Nie',
+      visible: false,
       category: 'kaski',
       priceHistory: [
         { price: 200, date: new Date() },
@@ -143,11 +143,11 @@ const Admin = () => {
       photos: ['']
     },
     {
-      name: 'kask',
+      product: 'kask',
       description: 'kaski',
       price: 250,
       quantity: 20,
-      visible: 'Nie',
+      visible: false,
       category: 'kaski',
       priceHistory: [
         { price: 200, date: new Date() },
@@ -156,11 +156,11 @@ const Admin = () => {
       photos: ['']
     },
     {
-      name: 'kask',
+      product: 'kask',
       description: 'kaski',
       price: 250,
       quantity: 80,
-      visible: 'Tak',
+      visible: true,
       category: 'kaski',
       priceHistory: [
         { price: 200, date: new Date() },

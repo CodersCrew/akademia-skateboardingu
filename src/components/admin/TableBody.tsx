@@ -3,6 +3,7 @@ import {
   TableCell,
   TableRow
 } from '@tremor/react';
+import { useRouter } from 'next/navigation';
 
 import { Item, PriceHistory } from '@/server/models/item';
 
@@ -21,12 +22,18 @@ const renderPriceHistory = (priceHistory: PriceHistory[]) =>
   ));
 
 const TableBody = ({ items }: TableBodyProps) => {
+  const { push } = useRouter();
+
+  const handleEdit = () => {
+    push('admin/products/edit');
+  };
+
   return (
     <TremorTableBody>
       {items ? (
         items.map((item: Item, id) => (
-          <TableRow key={item.name}>
-            <TableCell>{item.name}</TableCell>
+          <TableRow key={item.product}>
+            <TableCell>{item.product}</TableCell>
             <TableCell>{item.description}</TableCell>
             <TableCell>{item.price} zł</TableCell>
             <TableCell>{item.quantity}</TableCell>
@@ -43,7 +50,7 @@ const TableBody = ({ items }: TableBodyProps) => {
             </TableCell>
             <TableCell>{item.photos}</TableCell>
             <TableCell>
-              <ActionIcons />
+              <ActionIcons handleEdit={handleEdit} />
             </TableCell>
           </TableRow>
         ))

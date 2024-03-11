@@ -1,6 +1,6 @@
 'use client';
 import { Card } from '@tremor/react';
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 
 import { addItem } from '@/server/controllers/itemController';
@@ -8,47 +8,32 @@ import { Item } from '@/server/models/item';
 
 import SaveButton from './SaveButton';
 
-type ValueFormProps = {
-  Product: string;
-  Description: string;
-  Price: string;
-  Quantity: string;
-  Visible: string;
-  Category: string;
-  Photos: string;
-};
-
 export const fields = [
   { label: 'Produkt', name: 'product', type: 'text' },
   { label: 'Opis', name: 'description', type: 'textarea' },
-  { label: 'Kategoria', name: 'category', type: 'text' },
   { label: 'Cena', name: 'price', type: 'number' },
   { label: 'Liczba', name: 'quantity', type: 'number' },
   {
     label: 'Widoczny',
     name: 'visible',
     type: 'select',
-    options: ['Yes', 'No']
+    options: ['Tak', 'Nie']
   },
+  { label: 'Kategoria', name: 'category', type: 'text' },
   { label: 'Zdjęcia', name: 'photos', type: 'file' }
 ];
 
-const defaultValues: ValueFormProps = {
-  Product: '',
-  Description: '',
-  Price: '',
-  Quantity: '',
-  Visible: '',
-  Category: '',
-  Photos: ''
+export type FormValues = Omit<Item, 'priceHistory'>;
+type FormProps = {
+  handleButtonClick: () => void;
 };
 
-export const Form = async () => {
-  const [formData, setFormData] = useState(defaultValues);
-  const { handleSubmit, control, register } = useForm();
+const Form = ({ handleButtonClick }: FormProps) => {
+  const { handleSubmit, register, setValue, reset } = useForm<FormValues>();
 
-  const onSubmit = async (data: Item) => {
+  const onSubmit = async (data: FormValues) => {
     await addItem(data);
+    handleButtonClick();
   };
 
   return (
@@ -61,15 +46,15 @@ export const Form = async () => {
             </label>
             {type === 'textarea' ? (
               <textarea
-                {...register(name)}
+                {...register(name as keyof FormValues)}
                 className="mt-1 w-full rounded-md border p-2"
               />
             ) : type === 'select' ? (
               <select
-                {...register(name)}
+                {...register(name as keyof FormValues)}
                 className="mt-1 w-full rounded-md border p-2"
               >
-                {options.map(option => (
+                {options?.map(option => (
                   <option key={option} value={option.toLowerCase()}>
                     {option}
                   </option>
@@ -78,13 +63,13 @@ export const Form = async () => {
             ) : type === 'file' ? (
               <input
                 type="file"
-                {...register(name)}
+                {...register(name as keyof FormValues)}
                 className="mt-1 w-full rounded-md border p-2"
               />
             ) : (
               <input
                 type={type}
-                {...register(name)}
+                {...register(name as keyof FormValues)}
                 className="mt-1 w-full rounded-md border p-2"
               />
             )}
@@ -95,3 +80,5 @@ export const Form = async () => {
     </Card>
   );
 };
+
+export default Form;

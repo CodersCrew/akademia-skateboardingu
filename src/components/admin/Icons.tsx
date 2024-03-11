@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 
-export const ActionIcons = () => (
+type ActionIconsProps = {
+  handleEdit: MouseEventHandler<SVGSVGElement>;
+};
+
+export const ActionIcons = ({ handleEdit }: ActionIconsProps) => (
   <div className="flex items-center">
-    <FaEdit className="mr-3 cursor-pointer" title="Edytuj" />
-    <FaTrash className="mr-3 cursor-pointer" title="Usuń" />
+    <FaEdit
+      className="bg-blue mr-3 cursor-pointer text-lg text-blue-500"
+      title="Edytuj"
+      onClick={handleEdit}
+    />
+    <FaTrash
+      className="bg-blue mr-3 cursor-pointer text-lg text-blue-500"
+      title="Usuń"
+    />
   </div>
 );
