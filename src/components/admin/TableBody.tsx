@@ -14,7 +14,7 @@ export type TableBodyProps = {
 
 const renderPriceHistory = (priceHistory: PriceHistory[]) =>
   priceHistory.map((entry, id) => (
-    <div key={id}>
+    <div key={entry.date.toString()}>
       {' '}
       {entry.date.toLocaleDateString()}: {entry.price} zł
     </div>
@@ -25,7 +25,7 @@ const TableBody = ({ items }: TableBodyProps) => {
     <TremorTableBody>
       {items ? (
         items.map((item: Item, id) => (
-          <TableRow key={id}>
+          <TableRow key={item.name}>
             <TableCell>{item.name}</TableCell>
             <TableCell>{item.description}</TableCell>
             <TableCell>{item.price} zł</TableCell>

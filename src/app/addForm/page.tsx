@@ -2,19 +2,20 @@
 import { useRouter } from 'next/navigation';
 import React from 'react';
 
-import { AddForm } from '@/components/addForm/AddForm';
-import { FormTitle } from '@/components/addForm/FormTitle';
+import { Form } from '@/components/products/Form';
+import { FormTitle } from '@/components/products/FormTitle';
 
 const NewProductForm = () => {
   const { push } = useRouter();
 
   const handleButtonClick = () => {
-    push('/dashboard');
+    push('/admin');
   };
+
   return (
     <div className="border bg-tremor-background-muted pb-10 pl-20">
       <FormTitle />
-      <AddForm handleButtonClick={handleButtonClick} />
+      <Form handleButtonClick={handleButtonClick} />
     </div>
   );
 };

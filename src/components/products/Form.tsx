@@ -1,10 +1,12 @@
 'use client';
-import { Button, Card, TextInput } from '@tremor/react';
+import { Card } from '@tremor/react';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { addItem } from '@/server/controllers/itemController';
 import { Item } from '@/server/models/item';
+
+import SaveButton from './SaveButton';
 
 type ValueFormProps = {
   Product: string;
@@ -21,7 +23,7 @@ export const fields = [
   { label: 'Opis', name: 'description', type: 'textarea' },
   { label: 'Kategoria', name: 'category', type: 'text' },
   { label: 'Cena', name: 'price', type: 'number' },
-  { label: 'Ilość', name: 'quantity', type: 'number' },
+  { label: 'Liczba', name: 'quantity', type: 'number' },
   {
     label: 'Widoczny',
     name: 'visible',
@@ -41,24 +43,12 @@ const defaultValues: ValueFormProps = {
   Photos: ''
 };
 
-const SaveButton = () => {
-  return (
-    <Button
-      type="submit"
-      className="mt-5 rounded-md bg-blue-500 p-2 text-white"
-    >
-      Zapisz
-    </Button>
-  );
-};
-
-export const AddForm = async () => {
+export const Form = async () => {
   const [formData, setFormData] = useState(defaultValues);
   const { handleSubmit, control, register } = useForm();
 
   const onSubmit = async (data: Item) => {
     await addItem(data);
-    console.log('Submitted');
   };
 
   return (
