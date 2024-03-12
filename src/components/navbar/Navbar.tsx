@@ -26,7 +26,7 @@ const Navbar = () => {
           <Image
             alt="Akademia Skate shop"
             height={80}
-            src="/logo/skateshop-logo.svg"
+            src="/logo/as-white-logo.svg"
             width={80}
           />
           <h1 className="text-[1.563rem] text-white">
