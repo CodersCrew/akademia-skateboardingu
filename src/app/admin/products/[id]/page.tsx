@@ -15,8 +15,10 @@ const ProductDetails = () => {
       const data = await response.json();
       setProduct(data);
     };
+
     if (id) {
-      fetchData(id);
+      const isString = Array.isArray(id) ? id[0] : id;
+      fetchData(isString);
     }
   }, [id]);
 

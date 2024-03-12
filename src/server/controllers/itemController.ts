@@ -15,33 +15,25 @@ export const addItem = async (data: Omit<Item, 'priceHistory'>) => {
 };
 
 export const updateItem = async (itemId: string, newData: Partial<Item>) => {
-  const currentItem = await itemModel.findById(itemId);
+  const currentItem = await itemModel.findByIdAndUpdate(itemId, newData, {
+    new: true,
+    runValidators: true
+  });
 
   if (!currentItem) {
     throw { message: 'Item not found', status: 404 };
   }
 
-  const updatedItem = await itemModel.findByIdAndUpdate(itemId, newData, {
-    new: true,
-    runValidators: true
-  });
-
-  if (!updatedItem) {
-    throw { message: 'Failed to update item', status: 500 };
-  }
-
   if (newData.price !== undefined && newData.price !== currentItem.price) {
-    const priceHistoryEntry: PriceHistory = {
+    currentItem.priceHistory.push({
       price: newData.price as number,
       date: new Date()
-    };
+    });
 
-    updatedItem.priceHistory.push(priceHistoryEntry);
-
-    await updatedItem.save();
+    await currentItem.save();
   }
 
-  return { data: { updatedItem } };
+  return { data: { updatedItem: currentItem } };
 };
 
 export const getAllItems = async () => {
