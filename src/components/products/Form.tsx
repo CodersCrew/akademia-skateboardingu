@@ -26,10 +26,13 @@ export const fields = [
 export type FormValues = Omit<Item, 'priceHistory'>;
 type FormProps = {
   handleButtonClick: () => void;
+  data: FormValues;
 };
 
-const Form = ({ handleButtonClick }: FormProps) => {
-  const { handleSubmit, register, setValue, reset } = useForm<FormValues>();
+const Form = ({ handleButtonClick, data }: FormProps) => {
+  const { handleSubmit, register, setValue, reset } = useForm<FormValues>({
+    defaultValues: data
+  });
 
   const onSubmit = async (data: FormValues) => {
     await addItem(data);
