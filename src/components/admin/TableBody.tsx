@@ -24,20 +24,19 @@ const renderPriceHistory = (priceHistory: PriceHistory[]) =>
 const TableBody = ({ items }: TableBodyProps) => {
   const { push } = useRouter();
 
-  // const handleEdit = (_id: number) => {
-  //   // with database _id
-  //   push(`admin/products/edit/${_id}`);
-  // };
-  const handleEdit = (id: number) => {
-    // with database _id
-    push(`admin/products/edit/${id}`);
+  const handleEdit = (_id: number) => {
+    push(`admin/products/edit/${_id}`);
   };
+  // const handleEdit = (id: number) => {
+  //   // with database _id
+  //   push(`admin/products/edit/${id}`);
+  // };
 
   return (
     <TremorTableBody>
       {items ? (
-        // items.map((item: Item, _id) => (
-        items.map((item: Item, id) => (
+        items.map((item: Item, _id) => (
+          // items.map((item: Item, id) => (
           <TableRow key={item.product}>
             <TableCell>{item.product}</TableCell>
             <TableCell>{item.description}</TableCell>
@@ -56,8 +55,8 @@ const TableBody = ({ items }: TableBodyProps) => {
             </TableCell>
             <TableCell>{item.photos}</TableCell>
             <TableCell>
-              {/* <ActionIcons handleEdit={() => handleEdit(_id)} /> */}
-              <ActionIcons handleEdit={() => handleEdit(id)} />
+              <ActionIcons handleEdit={() => handleEdit(_id)} />
+              {/* <ActionIcons handleEdit={() => handleEdit(id)} /> */}
             </TableCell>
           </TableRow>
         ))
