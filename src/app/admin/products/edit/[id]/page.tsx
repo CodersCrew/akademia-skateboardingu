@@ -1,43 +1,36 @@
 'use client';
 import { useRouter } from 'next/navigation';
-import router from 'next/router';
 import React, { useEffect, useState } from 'react';
 
 import Form, { FormValues } from '@/components/products/Form';
 import FormTitle from '@/components/products/FormTitle';
 import { getItem } from '@/server/controllers/itemController';
-import { Item } from '@/server/models/item';
 
-const NewProductForm = () => {
+const NewProductForm = ({ params }: { params: { id: string } }) => {
   const { push } = useRouter();
-  // const { id } = router.query;
   const [product, setProduct] = useState<FormValues>();
 
+  const data = {
+    name: 'deska',
+    description: 'deska',
+    price: 230,
+    quantity: 20,
+    visible: true,
+    category: 'deski',
+    priceHistory: { cena: 20, data: new Date() },
+    photos: []
+  };
   useEffect(() => {
-    const fetchData = async (id: string) => {
-      const response = await getItem(id);
-      if (response.data || response.data.item) {
-        /// data structure?
-        const data = response.data.item;
-        setProduct(data);
-      }
-    };
-
-    if (id) {
-      const isString = Array.isArray(id) ? id[0] : id;
-      fetchData(isString);
-    }
-  }, [id]);
-
-  // const product2 = {
-  //   product: 'koła',
-  //   description: 'koła 4-pak',
-  //   price: 119,
-  //   quantity: 30,
-  //   visible: 'tak',
-  //   category: 'kółka',
-  //   photos: ['']
-  // };
+    //for when database connection works
+    // const fetchData = async (id: string) => {
+    //   const response = await getItem(id);
+    //   if (response?.data?.item) {
+    //     const data = response.data.item;
+    //     setProduct(data);
+    //   }
+    // };
+    setProduct(data);
+  }, []);
 
   const handleButtonClick = () => {
     push('/admin');
@@ -46,7 +39,7 @@ const NewProductForm = () => {
   return (
     <div className="border bg-tremor-background-muted pb-10 pl-20">
       <FormTitle type="edit" />
-      <Form handleButtonClick={handleButtonClick} data={product} />
+      <Form handleButtonClick={handleButtonClick} data={data} />
     </div>
   );
 };

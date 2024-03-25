@@ -6,10 +6,11 @@ import { useForm } from 'react-hook-form';
 import { addItem } from '@/server/controllers/itemController';
 import { Item } from '@/server/models/item';
 
+import CancelButton from './CancelButton';
 import SaveButton from './SaveButton';
 
 export const fields = [
-  { label: 'Produkt', name: 'product', type: 'text' },
+  { label: 'Produkt', name: 'name', type: 'text' },
   { label: 'Opis', name: 'description', type: 'textarea' },
   { label: 'Cena', name: 'price', type: 'number' },
   { label: 'Liczba', name: 'quantity', type: 'number' },
@@ -30,15 +31,18 @@ type FormProps = {
 };
 
 const Form = ({ handleButtonClick, data }: FormProps) => {
-  const { handleSubmit, register, setValue, reset } = useForm<FormValues>({
+  const { handleSubmit, register, getValues, reset } = useForm<FormValues>({
     defaultValues: data
   });
 
-  const onSubmit = async (data: FormValues) => {
-    await addItem(data);
+  const onSubmit = async (formData: FormValues) => {
+    await addItem(formData);
     handleButtonClick();
   };
 
+  const handleCancel = () => {
+    reset();
+  };
   return (
     <Card className="mt-10 max-w-lg">
       <form onSubmit={handleSubmit(onSubmit)} className="mx-auto mt-8 max-w-md">
@@ -78,7 +82,10 @@ const Form = ({ handleButtonClick, data }: FormProps) => {
             )}
           </div>
         ))}
-        <SaveButton />
+        <div className="flex justify-between">
+          <SaveButton />
+          <CancelButton handleCancel={handleCancel} />
+        </div>
       </form>
     </Card>
   );

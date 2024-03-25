@@ -10,7 +10,7 @@ import { Item, PriceHistory } from '@/server/models/item';
 import { ActionIcons } from './Icons';
 
 export type TableBodyProps = {
-  items: Item[];
+  items: (Item & { _id: number })[];
 };
 
 const renderPriceHistory = (priceHistory: PriceHistory[]) =>
@@ -27,18 +27,13 @@ const TableBody = ({ items }: TableBodyProps) => {
   const handleEdit = (_id: number) => {
     push(`admin/products/edit/${_id}`);
   };
-  // const handleEdit = (id: number) => {
-  //   // with database _id
-  //   push(`admin/products/edit/${id}`);
-  // };
 
   return (
     <TremorTableBody>
       {items ? (
-        items.map((item: Item, _id) => (
-          // items.map((item: Item, id) => (
-          <TableRow key={item.product}>
-            <TableCell>{item.product}</TableCell>
+        items.map(item => (
+          <TableRow key={item._id}>
+            <TableCell>{item.name}</TableCell>
             <TableCell>{item.description}</TableCell>
             <TableCell>{item.price} zł</TableCell>
             <TableCell>{item.quantity}</TableCell>
@@ -55,8 +50,7 @@ const TableBody = ({ items }: TableBodyProps) => {
             </TableCell>
             <TableCell>{item.photos}</TableCell>
             <TableCell>
-              <ActionIcons handleEdit={() => handleEdit(_id)} />
-              {/* <ActionIcons handleEdit={() => handleEdit(id)} /> */}
+              <ActionIcons handleEdit={() => handleEdit(item._id)} />
             </TableCell>
           </TableRow>
         ))
