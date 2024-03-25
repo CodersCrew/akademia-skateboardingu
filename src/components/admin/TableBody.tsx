@@ -5,12 +5,13 @@ import {
 } from '@tremor/react';
 import { useRouter } from 'next/navigation';
 
+import { deleteItem } from '@/server/controllers/itemController';
 import { Item, PriceHistory } from '@/server/models/item';
 
 import { ActionIcons } from './Icons';
 
 export type TableBodyProps = {
-  items: (Item & { _id: number })[];
+  items: (Item & { _id: string })[];
 };
 
 const renderPriceHistory = (priceHistory: PriceHistory[]) =>
@@ -24,8 +25,12 @@ const renderPriceHistory = (priceHistory: PriceHistory[]) =>
 const TableBody = ({ items }: TableBodyProps) => {
   const { push } = useRouter();
 
-  const handleEdit = (_id: number) => {
+  const handleEdit = (_id: string) => {
     push(`admin/products/edit/${_id}`);
+  };
+
+  const handleDelete = async (_id: string) => {
+    await deleteItem(_id);
   };
 
   return (
@@ -50,7 +55,10 @@ const TableBody = ({ items }: TableBodyProps) => {
             </TableCell>
             <TableCell>{item.photos}</TableCell>
             <TableCell>
-              <ActionIcons handleEdit={() => handleEdit(item._id)} />
+              <ActionIcons
+                handleEdit={() => handleEdit(item._id)}
+                handleDelete={() => handleDelete(item._id)}
+              />
             </TableCell>
           </TableRow>
         ))

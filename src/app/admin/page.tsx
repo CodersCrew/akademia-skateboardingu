@@ -14,7 +14,7 @@ const Admin = () => {
 
   const items = [
     {
-      _id: 1,
+      _id: '1',
       name: 'deska',
       description: 'deski',
       price: 399,
@@ -28,7 +28,7 @@ const Admin = () => {
       photos: ['']
     },
     {
-      _id: 2,
+      _id: '2',
       name: 'kółka',
       description: 'kółka',
       price: 299,
@@ -42,7 +42,7 @@ const Admin = () => {
       photos: ['']
     },
     {
-      _id: 3,
+      _id: '3',
       name: 'kask',
       description: 'kaski',
       price: 250,
@@ -56,7 +56,7 @@ const Admin = () => {
       photos: ['']
     },
     {
-      _id: 4,
+      _id: '4',
       name: 'kask',
       description: 'kaski',
       price: 250,
@@ -70,7 +70,7 @@ const Admin = () => {
       photos: ['']
     },
     {
-      _id: 5,
+      _id: '5',
       name: 'kask',
       description: 'kaski',
       price: 250,
@@ -84,7 +84,7 @@ const Admin = () => {
       photos: ['']
     },
     {
-      _id: 6,
+      _id: '6',
       name: 'kask',
       description: 'kaski',
       price: 250,
@@ -98,7 +98,7 @@ const Admin = () => {
       photos: ['']
     },
     {
-      _id: 7,
+      _id: '7',
       name: 'kask',
       description: 'kaski',
       price: 250,
@@ -112,7 +112,7 @@ const Admin = () => {
       photos: ['']
     },
     {
-      _id: 8,
+      _id: '8',
       name: 'kask',
       description: 'kaski',
       price: 250,
@@ -126,7 +126,7 @@ const Admin = () => {
       photos: ['']
     },
     {
-      _id: 9,
+      _id: '9',
       name: 'kask',
       description: 'kaski',
       price: 250,
@@ -140,7 +140,7 @@ const Admin = () => {
       photos: ['']
     },
     {
-      _id: 10,
+      _id: '10',
       name: 'kask',
       description: 'kaski',
       price: 250,
@@ -154,7 +154,7 @@ const Admin = () => {
       photos: ['']
     },
     {
-      _id: 11,
+      _id: '11',
       name: 'kask',
       description: 'kaski',
       price: 250,
@@ -168,7 +168,7 @@ const Admin = () => {
       photos: ['']
     },
     {
-      _id: 12,
+      _id: '12',
       name: 'kask',
       description: 'kaski',
       price: 250,

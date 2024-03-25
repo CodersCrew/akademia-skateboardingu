@@ -83,8 +83,8 @@ const Form = ({ handleButtonClick, data }: FormProps) => {
           </div>
         ))}
         <div className="flex justify-between">
-          <SaveButton />
           <CancelButton handleCancel={handleCancel} />
+          <SaveButton />
         </div>
       </form>
     </Card>
