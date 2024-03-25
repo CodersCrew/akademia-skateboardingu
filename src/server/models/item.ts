@@ -6,7 +6,7 @@ export type PriceHistory = {
 };
 
 export type Item = {
-  product: string;
+  name: string;
   description: string;
   price: number;
   quantity: number;
@@ -22,7 +22,7 @@ const PriceHistorySchema = new mongoose.Schema({
 });
 
 const itemSchema = new mongoose.Schema({
-  product: String,
+  name: String,
   description: String,
   price: Number,
   quantity: Number,
