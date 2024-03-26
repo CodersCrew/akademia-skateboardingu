@@ -10,7 +10,7 @@ import { Item, PriceHistory } from '@/server/models/item';
 import { ActionIcons } from './Icons';
 
 export type TableBodyProps = {
-  items: Item[];
+  items: (Item & { _id: string })[];
 };
 
 const renderPriceHistory = (priceHistory: PriceHistory[]) =>
@@ -32,8 +32,8 @@ const TableBody = ({ items }: TableBodyProps) => {
     <TremorTableBody>
       {items ? (
         items.map((item: Item, id) => (
-          <TableRow key={item.product}>
-            <TableCell>{item.product}</TableCell>
+          <TableRow key={item.name}>
+            <TableCell>{item.name}</TableCell>
             <TableCell>{item.description}</TableCell>
             <TableCell>{item.price} zł</TableCell>
             <TableCell>{item.quantity}</TableCell>
