@@ -27,7 +27,7 @@ export const fields = [
 export type FormValues = Omit<Item, 'priceHistory'>;
 type FormProps = {
   handleButtonClick: () => void;
-  data: FormValues;
+  data?: FormValues;
 };
 
 const Form = ({ handleButtonClick, data }: FormProps) => {
@@ -84,7 +84,7 @@ const Form = ({ handleButtonClick, data }: FormProps) => {
           </div>
         ))}
         <div className="flex justify-between">
-          <CancelButton handleCancel={handleCancel} />
+          {data ? <CancelButton handleCancel={handleCancel} /> : null}
           <SaveButton />
         </div>
       </form>
