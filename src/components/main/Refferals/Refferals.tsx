@@ -9,8 +9,6 @@ const Refferals = () => {
     <div>
       <Title title="POLECAJKI:" />
       <Products />
-      <Title title="POLECAJKI:" />
-      <Products />
     </div>
   );
 };
