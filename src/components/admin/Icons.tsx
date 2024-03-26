@@ -6,7 +6,7 @@ type ActionIconsProps = {
   handleDelete: MouseEventHandler<SVGSVGElement>;
 };
 
-export const ActionIcons = ({ handleEdit, handleDelete }: ActionIconsProps) => (
+const ActionIcons = ({ handleEdit, handleDelete }: ActionIconsProps) => (
   <div className="flex items-center">
     <FaEdit
       className="bg-blue mr-3 cursor-pointer text-lg text-blue-500"
@@ -20,3 +20,5 @@ export const ActionIcons = ({ handleEdit, handleDelete }: ActionIconsProps) => (
     />
   </div>
 );
+
+export default ActionIcons;

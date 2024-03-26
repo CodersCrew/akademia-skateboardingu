@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 import { deleteItem } from '@/server/controllers/itemController';
 import { Item, PriceHistory } from '@/server/models/item';
 
-import { ActionIcons } from './Icons';
+import ActionIcons from './Icons';
 
 export type TableBodyProps = {
   items: (Item & { _id: string })[];
