@@ -12,8 +12,8 @@ const Images = ({ images }: { images: StaticImageData[] }) => {
       <Image
         src={images[currentIndex].src}
         alt={`photo_${currentIndex + 1}`}
-        width={500}
-        height={300}
+        width={600}
+        height={329}
       />
       <div className="absolute bottom-0 left-0 right-0 flex justify-center p-4">
         {images.map((_, index) => (
