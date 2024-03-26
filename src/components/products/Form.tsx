@@ -43,6 +43,7 @@ const Form = ({ handleButtonClick, data }: FormProps) => {
   const handleCancel = () => {
     reset();
   };
+
   return (
     <Card className="mt-10 max-w-lg">
       <form onSubmit={handleSubmit(onSubmit)} className="mx-auto mt-8 max-w-md">
