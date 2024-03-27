@@ -1,5 +1,3 @@
-'use-client';
-
 import Title from '../Common/Title';
 
 const Blog = () => {

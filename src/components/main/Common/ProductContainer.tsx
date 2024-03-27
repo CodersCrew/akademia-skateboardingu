@@ -1,5 +1,3 @@
-'use-client';
-
 import { Item } from '@/server/models/item';
 
 const ProductContainer = ({ data }: Omit<Item, 'visible' | 'priceHistory'>) => {
