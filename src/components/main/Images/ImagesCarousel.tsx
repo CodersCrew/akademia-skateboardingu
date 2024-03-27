@@ -1,4 +1,5 @@
-'use-client';
+'use client';
+
 import Image, { StaticImageData } from 'next/image';
 import { useId } from 'react';
 
