@@ -14,7 +14,8 @@ const Admin = () => {
 
   const items = [
     {
-      product: 'deska',
+      _id: '1',
+      name: 'deska',
       description: 'deski',
       price: 399,
       quantity: 150,
@@ -27,7 +28,8 @@ const Admin = () => {
       photos: ['']
     },
     {
-      product: 'kółka',
+      _id: '2',
+      name: 'kółka',
       description: 'kółka',
       price: 299,
       quantity: 250,
@@ -40,7 +42,8 @@ const Admin = () => {
       photos: ['']
     },
     {
-      product: 'kask',
+      _id: '3',
+      name: 'kask',
       description: 'kaski',
       price: 250,
       quantity: 70,
@@ -53,7 +56,8 @@ const Admin = () => {
       photos: ['']
     },
     {
-      product: 'kask',
+      _id: '4',
+      name: 'kask',
       description: 'kaski',
       price: 250,
       quantity: 30,
@@ -66,7 +70,8 @@ const Admin = () => {
       photos: ['']
     },
     {
-      product: 'kask',
+      _id: '5',
+      name: 'kask',
       description: 'kaski',
       price: 250,
       quantity: 25,
@@ -79,7 +84,8 @@ const Admin = () => {
       photos: ['']
     },
     {
-      product: 'kask',
+      _id: '6',
+      name: 'kask',
       description: 'kaski',
       price: 250,
       quantity: 35,
@@ -92,7 +98,8 @@ const Admin = () => {
       photos: ['']
     },
     {
-      product: 'kask',
+      _id: '7',
+      name: 'kask',
       description: 'kaski',
       price: 250,
       quantity: 0,
@@ -105,7 +112,8 @@ const Admin = () => {
       photos: ['']
     },
     {
-      product: 'kask',
+      _id: '8',
+      name: 'kask',
       description: 'kaski',
       price: 250,
       quantity: 35,
@@ -118,7 +126,8 @@ const Admin = () => {
       photos: ['']
     },
     {
-      product: 'kask',
+      _id: '9',
+      name: 'kask',
       description: 'kaski',
       price: 250,
       quantity: 50,
@@ -131,7 +140,8 @@ const Admin = () => {
       photos: ['']
     },
     {
-      product: 'kask',
+      _id: '10',
+      name: 'kask',
       description: 'kaski',
       price: 250,
       quantity: 15,
@@ -144,7 +154,8 @@ const Admin = () => {
       photos: ['']
     },
     {
-      product: 'kask',
+      _id: '11',
+      name: 'kask',
       description: 'kaski',
       price: 250,
       quantity: 20,
@@ -157,7 +168,8 @@ const Admin = () => {
       photos: ['']
     },
     {
-      product: 'kask',
+      _id: '12',
+      name: 'kask',
       description: 'kaski',
       price: 250,
       quantity: 80,
