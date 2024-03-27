@@ -4,7 +4,7 @@ import Image, { StaticImageData } from 'next/image';
 
 import usePagination from './Pagination';
 
-const Images = ({ images }: { images: StaticImageData[] }) => {
+const ImagesCarousel = ({ images }: { images: StaticImageData[] }) => {
   const { currentIndex, next, prev, goToIndex } = usePagination(images.length);
 
   return (
@@ -30,4 +30,4 @@ const Images = ({ images }: { images: StaticImageData[] }) => {
   );
 };
 
-export default Images;
+export default ImagesCarousel;

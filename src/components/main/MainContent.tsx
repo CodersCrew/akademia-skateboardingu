@@ -7,7 +7,7 @@ import photoMain_2 from '/public/images/photo_Main_2.png';
 import photoMain_3 from '/public/images/photo_Main_3.png';
 
 import Blog from './Blog/Blog';
-import Images from './Images/Images';
+import ImagesCarousel from './Images/Images';
 import Refferals from './Refferals/Refferals';
 import Sets from './Sets/Sets';
 
@@ -16,7 +16,7 @@ const MainContent = () => {
 
   return (
     <div>
-      <Images images={images} />
+      <ImagesCarousel images={images} />
     </div>
   );
 };
