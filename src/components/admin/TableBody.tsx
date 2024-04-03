@@ -11,7 +11,7 @@ import { Item, PriceHistory } from '@/server/models/item';
 import ActionIcons from './Icons';
 
 export type TableBodyProps = {
-  items: (Item & { _id: string })[];
+  items: Item[];
 };
 
 const renderPriceHistory = (priceHistory: PriceHistory[]) =>
