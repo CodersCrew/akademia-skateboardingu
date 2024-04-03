@@ -11,21 +11,17 @@ const imageService = async (file: File) => {
     imagesCollection.append('image', file);
   }
 
-  try {
-    const response = await fetch(`${uploadUrl}?key=${IMGBB_API_KEY}`, {
-      method: 'POST',
-      body: imagesCollection
-    });
+  const response = await fetch(`${uploadUrl}?key=${IMGBB_API_KEY}`, {
+    method: 'POST',
+    body: imagesCollection
+  });
 
-    if (!response.ok) {
-      throw new Error(`Failed to upload image: ${response.statusText}`);
-    }
-
-    const data = await response.json();
-    return data.data.url;
-  } catch (error) {
-    throw new Error('Image upload failed');
+  if (!response.ok) {
+    throw { message: 'Failed to upload image', status: 500 };
   }
+
+  const data = await response.json();
+  return data.data.url;
 };
 
 export default imageService;
