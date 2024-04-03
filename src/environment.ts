@@ -10,3 +10,6 @@ export const SENDGRID_ORDER_CONFIRMATION_TEMPLATE = process.env
   .SENDGRID_ORDER_CONFIRMATION_TEMPLATE as string;
 export const SENGDGRID_SUBSCRIPTION_TEMPLATE = process.env
   .SENDGRID_SUBSCRIPTION_TEMPLATE as string;
+
+// ImgBB
+export const IMGBB_API_KEY = process.env.IMGBB_API_KEY as string;
