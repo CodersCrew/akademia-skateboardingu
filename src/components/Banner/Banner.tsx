@@ -12,7 +12,7 @@ const items = [
   { src: 'images/skate_cut.png', key: 'baner2' },
   { src: 'images/skate_cut.png', key: 'baner3' }
 ];
-export const Banner = () => {
+const Banner = () => {
   return (
     <div>
       <Carousel
@@ -42,3 +42,5 @@ export const Banner = () => {
     </div>
   );
 };
+
+export default Banner;
