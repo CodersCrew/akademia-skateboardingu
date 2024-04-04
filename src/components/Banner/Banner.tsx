@@ -1,29 +1,37 @@
 'use client';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
-import { Carousel } from 'react-responsive-carousel';
+import { Carousel, CarouselProps } from 'react-responsive-carousel';
 
-const items = [
-  {
-    src: 'images/skate_cut.png',
-    key: 'baner1',
-    message: 'odkryj nasze',
-    subMessage: 'deski'
-  },
-  { src: 'images/skate_cut.png', key: 'baner2' },
-  { src: 'images/skate_cut.png', key: 'baner3' }
-];
+type TItem = {
+  src: string;
+  key: string;
+  message?: string;
+  subMessage?: string;
+};
 
-const Banner = () => {
+interface IBannerProps extends CarouselProps {
+  items: TItem[];
+}
+
+const Banner = ({
+  items,
+  showArrows = false,
+  showIndicators = true,
+  showThumbs = false,
+  showStatus = false,
+  autoPlay = false,
+  infiniteLoop = true
+}: IBannerProps) => {
   return (
     <div>
       <Carousel
-        showArrows={false}
-        showIndicators
-        showThumbs={false}
-        showStatus={false}
-        autoPlay={false}
-        infiniteLoop
+        showArrows={showArrows}
+        showIndicators={showIndicators}
+        showThumbs={showThumbs}
+        showStatus={showStatus}
+        autoPlay={autoPlay}
+        infiniteLoop={infiniteLoop}
       >
         {items.map(item => (
           <div key={item.key}>
