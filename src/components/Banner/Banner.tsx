@@ -2,6 +2,7 @@
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 import { Carousel } from 'react-responsive-carousel';
+
 const items = [
   {
     src: 'images/skate_cut.png',
@@ -12,6 +13,7 @@ const items = [
   { src: 'images/skate_cut.png', key: 'baner2' },
   { src: 'images/skate_cut.png', key: 'baner3' }
 ];
+
 const Banner = () => {
   return (
     <div>
