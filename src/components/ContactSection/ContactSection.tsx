@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Contact = () => {
+const ContactSection = () => {
   return <section>Contact</section>;
 };
 
-export default Contact;
+export default ContactSection;

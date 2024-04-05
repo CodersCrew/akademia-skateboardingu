@@ -2,9 +2,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const skateAcademyLinks = [
-  { name: 'FAQ', pathname: '/' },
-  { name: 'O NAS', pathname: '/' },
-  { name: 'KONTAKT', pathname: '/' },
+  { name: 'FAQ', pathname: '/faq' },
+  { name: 'O NAS', pathname: '/o-nas' },
+  { name: 'KONTAKT', pathname: '/kontakt' },
   { name: 'REGULAMIN', pathname: '/' },
   { name: 'POLITYKA PRYWATNOŚCI', pathname: '/' }
 ];
