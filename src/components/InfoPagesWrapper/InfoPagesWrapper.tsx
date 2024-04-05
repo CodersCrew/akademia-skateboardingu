@@ -24,11 +24,11 @@ const items = [
   }
 ];
 
-type TInfoPageLayoutProps = {
+type InfoPageLayoutProps = {
   children: ReactNode;
 };
 
-const InfoPagesWrapper = ({ children }: TInfoPageLayoutProps) => {
+const InfoPagesWrapper = ({ children }: InfoPageLayoutProps) => {
   return (
     <div>
       <Navbar />

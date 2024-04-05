@@ -3,7 +3,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 import { Carousel, CarouselProps } from 'react-responsive-carousel';
 
-type TItem = {
+type Item = {
   src: string;
   key: string;
   message?: string;
@@ -11,7 +11,7 @@ type TItem = {
 };
 
 interface IBannerProps extends CarouselProps {
-  items: TItem[];
+  items: Item[];
 }
 
 const Banner = ({
