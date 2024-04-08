@@ -11,7 +11,8 @@ const config: Config = {
     current: 'currentColor',
     extend: {
       fontFamily: {
-        inter: ['var(--font-inter)']
+        inter: ['var(--font-inter)'],
+        lato: ['var(--font-lato)']
       },
       colors: {
         highlight: '#8E00FF',
