@@ -1,4 +1,4 @@
-const isImage = file => {
+const isImage = (file: File) => {
   const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp'];
 
   const fileExtension = file.name.split('.').pop()?.toLowerCase();

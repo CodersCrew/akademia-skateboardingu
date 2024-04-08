@@ -1,17 +1,16 @@
 import isImage from '@/components/functions/isImage';
 import isVideo from '@/components/functions/isVideo';
-import { IMGBB_API_KEY } from '@/environment';
-
-const uploadUrl = 'https://api.imgbb.com/1/upload';
+import { IMGBB_API_KEY, IMGBB_UPLOAD_URL } from '@/environment';
 
 const imageService = async (file: File) => {
-  const imagesCollection = new FormData();
-
-  if (isVideo(file) || isImage(file)) {
-    imagesCollection.append('image', file);
+  if (!isVideo(file) || !isImage(file)) {
+    throw { message: 'Data format is not correct', status: 500 };
   }
 
-  const response = await fetch(`${uploadUrl}?key=${IMGBB_API_KEY}`, {
+  const imagesCollection = new FormData();
+  imagesCollection.append('image', file);
+
+  const response = await fetch(`${IMGBB_UPLOAD_URL}?key=${IMGBB_API_KEY}`, {
     method: 'POST',
     body: imagesCollection
   });
