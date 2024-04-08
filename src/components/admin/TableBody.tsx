@@ -37,7 +37,7 @@ const TableBody = ({ items }: TableBodyProps) => {
     <TremorTableBody>
       {items ? (
         items.map(item => (
-          <TableRow key={item.name}>
+          <TableRow key={item._id}>
             <TableCell>{item.name}</TableCell>
             <TableCell>{item.description}</TableCell>
             <TableCell>{item.price} zł</TableCell>

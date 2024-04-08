@@ -1,4 +1,3 @@
-'use-client';
 import { Button } from '@tremor/react';
 import { FaPlus } from 'react-icons/fa';
 

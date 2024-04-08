@@ -1,4 +1,3 @@
-'use-client';
 import React, { MouseEventHandler } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 

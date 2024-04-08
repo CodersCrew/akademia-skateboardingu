@@ -23,7 +23,6 @@ const PriceHistorySchema = new mongoose.Schema({
 });
 
 const itemSchema = new mongoose.Schema({
-  _id: Number,
   name: String,
   description: String,
   price: Number,
