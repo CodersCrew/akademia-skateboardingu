@@ -5,7 +5,7 @@ const AboutUsSection = () => {
   return (
     <section className="mx-[48px] flex flex-col items-center">
       <h3 className="m-[48px] text-[36px] font-black">O nas</h3>
-      <div className="flex flex-row justify-between">
+      <div className="flex flex-row justify-between pb-[32px]">
         <p className="flex max-w-[50%] flex-col justify-between text-[12px] font-normal">
           <span>
             Contrary to popular belief, Lorem Ipsum is not simply random text.
@@ -50,6 +50,7 @@ const AboutUsSection = () => {
           height={384}
           width={574}
           alt="about us image"
+          className="mx-auto"
         />
       </div>
     </section>
