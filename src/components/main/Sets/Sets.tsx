@@ -1,13 +1,13 @@
-import Image, { StaticImageData } from 'next/image';
+import { StaticImageData } from 'next/image';
 import Link from 'next/link';
 
 import photoMain_1 from '/public/images/photo_Main_1.png';
 import photoMain_2 from '/public/images/photo_Main_2.png';
 
 import Title from '../Common/Title';
-import Description from './Description';
+import ImageButton from './Button';
 
-type ButtonTypes = {
+export type ButtonTypes = {
   image: StaticImageData;
   path: string;
   text: string;
@@ -23,10 +23,9 @@ const Sets = () => {
     <div className="h-567">
       <Title title="KOMPLETY:" />
       <div className="h-489 mt-20 flex items-center justify-center space-x-40">
-        {Object.values(photosData).map((element, index) => (
+        {photosData.map(element => (
           <Link key={element.image.blurDataURL} href={element.path}>
-            <Image src={element.image} alt={`photo-${index + 1}`} />
-            <Description text={element.text} />
+            <ImageButton {...element} />
           </Link>
         ))}
       </div>
