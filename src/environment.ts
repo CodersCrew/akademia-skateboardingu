@@ -15,6 +15,6 @@ export const SENGDGRID_SUBSCRIPTION_TEMPLATE = process.env
 export const IMGBB_API_KEY = process.env.IMGBB_API_KEY as string;
 export const IMGBB_UPLOAD_URL = 'https://api.imgbb.com/1/upload' as string;
 
-//Dotpay
+// Dotpay
 export const API_ENDPOINT_DOTPAY = 'https://ssl.dotpay.pl/t2/';
 export const DOTPAY_AUTH_TOKEN = process.env.DOTPAY_AUTH_TOKEN as string;

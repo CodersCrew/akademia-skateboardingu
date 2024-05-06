@@ -32,7 +32,7 @@ const Sets = () => {
   return (
     <div className="h-567">
       <Title title="KOMPLETY:" />
-      <div className="h-489 mt-20 flex items-center justify-center space-x-40">
+      <div className="h-489 ml-20 mr-20 mt-20 flex items-center justify-center space-x-40">
         {photosData.map((element, index) => (
           <ImageButton
             key={element.alt}

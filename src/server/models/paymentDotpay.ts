@@ -89,6 +89,7 @@ export type PaymentDotpayData = {
   description: string;
   ignore_last_payment_channel: boolean;
 };
+
 const paymentDotpaySchema = new mongoose.Schema({
   id: Number,
   amount: Number,

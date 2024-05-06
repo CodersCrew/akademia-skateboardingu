@@ -1,6 +1,5 @@
 import { DOTPAY_AUTH_TOKEN } from '@/environment';
-
-import { PaymentDotpayData } from '../models/paymentDotpay';
+import { PaymentDotpayData } from '@/models/paymentDotpay';
 
 type DotpayEndpointTypes = Omit<
   PaymentDotpayData,
