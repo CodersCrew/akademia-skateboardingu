@@ -1,7 +1,9 @@
 'use client';
-import Carousel from 'react-multi-carousel';
-import ProductCard, { ProductCardProps } from '../ProductCard/ProductCard';
 import 'react-multi-carousel/lib/styles.css';
+
+import Carousel from 'react-multi-carousel';
+
+import ProductCard, { ProductCardProps } from './ProductCard';
 
 type ProductCarouselProps = {
   productsList: ProductCardProps[];

@@ -6,7 +6,7 @@ import Form, { FormValues } from '@/components/products/Form';
 import FormTitle from '@/components/products/FormTitle';
 import { getItem } from '@/server/controllers/itemController';
 
-const NewProductForm = ({ params }: { params: { id: string } }) => {
+export default function NewProductForm({ params }: { params: { id: string } }) {
   const { push } = useRouter();
   const [product, setProduct] = useState<FormValues>();
 
@@ -42,6 +42,4 @@ const NewProductForm = ({ params }: { params: { id: string } }) => {
       <Form handleButtonClick={handleButtonClick} data={data} />
     </div>
   );
-};
-
-export default NewProductForm;
+}

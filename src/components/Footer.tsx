@@ -2,12 +2,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const skateAcademyLinks = [
-  { name: 'FAQ', pathname: '/faq' },
-  { name: 'O NAS', pathname: '/o-nas' },
-  { name: 'KONTAKT', pathname: '/kontakt' },
-  { name: 'REGULAMIN', pathname: '/' },
-  { name: 'POLITYKA PRYWATNOŚCI', pathname: '/' }
+  { name: 'FAQ', pathname: '/sklep/faq' },
+  { name: 'O NAS', pathname: '/sklep/o-nas' },
+  { name: 'KONTAKT', pathname: '/sklep/kontakt' },
+  { name: 'REGULAMIN', pathname: '/sklep/regulamin' },
+  { name: 'POLITYKA PRYWATNOŚCI', pathname: '/sklep/faq' }
 ];
+
 const shoppingLinks = [
   { name: 'DOSTAWY', pathname: '/' },
   { name: 'PŁATNOŚĆ', pathname: '/' },
@@ -44,7 +45,7 @@ const Footer = () => (
       <Image
         alt="Akademia Skate"
         height={82}
-        src="/logo/as-black-logo.svg"
+        src="/images/as-black-logo.svg"
         width={82}
         className="mb-2.5"
       />

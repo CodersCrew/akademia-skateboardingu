@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { ImageButtonProps } from '../Sets/Sets';
+import { ImageButtonProps } from './Sets';
 
 type BlogPostsTypes = Omit<ImageButtonProps, 'text'>;
 

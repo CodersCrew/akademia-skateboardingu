@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import ProductBadge, { colorVariants } from '../ProductBadge/ProductBadge';
+
+import ProductBadge, { colorVariants } from './ProductBadge';
 
 export type ProductCardProps = {
   src: string;

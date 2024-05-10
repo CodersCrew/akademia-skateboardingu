@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { MdShoppingCart } from 'react-icons/md';
 
-import NavItem from '../NavItem/NavItem';
+import NavItem from './NavItem';
 
 const shopNavItems = [
   { name: 'Deski', pathname: '/' },
@@ -26,7 +26,7 @@ const Navbar = () => {
           <Image
             alt="Akademia Skate shop"
             height={80}
-            src="/logo/as-white-logo.svg"
+            src="/images/as-white-logo.svg"
             width={80}
           />
           <h1 className="text-[1.563rem] text-white">

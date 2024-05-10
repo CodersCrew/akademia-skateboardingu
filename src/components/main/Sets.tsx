@@ -1,11 +1,10 @@
 import { StaticImageData } from 'next/image';
-import Link from 'next/link';
 
 import photoMain_1 from '/public/images/photo_Main_1.png';
 import photoMain_2 from '/public/images/photo_Main_2.png';
 
-import Title from '../Common/Title';
-import ImageButton from './Button';
+import Title from './Common/Title';
+import ImageButton from './ImageButton';
 
 export type ImageButtonProps = {
   href: string;
