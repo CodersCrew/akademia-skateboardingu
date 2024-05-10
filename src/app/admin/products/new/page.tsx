@@ -5,7 +5,7 @@ import React from 'react';
 import Form from '@/components/products/Form';
 import FormTitle from '@/components/products/FormTitle';
 
-const ProductForm = () => {
+export default function ProductForm() {
   const { push } = useRouter();
 
   const handleButtonClick = () => {
@@ -18,6 +18,4 @@ const ProductForm = () => {
       <Form handleButtonClick={handleButtonClick} />
     </div>
   );
-};
-
-export default ProductForm;
+}

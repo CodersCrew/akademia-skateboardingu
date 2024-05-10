@@ -1,3 +1,3 @@
-const ItemPage = () => <div>Produkt</div>;
-
-export default ItemPage;
+export default function ItemPage() {
+  return <div>Produkt</div>;
+}

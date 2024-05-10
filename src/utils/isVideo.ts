@@ -3,11 +3,7 @@ const isVideo = (file: File) => {
 
   const fileExtension = file.name.split('.').pop()?.toLowerCase();
 
-  if (fileExtension && videoExtensions.includes(`.${fileExtension}`)) {
-    return true;
-  }
-
-  return false;
+  return fileExtension && videoExtensions.includes(`.${fileExtension}`);
 };
 
 export default isVideo;
