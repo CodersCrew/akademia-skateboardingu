@@ -10,7 +10,7 @@ export type TransactionRegistrationType = {
   urlStatus: string;
 };
 
-export type TransactionVeryficationType = {
+export type TransactionVerificationType = {
   merchantId: number;
   posId: number;
   sessionId: string;
@@ -30,7 +30,7 @@ const transactionRegistrationSchema = new mongoose.Schema({
   urlStatus: String
 });
 
-const TransactionVeryficationSchema = new mongoose.Schema({
+const TransactionVerificationSchema = new mongoose.Schema({
   merchantId: Number,
   posId: Number,
   sessionId: String,
@@ -47,12 +47,12 @@ const transactionRegistrationModel = mongoose.model(
 
 const transactionVerificationModel = mongoose.model(
   'transaction',
-  TransactionVeryficationSchema
+  TransactionVerificationSchema
 );
 
 const transactionNotificationModel = mongoose.model(
   'transaction',
-  TransactionVeryficationSchema
+  TransactionVerificationSchema
 );
 
 export {

@@ -6,16 +6,16 @@ import {
 } from '@/environment';
 import {
   getRegistrationData,
-  getVeryficationData,
+  getVerificationData,
   PaymentType
 } from '@/utils/payments';
 
 import {
   transactionNotificationModel,
-  TransactionVeryficationType
+  TransactionVerificationType
 } from '../models/transaction';
 
-type TransactionNotification = Omit<TransactionVeryficationType, 'sign'>;
+type TransactionNotification = Omit<TransactionVerificationType, 'sign'>;
 
 export const registerPayment = async ({
   userId,
@@ -64,7 +64,7 @@ export const registerPayment = async ({
 };
 
 export const verifyPayment = async (transactionId: string) => {
-  const { transaction } = await getVeryficationData(transactionId);
+  const { transaction } = await getVerificationData(transactionId);
 
   const requestBody = {
     merchantId: transaction.transaction.merchantId,

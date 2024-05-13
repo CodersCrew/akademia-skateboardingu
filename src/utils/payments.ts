@@ -1,6 +1,6 @@
 import {
   getTransactionRegistration,
-  getTransactionVeryfication
+  getTransactionVerification
 } from '@/server/controllers/transactionController';
 import { getUserData } from '@/server/controllers/userController';
 
@@ -28,12 +28,12 @@ export const getRegistrationData = async ({
   return { user, transaction };
 };
 
-export const getVeryficationData = async (transactionId: string) => {
+export const getVerificationData = async (transactionId: string) => {
   if (!transactionId) {
     throw { message: 'Veryfication data fetch failed', status: 500 };
   }
 
-  const transaction = await getTransactionVeryfication(transactionId);
+  const transaction = await getTransactionVerification(transactionId);
 
   return { transaction };
 };

@@ -70,7 +70,7 @@ const paymentRegistrationSchema = new mongoose.Schema({
   }
 });
 
-export type PaymentVeryficationData = {
+export type PaymentVerificationData = {
   merchantId: number;
   posId: number;
   sessionId: string;
@@ -95,9 +95,9 @@ const paymentRegistrationModel = mongoose.model(
   paymentRegistrationSchema
 );
 
-const paymentVeryficarionModel = mongoose.model(
+const paymentVerificationModel = mongoose.model(
   'paymentVeryfication',
   PaymentVeryficationSchema
 );
 
-export { paymentRegistrationModel, paymentVeryficarionModel };
+export { paymentRegistrationModel, paymentVerificationModel };

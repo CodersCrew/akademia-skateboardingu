@@ -14,7 +14,7 @@ export const getTransactionRegistration = async (transactionId: string) => {
   return { transaction };
 };
 
-export const getTransactionVeryfication = async (transactionId: string) => {
+export const getTransactionVerification = async (transactionId: string) => {
   const transaction =
     await transactionVerificationModel.findById(transactionId);
 
