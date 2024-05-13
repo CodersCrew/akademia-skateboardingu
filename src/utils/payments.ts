@@ -4,6 +4,11 @@ import {
 } from '@/server/controllers/transactionController';
 import { getUserData } from '@/server/controllers/userController';
 
+export type PaymentRegistrationType = {
+  userId: string;
+  transactionId: string;
+};
+
 export type PaymentType = {
   userId: string;
   transactionId: string;
