@@ -4,7 +4,7 @@ import {
   TableRow
 } from '@tremor/react';
 
-import { Title } from '../utils/constants';
+import { Title } from '../../utils/constants';
 
 const TableHead = () => (
   <TremorTableHead className="border bg-tremor-background-subtle">

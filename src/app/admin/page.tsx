@@ -5,7 +5,7 @@ import React from 'react';
 
 import { ButtonProduct, TableBody, TableHead } from '@/components/admin';
 
-const Admin = () => {
+export default function Admin() {
   const { push } = useRouter();
 
   const handleButtonClick = () => {
@@ -192,6 +192,4 @@ const Admin = () => {
       </Table>
     </div>
   );
-};
-
-export default Admin;
+}

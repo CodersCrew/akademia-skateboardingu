@@ -1,14 +1,14 @@
 import {
-  getRegistrationData,
-  getVeryficationData,
-  PaymentType
-} from '@/components/functions/payments';
-import {
   PAYMENT_API_KEY,
   PAYMENT_MERCHAND_ID,
   PAYMENT_REGISTRATION_ENDPOINT,
   PAYMENT_VERIFICATION_ENDPOINT
 } from '@/environment';
+import {
+  getRegistrationData,
+  getVeryficationData,
+  PaymentType
+} from '@/utils/payments';
 
 import {
   transactionNotificationModel,
