@@ -1,11 +1,25 @@
-import { transactionRegistrationModel } from '../models/transaction';
+import {
+  transactionRegistrationModel,
+  transactionVerificationModel
+} from '../models/transaction';
 
-export const getTransaction = async (transactionId: string) => {
+export const getTransactionRegistration = async (transactionId: string) => {
   const transaction =
     await transactionRegistrationModel.findById(transactionId);
 
   if (!transaction) {
-    throw { message: 'Failed to get user data', status: 500 };
+    throw { message: 'Failed to get transaction data', status: 500 };
+  }
+
+  return { transaction };
+};
+
+export const getTransactionVeryfication = async (transactionId: string) => {
+  const transaction =
+    await transactionVerificationModel.findById(transactionId);
+
+  if (!transaction) {
+    throw { message: 'Failed to get veryfication data', status: 500 };
   }
 
   return { transaction };

@@ -1,23 +1,34 @@
-import { getTransaction } from '@/server/controllers/transactionController';
+import {
+  getTransactionRegistration,
+  getTransactionVeryfication
+} from '@/server/controllers/transactionController';
 import { getUserData } from '@/server/controllers/userController';
 
-export type PaymentRegistrationType = {
+export type PaymentType = {
   userId: string;
   transactionId: string;
 };
 
-export const getPaymentData = async ({
+export const getRegistrationData = async ({
   userId,
   transactionId
-}: PaymentRegistrationType) => {
+}: PaymentType) => {
   if (!userId || !transactionId) {
-    throw { message: 'Data fetch failed', status: 500 };
+    throw { message: 'Registration data fetch failed', status: 500 };
   }
 
   const user = await getUserData(userId);
-  const transaction = await getTransaction(transactionId);
+  const transaction = await getTransactionRegistration(transactionId);
 
   return { user, transaction };
 };
 
-export const getTransaction = async({});
+export const getVeryficationData = async (transactionId: string) => {
+  if (!transactionId) {
+    throw { message: 'Veryfication data fetch failed', status: 500 };
+  }
+
+  const transaction = await getTransactionVeryfication(transactionId);
+
+  return { transaction };
+};

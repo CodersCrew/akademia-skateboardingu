@@ -45,9 +45,18 @@ const transactionRegistrationModel = mongoose.model(
   transactionRegistrationSchema
 );
 
-const transactionVerificationnModel = mongoose.model(
+const transactionVerificationModel = mongoose.model(
   'transaction',
   TransactionVeryficationSchema
 );
 
-export { transactionRegistrationModel, transactionVerificationnModel };
+const transactionNotificationModel = mongoose.model(
+  'transaction',
+  TransactionVeryficationSchema
+);
+
+export {
+  transactionNotificationModel,
+  transactionRegistrationModel,
+  transactionVerificationModel
+};

@@ -1,6 +1,7 @@
 import {
-  getPaymentData,
-  PaymentRegistrationType
+  getRegistrationData,
+  getVeryficationData,
+  PaymentType
 } from '@/components/functions/payments';
 import {
   PAYMENT_API_KEY,
@@ -9,11 +10,21 @@ import {
   PAYMENT_VERIFICATION_ENDPOINT
 } from '@/environment';
 
+import {
+  transactionNotificationModel,
+  TransactionVeryficationType
+} from '../models/transaction';
+
+type TransactionNotification = Omit<TransactionVeryficationType, 'sign'>;
+
 export const registerPayment = async ({
   userId,
   transactionId
-}: PaymentRegistrationType) => {
-  const { user, transaction } = await getPaymentData({ userId, transactionId });
+}: PaymentType) => {
+  const { user, transaction } = await getRegistrationData({
+    userId,
+    transactionId
+  });
 
   const requestBody = {
     merchantId: user.userData.merchantId,
@@ -52,15 +63,17 @@ export const registerPayment = async ({
   return { data: { response }, options: { status: 200 } };
 };
 
-export const verifyPayment = async ({}) => {
+export const verifyPayment = async (transactionId: string) => {
+  const { transaction } = await getVeryficationData(transactionId);
+
   const requestBody = {
-    merchantId: 123456, // Example merchant ID
-    posId: 789012, // Example POS ID
-    sessionId: 'abc123def456', // Example session ID
-    amount: 10000, // Amount in cents (100 PLN)
-    currency: 'PLN',
-    orderId: 123456789, // Example order ID
-    sign: 'abc123def456' // Example sign
+    merchantId: transaction.transaction.merchantId,
+    posId: transaction.transaction.posId,
+    sessionId: transaction.transaction.sessionId,
+    amount: transaction.transaction.amount,
+    currency: transaction.transaction.currency,
+    orderId: transaction.transaction.orderId,
+    sign: transaction.transaction.sign
   };
 
   const response = await fetch(PAYMENT_VERIFICATION_ENDPOINT, {
@@ -78,4 +91,21 @@ export const verifyPayment = async ({}) => {
 
   await response.json();
   return { data: { response }, options: { status: 200 } };
+};
+
+export const savePaymentNotification = async (
+  notificationData: TransactionNotification
+) => {
+  if (!notificationData) {
+    throw {
+      message: 'Transaction data notification fetch failed.',
+      status: 500
+    };
+  }
+
+  const paymentNotification = new transactionNotificationModel(
+    notificationData
+  );
+
+  await paymentNotification.save();
 };
