@@ -9,8 +9,8 @@ export const Description = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getAllItems();
-      const itemsCollection = data.data.items;
+      const { data } = await getAllItems();
+      const itemsCollection = data.items;
 
       if (!items) {
         throw { message: 'Data fetch failed.', status: 500 };
@@ -28,6 +28,5 @@ export const Description = () => {
       <p></p>
       <p></p>
       <p>{element.price}</p>
-  })}
-  </div>);
+  })}</div>);
 };
