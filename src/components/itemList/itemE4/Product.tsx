@@ -1,16 +1,18 @@
 import { Button, Title } from '@tremor/react';
+import { useState } from 'react';
 
 import { Description } from './Descripton';
 import { Photo } from './Photo';
 import { Rating } from './Rating';
 
 const Product = () => {
+  const [rating, setRating] = useState();
   return (
     <div>
       <div>
         <Photo src={} alt="" />
         <Title />
-        <Rating />
+        <Rating rating={rating} setRating={setRating} />
         <Description />
       </div>
       <div>

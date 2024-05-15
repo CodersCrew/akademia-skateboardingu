@@ -1,3 +1,15 @@
+import { useRouter } from 'next/router';
+import React from 'react';
+
+import { ProductComponents } from '@/components/itemList/itemE4/ProductComponents';
+
 export default function ItemPage() {
-  return <div>Produkt</div>;
+  const router = useRouter();
+  const { item } = router.query;
+
+  return (
+    <>
+      <ProductComponents />
+    </>
+  );
 }
