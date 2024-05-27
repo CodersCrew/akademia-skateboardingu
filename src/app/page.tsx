@@ -1,8 +1,8 @@
-import Footer from '@/components/Footer/Footer';
+import Footer from '@/components/Footer';
 import MainContent from '@/components/main/MainContent';
-import Navbar from '@/components/navbar/Navbar';
+import Navbar from '@/components/Navbar';
 
-const HomePage = () => {
+export default function HomePage() {
   return (
     <>
       <Navbar />
@@ -10,6 +10,4 @@ const HomePage = () => {
       <Footer />
     </>
   );
-};
-
-export default HomePage;
+}
