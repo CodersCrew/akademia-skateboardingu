@@ -14,6 +14,7 @@ const ContactForm = () => {
   const onSubmit: SubmitHandler<FormFields> = data => {
     console.log(data);
   };
+
   return (
     <form className="flex flex-col " onSubmit={handleSubmit(onSubmit)}>
       <label>IMIĘ *</label>

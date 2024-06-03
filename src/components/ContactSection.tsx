@@ -9,14 +9,11 @@ const ContactSection = () => {
       <div className="flex w-full flex-row justify-between">
         <div className="my-auto flex flex-col">
           <h5 className="mb-[24px] text-[16px] font-semibold">Dane Firmy</h5>
-          <span className="text-[12px] font-normal">
-            AKADEMIA SKATEBOARDINGU ADAM SZULC
-            <br />
-            NIP 6991968199
-            <br />
-            WROCŁAW, LUBUSKA 58
-            <br />
-          </span>
+          <p className="text-[12px] font-normal">
+            <span>AKADEMIA SKATEBOARDINGU ADAM SZULC</span>
+            <span>NIP 6991968199</span>
+            <span>WROCŁAW, LUBUSKA 58</span>
+          </p>
           <h5 className="mb-[24px] mt-[48px] text-[16px] font-semibold">
             ADRES E-MAIL
           </h5>
