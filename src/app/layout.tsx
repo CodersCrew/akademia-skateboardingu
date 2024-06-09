@@ -1,10 +1,8 @@
 import '@/tailwind.css';
 
-import fonts from '@/fonts';
-
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
   <html lang="pl">
-    <body className={fonts}>{children}</body>
+    <body className="font-inter">{children}</body>
   </html>
 );
 

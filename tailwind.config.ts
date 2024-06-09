@@ -11,8 +11,10 @@ const config: Config = {
     current: 'currentColor',
     extend: {
       fontFamily: {
-        inter: ['var(--font-inter)'],
-        lato: ['var(--font-lato)']
+        'poetsen-one': ['Poetsen One', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
+        lato: ['Lato', 'sans-serif'],
+        roboto: ['Roboto', 'sans-serif']
       },
       colors: {
         highlight: '#8E00FF',
