@@ -1,13 +1,25 @@
-import Footer from '@/components/Footer';
-import MainContent from '@/components/main/MainContent';
-import Navbar from '@/components/Navbar';
+import {
+  FifthSection,
+  FirstSection,
+  FourthSection,
+  Navbar,
+  SecondSection,
+  SeventhSection,
+  SixthSection,
+  ThirdSection
+} from '@/homepage/index';
 
 export default function HomePage() {
   return (
     <>
       <Navbar />
-      <MainContent />
-      <Footer />
+      <FirstSection />
+      <SecondSection />
+      <ThirdSection />
+      <FourthSection />
+      <FifthSection />
+      <SixthSection />
+      <SeventhSection />
     </>
   );
 }

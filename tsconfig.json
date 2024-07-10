@@ -19,7 +19,8 @@
       "@/controllers/*": ["./src/server/controllers/*"],
       "@/services/*": ["./src/server/services/*"],
       "@/models/*": ["./src/server/models/*"],
-      "@/middlewares/*": ["./src/server/middlewares/*"]
+      "@/middlewares/*": ["./src/server/middlewares/*"],
+      "@/homepage/*": ["./src/components/homepage/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
