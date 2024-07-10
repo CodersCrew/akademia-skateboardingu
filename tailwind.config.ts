@@ -10,6 +10,9 @@ const config: Config = {
     transparent: 'transparent',
     current: 'currentColor',
     extend: {
+      screens: {
+        tablet: '768px'
+      },
       fontFamily: {
         'poetsen-one': ['Poetsen One', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
@@ -103,6 +106,12 @@ const config: Config = {
         'tremor-default': ['0.875rem', { lineHeight: '1.25rem' }],
         'tremor-title': ['1.125rem', { lineHeight: '1.75rem' }],
         'tremor-metric': ['1.875rem', { lineHeight: '2.25rem' }]
+      },
+      margin: {
+        'tablet-mr-4': '1rem',
+        'tablet-mb-4': '1rem',
+        'tablet-mt-8': '2rem',
+        'tablet-mt-16': '4rem'
       }
     }
   },
