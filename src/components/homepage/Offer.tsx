@@ -17,7 +17,7 @@ export function Offer({
 }: OfferProps) {
   return (
     <button
-      className={`grid grid-cols-[min-content_1fr_min-content] items-center gap-3 rounded-full p-[5px] text-left md:max-w-[368px] md:grid-flow-col md:grid-cols-1 md:grid-rows-[min-content_min-content_min-content] md:gap-6 md:p-[15px] md:text-center lg:max-w-[427px] ${containerClassName}`}
+      className={`grid max-w-[320px] grid-cols-[min-content_1fr_min-content] items-center gap-3 rounded-full p-[5px] text-left md:max-w-[368px] md:grid-flow-col md:grid-cols-1 md:grid-rows-[min-content_min-content_min-content] md:gap-6 md:p-[15px] md:text-center lg:max-w-[427px] ${containerClassName}`}
     >
       <div className="relative mx-auto h-[70px] w-[70px] overflow-hidden rounded-full md:h-[307px] md:w-[307px]">
         <Image
@@ -41,7 +41,7 @@ export function Offer({
         </p>
       </div>
       <div
-        className="mr-3 font-poetsen-one text-[32px] text-transparent md:-translate-y-5 md:text-[96px]"
+        className="mr-3 font-poetsen-one text-[32px] font-bold text-transparent md:-translate-y-5 md:text-[96px]"
         style={{ WebkitTextStroke: `2px ${primaryColor}` }}
       >
         &gt;&gt;

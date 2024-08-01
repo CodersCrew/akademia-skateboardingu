@@ -3,9 +3,9 @@ import { Offer } from '../Offer';
 
 export function ThirdSection() {
   return (
-    <div className="flex flex-col gap-8 p-5" id="thirdSection">
-      <div className="flex flex-col justify-center gap-4 md:flex-row md:flex-wrap md:gap-6">
-        <div className="flex flex-col gap-4 md:flex-row md:gap-6 min-[1469px]:mb-32">
+    <div className="flex flex-col gap-8 pb-3 pt-5 md:py-6" id="thirdSection">
+      <div className="flex flex-col items-center justify-center gap-4 md:flex-row md:flex-wrap md:gap-6">
+        <div className="flex flex-col gap-4 md:flex-row md:gap-6 min-[1429px]:mb-32">
           <Offer
             containerClassName="border-[#2DD3BE] bg-[#5EE9D3]"
             // img="/images/offer1.png"
@@ -42,8 +42,8 @@ export function ThirdSection() {
           />
         </div>
       </div>
-      <div className="flex flex-col items-center gap-2.5 py-1 font-roboto md:gap-5">
-        <div className="text-center text-xs text-white md:text-base">
+      <div className="flex flex-col items-center gap-2.5 px-5 font-roboto md:gap-5">
+        <div className="max-w-[350px] text-center text-xs text-white md:max-w-[800px] md:text-xl">
           <p>
             Spraw, aby Twoje wydarzenie było wyjątkowe! Zorganizuję zajęcia,
             pokazy lub warsztaty skateaboardingu. Skontaktuj się ze mną i
