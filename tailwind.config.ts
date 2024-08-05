@@ -10,6 +10,9 @@ const config: Config = {
     transparent: 'transparent',
     current: 'currentColor',
     extend: {
+      aspectRatio: {
+        pill: '9 / 20'
+      },
       fontFamily: {
         'poetsen-one': ['Poetsen One', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
