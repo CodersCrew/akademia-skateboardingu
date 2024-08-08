@@ -11,7 +11,7 @@ const config: Config = {
     current: 'currentColor',
     extend: {
       aspectRatio: {
-        pill: '9 / 20'
+        pill: '5 / 13'
       },
       fontFamily: {
         'poetsen-one': ['Poetsen One', 'sans-serif'],
