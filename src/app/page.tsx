@@ -1,3 +1,4 @@
+import CommentsSection from '@/components/homepage/sections/CommentsSection';
 import {
   FifthSection,
   FirstSection,
@@ -17,6 +18,7 @@ export default function HomePage() {
       <SecondSection />
       <ThirdSection />
       <FourthSection />
+      <CommentsSection />
       <FifthSection />
       <SixthSection />
       <SeventhSection />
