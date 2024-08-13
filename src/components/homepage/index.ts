@@ -1,6 +1,6 @@
 export { Dropdown } from './Dropdown';
 export { ExclamationMark } from './ExclamationMark';
-export { Navbar } from './Navbar';
+export { Navbar } from './Navbar/Navbar';
 export { NextSectionButton } from './NextSectionButton';
 export { Offer } from './Offer';
 export { FifthSection } from './sections/FifthSection';
