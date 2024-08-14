@@ -2,9 +2,16 @@ import '@/tailwind.css';
 
 import type { Metadata } from 'next';
 
+import { Navbar } from '@/components/homepage';
+import { Footer } from '@/components/homepage/Footer';
+
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
   <html lang="pl">
-    <body className="bg-[#171717] font-inter">{children}</body>
+    <body className="bg-[#171717] font-inter">
+      <Navbar />
+      {children}
+      <Footer />
+    </body>
   </html>
 );
 

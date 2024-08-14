@@ -1,8 +1,10 @@
 'use client';
 
+import { Transition } from '@headlessui/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import {
   IoClose,
   IoLogoFacebook,
@@ -11,56 +13,63 @@ import {
   IoMenu
 } from 'react-icons/io5';
 
-import { MenuButton } from './MenuButton';
+import { MenuItem } from './MenuItem';
+import { MenuList } from './MenuList';
+import { Fragment } from 'react';
 
-export type MenuItem = {
+export type MenuItemType = {
   id: number;
   name: string;
-  href?: string;
-  sublist?: MenuItem[];
+  href: string;
 };
 
-const menuItems = [
+export type MenuListType = {
+  id: number;
+  name: string;
+  sublist: MenuItemType[];
+};
+
+const menuElements = [
   { id: 0, name: 'Strona główna', href: '/' },
   {
     id: 1,
     name: 'Oferta',
     sublist: [
-      { id: 10, name: 'Zajęcia grupowe', href: '/oferta/zajecia-grupowe' },
+      { id: 10, name: 'Zajęcia grupowe', href: '#/oferta/zajecia-grupowe' },
       {
         id: 11,
         name: 'Zajęcia indywidualne',
-        href: '/oferta/zajecia-indywidualne'
+        href: '#/oferta/zajecia-indywidualne'
       },
-      { id: 12, name: 'Wyjazdy', href: '/oferta/wyjazdy' },
-      { id: 13, name: 'Warsztaty', href: '/oferta/warsztaty' },
-      { id: 14, name: 'Współpraca', href: '/oferta/wspolpraca' }
+      { id: 12, name: 'Wyjazdy', href: '#/oferta/wyjazdy' },
+      { id: 13, name: 'Warsztaty', href: '#/oferta/warsztaty' },
+      { id: 14, name: 'Współpraca', href: '#/oferta/wspolpraca' }
     ]
   },
   {
     id: 2,
     name: 'Akademia',
-    href: '/akademia'
+    href: '#/akademia'
   },
   {
     id: 3,
     name: 'Cennik',
-    href: '/cennik'
+    href: '#/cennik'
   },
   {
     id: 4,
     name: 'Instruktor',
-    href: '/instruktor'
+    href: '#/instruktor'
   },
   {
     id: 5,
     name: 'Opinie',
-    href: '/opinie'
+    href: '#/opinie'
   },
   {
     id: 6,
     name: 'Galeria',
-    href: '/galeria'
+    href: '#/galeria'
   },
   {
     id: 7,
@@ -71,9 +80,9 @@ const menuItems = [
     id: 8,
     name: 'Skateshop',
     sublist: [
-      { id: 80, name: 'Deski', href: '/skateshop/deski' },
-      { id: 81, name: 'Decki', href: '/skateshop/decki' },
-      { id: 82, name: 'Akcesoria', href: '/skateshop/akcesoria' }
+      { id: 80, name: 'Deski', href: '#/skateshop/deski' },
+      { id: 81, name: 'Decki', href: '#/skateshop/decki' },
+      { id: 82, name: 'Akcesoria', href: '#/skateshop/akcesoria' }
     ]
   }
 ];
@@ -85,11 +94,15 @@ const menuIcons = [
 ];
 
 export function Navbar() {
-  // TODO -> change to false after implementing the mobile menu
-  const [isOpen, setIsOpen] = useState(true);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
 
   return (
-    <nav className="sticky top-0 z-50 flex flex-col items-center justify-between border-b border-[#3C3C3C] bg-[#171717] ">
+    <nav className="sticky top-0 z-50 flex flex-col items-center justify-between border-b border-[#3C3C3C] bg-[#171717]">
       <div className="flex w-full justify-between px-5 py-2">
         <div className="flex items-center">
           <Image
@@ -103,37 +116,55 @@ export function Navbar() {
           </p>
         </div>
         <button
-          onClick={() => {
-            isOpen ? setIsOpen(false) : setIsOpen(true);
-          }}
           className="md:hidden"
+          aria-label="Mobile menu"
+          onClick={() =>
+            setIsMobileMenuOpen(isMobileMenuOpen => !isMobileMenuOpen)
+          }
         >
-          {isOpen ? (
-            <IoClose size={32} color="#FFFFFF" />
+          {isMobileMenuOpen ? (
+            <IoClose
+              size={32}
+              color="#FFFFFF"
+              className="data-[] transition duration-1000 ease-in "
+            />
           ) : (
-            <IoMenu size={32} color="#FFFFFF" />
+            <IoMenu
+              size={32}
+              color="#FFFFFF"
+              className="transition duration-1000 ease-in "
+            />
           )}
         </button>
       </div>
-      {isOpen && (
-        <div className="absolute top-14 flex h-[calc(100vh-56px)] w-full flex-col justify-between overflow-y-scroll bg-neutral-700">
+      <Transition
+        as={Fragment}
+        show={isMobileMenuOpen}
+        enter="transition-transform ease-in duration-300"
+        enterFrom="transform translate-x-full"
+        enterTo="transform translate-x-0"
+        leave="transition-transform ease-out duration-300"
+        leaveFrom="transform translate-x-0"
+        leaveTo="transform translate-x-full"
+      >
+        <div className="absolute left-0 top-14 z-40 flex h-[calc(100vh-56px)] w-full flex-col justify-between overflow-y-auto bg-neutral-700">
           <ul>
-            {menuItems.map(item => {
+            {menuElements.map(item => {
               if (item.sublist) {
                 return (
-                  <MenuButton
+                  <MenuList
                     key={item.id}
-                    text={item.name}
                     sublist={item.sublist}
-                  />
+                    pathname={pathname}
+                  >
+                    {item.name}
+                  </MenuList>
                 );
               } else {
                 return (
-                  <MenuButton
-                    key={item.id}
-                    text={item.name}
-                    hrefTo={item.href}
-                  />
+                  <MenuItem key={item.id} href={item.href} pathname={pathname}>
+                    {item.name}
+                  </MenuItem>
                 );
               }
             })}
@@ -148,7 +179,7 @@ export function Navbar() {
             ))}
           </ul>
         </div>
-      )}
+      </Transition>
     </nav>
   );
 }

@@ -1,3 +1,3 @@
 export function Footer() {
-  return <div>Footer</div>;
+  return <div className="w-full border p-5 text-white">{"I'm a footer"}</div>;
 }
