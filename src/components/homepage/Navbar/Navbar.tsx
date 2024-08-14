@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { Fragment } from 'react';
 import {
   IoClose,
   IoLogoFacebook,
@@ -15,7 +16,6 @@ import {
 
 import { MenuItem } from './MenuItem';
 import { MenuList } from './MenuList';
-import { Fragment } from 'react';
 
 export type MenuItemType = {
   id: number;

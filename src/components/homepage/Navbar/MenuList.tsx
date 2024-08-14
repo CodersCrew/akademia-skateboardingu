@@ -1,4 +1,6 @@
+import { Transition } from '@headlessui/react';
 import { useState } from 'react';
+import { Fragment } from 'react';
 import { IoCaretDown } from 'react-icons/io5';
 
 import { MenuItem } from './MenuItem';
@@ -30,7 +32,16 @@ export function MenuList({
         {children}
         <IoCaretDown size={12} color="#FFFFFF" />
       </button>
-      {isOpen && (
+      <Transition
+        as={Fragment}
+        show={isOpen}
+        enter="transition-transform ease-in duration-150"
+        enterFrom="transform translate-x-full"
+        enterTo="transform translate-x-0"
+        leave="transition-transform ease-out duration-150"
+        leaveFrom="transform translate-x-0"
+        leaveTo="transform translate-x-full"
+      >
         <ul>
           {sublist.map(subitem => (
             <MenuItem
@@ -43,7 +54,7 @@ export function MenuList({
             </MenuItem>
           ))}
         </ul>
-      )}
+      </Transition>
     </li>
   );
 }
