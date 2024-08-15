@@ -2,8 +2,7 @@ import '@/tailwind.css';
 
 import type { Metadata } from 'next';
 
-import { Navbar } from '@/components/homepage';
-import { Footer } from '@/components/homepage/Footer';
+import { Footer, Navbar } from '@/components/homepage';
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
   <html lang="pl">

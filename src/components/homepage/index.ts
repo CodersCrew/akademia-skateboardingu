@@ -1,5 +1,6 @@
 export { Dropdown } from './Dropdown';
 export { ExclamationMark } from './ExclamationMark';
+export { Footer } from './Footer/Footer';
 export { Navbar } from './Navbar/Navbar';
 export { NextSectionButton } from './NextSectionButton';
 export { Offer } from './Offer';
