@@ -6,7 +6,7 @@ import { FooterItem } from './FooterItem';
 import { FooterTitle } from './FooterTitle';
 
 const footerElements = {
-  menu: {
+  firstList: {
     id: 0,
     title: 'Menu',
     items: [
@@ -33,7 +33,7 @@ const footerElements = {
       { id: 6, name: 'Galeria', href: '#/galeria' }
     ]
   },
-  sklep: {
+  secondList: {
     id: 1,
     title: 'Sklep AS',
     items: [
@@ -42,7 +42,7 @@ const footerElements = {
       { id: 2, name: 'Akcesoria', href: '#/sklep/akcesoria' }
     ]
   },
-  regulaminy: {
+  thirdList: {
     id: 2,
     title: 'Regulaminy',
     items: [
@@ -61,15 +61,16 @@ const footerIcons = [
 
 export function Footer() {
   return (
-    <footer className="w-full text-white">
-      <div className="grid grid-cols-3  grid-rows-3 gap-2 px-5 py-6">
-        <div className="col-span-1 row-span-3">
-          <FooterTitle>{footerElements.menu.title}</FooterTitle>
+    <footer className="w-full bg-black text-white">
+      <div className="flex flex-wrap gap-5 px-5 py-6">
+        <div>
+          <FooterTitle>{footerElements.firstList.title}</FooterTitle>
           <ul className="flex flex-col gap-1">
-            {footerElements.menu.items.map(item => {
+            {footerElements.firstList.items.map(item => {
               if (item.sublist) {
                 return (
-                  <li key={item.id}>
+                  <li className="max-w-fit font-roboto text-xs" key={item.id}>
+                    {item.name}
                     <ul className="flex flex-col gap-1 pl-4">
                       {item.sublist.map(subitem => (
                         <FooterItem href={subitem.href} key={subitem.id}>
@@ -89,77 +90,50 @@ export function Footer() {
             })}
           </ul>
         </div>
-        <div className="col-span-2 row-span-1 flex flex-col items-end">
-          <FooterTitle>{footerElements.sklep.title}</FooterTitle>
+        <div className="flex flex-col items-end">
+          <FooterTitle>{footerElements.secondList.title}</FooterTitle>
           <ul className="flex flex-col items-end gap-1">
-            {footerElements.sklep.items.map(item => (
+            {footerElements.secondList.items.map(item => (
               <FooterItem href={item.href} key={item.id}>
                 {item.name}
               </FooterItem>
             ))}
           </ul>
         </div>
-        <div className="col-span-2 row-span-1 flex flex-col items-end">
-          <FooterTitle>{footerElements.regulaminy.title}</FooterTitle>
+        <div className="flex flex-col items-end">
+          <FooterTitle>{footerElements.thirdList.title}</FooterTitle>
           <ul className="flex flex-col items-end gap-1">
-            {footerElements.regulaminy.items.map(item => (
+            {footerElements.thirdList.items.map(item => (
               <FooterItem href={item.href} key={item.id}>
                 {item.name}
               </FooterItem>
             ))}
           </ul>
         </div>
-        {/* {footerElements.map(element => (
-          <div key={element.id} className="max-h-fit">
-            <FooterTitle>{element.title}</FooterTitle>
-            <ul>
-              {element.items.map(item => {
-                if (item.sublist) {
-                  return (
-                    <li key={item.id}>
-                      <ul className="pl-4">
-                        {item.sublist.map(subitem => (
-                          <FooterItem href={subitem.href} key={subitem.id}>
-                            {subitem.name}
-                          </FooterItem>
-                        ))}
-                      </ul>
-                    </li>
-                  );
-                } else {
-                  return (
-                    <FooterItem href={item.href} key={item.id}>
-                      {item.name}
-                    </FooterItem>
-                  );
-                }
-              })}
-            </ul>
-          </div>
-        ))} */}
-        <div className="col-span-2 row-span-1 flex flex-col items-end ">
-          <div className="flex flex-wrap items-center gap-1">
+        <div className="flex flex-col items-end">
+          <div className="flex items-center gap-1">
             <Image
               src="/images/homepage/logo.png"
               alt=""
               width={20}
               height={20}
-              className="hidden min-[350px]:block"
             />
-            <p className="py-1 font-poetsen-one text-sm text-white">
+            <p className="py-1 text-end font-poetsen-one text-sm text-white">
               Akademia Skateboardingu
             </p>
           </div>
           <p className="font-roboto text-xs font-semibold text-amber-300">
             Jeździj z nami!
           </p>
-          <div className="flex gap-2 pt-2">
+          <ul className="flex gap-2 pt-2">
             {footerIcons.map(icon => (
-              <Link href={icon.href} key={icon.id}>
-                <icon.iconComponent size={16} />
-              </Link>
+              <li key={icon.id} className="hover:text-purple-400">
+                <Link href={icon.href}>
+                  <icon.iconComponent size={16} />
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
       <div className="border-t border-amber-300 px-5 py-2 text-center font-poetsen-one text-xs">

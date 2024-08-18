@@ -1,29 +1,38 @@
 import { Transition } from '@headlessui/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Fragment } from 'react';
 import { IoCaretDown } from 'react-icons/io5';
 
-import { MenuItem } from './MenuItem';
-import { MenuItemType } from './Navbar';
+import { NavbarItemType } from './Navbar';
+import NavbarItem from './NavbarItem';
 
-export interface MenuListProps {
+export interface NavbarDropdownProps {
   children: string;
-  pathname: string;
-  sublist: MenuItemType[];
-  menuListClassName?: string;
+  currentPathname: string;
+  sublist: NavbarItemType[];
+  navbarDropDownClassName?: string;
 }
 
-export function MenuList({
+export default function NavbarDropdown({
   children,
-  pathname,
+  currentPathname,
   sublist,
-  menuListClassName
-}: MenuListProps) {
+  navbarDropDownClassName
+}: NavbarDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const isAnyNavbarItemActive = sublist.some(
+      subitem => subitem.href === currentPathname
+    );
+    if (isAnyNavbarItemActive) {
+      setIsOpen(true);
+    }
+  }, [currentPathname, sublist]);
 
   return (
     <li
-      className={`font-roboto text-xs font-bold uppercase leading-5 tracking-widest text-white ${menuListClassName}`}
+      className={`font-roboto text-xs font-bold uppercase leading-5 tracking-widest text-white ${navbarDropDownClassName}`}
     >
       <button
         className="flex w-full items-center gap-2 px-5 py-3 text-start uppercase hover:bg-purple-400 hover:text-neutral-700"
@@ -44,14 +53,14 @@ export function MenuList({
       >
         <ul>
           {sublist.map(subitem => (
-            <MenuItem
+            <NavbarItem
               key={subitem.id}
               href={subitem.href}
-              pathname={pathname}
-              menuItemClassName="pl-12 pr-5"
+              navbarItemClassName="pl-12 pr-5"
+              isActive={currentPathname === subitem.href}
             >
               {subitem.name}
-            </MenuItem>
+            </NavbarItem>
           ))}
         </ul>
       </Transition>
