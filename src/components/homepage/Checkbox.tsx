@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FieldValues, UseFormRegister } from 'react-hook-form';
+import { UseFormRegister } from 'react-hook-form';
 
 type CheckboxProps = {
   label: string;
@@ -36,7 +36,7 @@ export default function Checkbox({
         <label htmlFor={name}>
           {label}{' '}
           {labelLinkHref && (
-            <Link href={labelLinkHref} className="text-[#FFC600]">
+            <Link href={labelLinkHref} className="font-medium text-[#FFC600]">
               {labelLinkText}
             </Link>
           )}{' '}

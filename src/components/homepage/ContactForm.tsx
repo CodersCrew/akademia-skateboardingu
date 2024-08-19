@@ -1,7 +1,7 @@
 'use client';
 
 import { yupResolver } from '@hookform/resolvers/yup';
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 
 import { Button } from './Button';
@@ -39,6 +39,7 @@ export default function ContactForm() {
   } = useForm<ContactFormInput>({ resolver: yupResolver(validationSchema) });
   const onSubmit: SubmitHandler<ContactFormInput> = data => {
     try {
+      // TODO: Send data to the server
       console.log(data);
     } catch (error) {
       console.error(error);
@@ -79,7 +80,7 @@ export default function ContactForm() {
         name="rules"
         label="Zapoznałem/am się z treścią"
         labelLinkText="regulaminu"
-        labelLinkHref="#TODO"
+        labelLinkHref="#" //TODO: Add link to the rules
         required
         register={register}
         errorMessage={errors.rules?.message}
@@ -88,7 +89,7 @@ export default function ContactForm() {
         name="rules2"
         label="Zapoznałem/am się z treścią"
         labelLinkText="regulaminu"
-        labelLinkHref="#TODO"
+        labelLinkHref="#" // TODO: Add link to the rules
         required
         register={register}
         errorMessage={errors.rules2?.message}
