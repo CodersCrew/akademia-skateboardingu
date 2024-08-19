@@ -47,7 +47,7 @@ export default function ContactForm() {
 
   return (
     <form
-      className="flex w-full flex-col items-center gap-4 py-3 md:max-w-[75%] lg:max-w-[60%] xl:max-w-[45%] 2xl:max-w-[40%]"
+      className="flex w-full flex-col items-center gap-4 py-3 md:max-w-[75%] lg:max-w-[65%] xl:max-w-[55%] 2xl:max-w-[1000px]"
       onSubmit={handleSubmit(onSubmit)}
     >
       <Input
@@ -93,7 +93,7 @@ export default function ContactForm() {
         register={register}
         errorMessage={errors.rules2?.message}
       />
-      <p className="self-start font-roboto text-sm text-white">
+      <p className="self-start font-roboto text-xs text-white lg:text-sm">
         *pole obowiązkowe
       </p>
       <Button color="pink">Wyślij wiadomość &gt;&gt;</Button>
