@@ -1,5 +1,4 @@
-import FAQ from '@/components/FAQ';
-import InfoPagesWrapper from '@/components/InfoPagesWrapper';
+import { FAQ, InfoPagesWrapper } from '@/shop';
 
 export default function Faq() {
   return (

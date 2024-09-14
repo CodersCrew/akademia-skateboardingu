@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 import { deleteItem } from '@/server/controllers/itemController';
 import { Item, PriceHistory } from '@/server/models/item';
 
-import ActionIcons from './Icons';
+import { ActionIcons } from './Icons';
 
 export type TableBodyProps = {
   items: Item[];
@@ -22,7 +22,7 @@ const renderPriceHistory = (priceHistory: PriceHistory[]) =>
     </div>
   ));
 
-const TableBody = ({ items }: TableBodyProps) => {
+export function TableBody({ items }: TableBodyProps) {
   const { push } = useRouter();
 
   const handleEdit = (_id: string) => {
@@ -67,6 +67,4 @@ const TableBody = ({ items }: TableBodyProps) => {
       )}
     </TremorTableBody>
   );
-};
-
-export default TableBody;
+}

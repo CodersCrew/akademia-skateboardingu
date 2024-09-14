@@ -5,17 +5,16 @@ import {
   PAYMENT_VERIFICATION_ENDPOINT
 } from '@/environment';
 import {
+  TransactionNotification,
+  TransactionVerificationData
+} from '@/models/transaction';
+import {
   getRegistrationData,
   getVerificationData,
   PaymentType
-} from '@/utils/payments';
+} from '@/server/utils/payments';
 
-import {
-  transactionNotificationModel,
-  TransactionVerification
-} from '../models/transaction';
-
-type TransactionNotification = Omit<TransactionVerification, 'sign'>;
+type TransactionNotification = Omit<TransactionVerificationData, 'sign'>;
 
 export const registerPayment = async ({
   userId,
@@ -103,9 +102,7 @@ export const savePaymentNotification = async (
     };
   }
 
-  const paymentNotification = new transactionNotificationModel(
-    notificationData
-  );
+  const paymentNotification = new TransactionNotification(notificationData);
 
   await paymentNotification.save();
 };

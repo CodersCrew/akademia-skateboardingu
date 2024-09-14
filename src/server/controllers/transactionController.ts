@@ -1,11 +1,10 @@
 import {
-  transactionRegistrationModel,
-  transactionVerificationModel
-} from '../models/transaction';
+  TransactionRegistration,
+  TransactionVerification
+} from '@/models/transaction';
 
 export const getTransactionRegistration = async (transactionId: string) => {
-  const transaction =
-    await transactionRegistrationModel.findById(transactionId);
+  const transaction = await TransactionRegistration.findById(transactionId);
 
   if (!transaction) {
     throw { message: 'Failed to get transaction data', status: 500 };
@@ -15,8 +14,7 @@ export const getTransactionRegistration = async (transactionId: string) => {
 };
 
 export const getTransactionVerification = async (transactionId: string) => {
-  const transaction =
-    await transactionVerificationModel.findById(transactionId);
+  const transaction = await TransactionVerification.findById(transactionId);
 
   if (!transaction) {
     throw { message: 'Failed to get veryfication data', status: 500 };

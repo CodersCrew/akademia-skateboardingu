@@ -1,5 +1,5 @@
-import ButtonProduct from './ButtonProduct';
-import TableBody from './TableBody';
-import TableHead from './TableHead';
-
-export { ButtonProduct, TableBody, TableHead };
+export { ButtonProduct } from './ButtonProduct';
+export { Form, type FormValues } from './Form';
+export { FormTitle } from './FormTitle';
+export { TableBody } from './TableBody';
+export { TableHead } from './TableHead';

@@ -2,10 +2,9 @@
 import { useRouter } from 'next/navigation';
 import React from 'react';
 
-import Form from '@/components/products/Form';
-import FormTitle from '@/components/products/FormTitle';
+import { Form, FormTitle } from '@/admin';
 
-export default function ProductForm() {
+export default function ProductsNew() {
   const { push } = useRouter();
 
   const handleButtonClick = () => {

@@ -1,5 +1,4 @@
-import ContactSection from '@/components/ContactSection';
-import InfoPagesWrapper from '@/components/InfoPagesWrapper';
+import { ContactSection, InfoPagesWrapper } from '@/shop';
 
 export default function Contact() {
   return (

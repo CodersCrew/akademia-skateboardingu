@@ -20,7 +20,7 @@ export type UserType = {
   urlStatus: string;
 };
 
-const UserSchema = new mongoose.Schema({
+const schema = new mongoose.Schema({
   merchantId: Number,
   posId: Number,
   sessionId: String,
@@ -40,4 +40,4 @@ const UserSchema = new mongoose.Schema({
   urlStatus: String
 });
 
-export const User = mongoose.model('user', UserSchema);
+export const User = mongoose.model('users', schema);

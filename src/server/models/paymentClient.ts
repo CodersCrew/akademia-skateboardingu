@@ -42,7 +42,7 @@ export type PaymentClient = {
   ap_token: string;
 };
 
-const paymentClientSchema = new mongoose.Schema({
+const schema = new mongoose.Schema({
   api_version: String,
   id: Number,
   amount: String,
@@ -84,7 +84,4 @@ const paymentClientSchema = new mongoose.Schema({
   ap_token: String
 });
 
-export const PaymentClient = mongoose.model(
-  'paymentClient',
-  paymentClientSchema
-);
+export const PaymentClient = mongoose.model('paymentClients', schema);
