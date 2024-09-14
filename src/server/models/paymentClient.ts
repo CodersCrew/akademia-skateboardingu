@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-export type PaymentClientData = {
+export type PaymentClient = {
   api_version: string;
   id: number;
   amount: string;
@@ -84,6 +84,7 @@ const paymentClientSchema = new mongoose.Schema({
   ap_token: String
 });
 
-const paymentClientModel = mongoose.model('paymentClient', paymentClientSchema);
-
-export { paymentClientModel };
+export const PaymentClient = mongoose.model(
+  'paymentClient',
+  paymentClientSchema
+);

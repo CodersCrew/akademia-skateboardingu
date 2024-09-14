@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-export type UserDataType = {
+export type UserType = {
   merchantId: number;
   posId: number;
   sessionId: string;
@@ -20,7 +20,7 @@ export type UserDataType = {
   urlStatus: string;
 };
 
-const UserDataSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
   merchantId: Number,
   posId: Number,
   sessionId: String,
@@ -40,6 +40,4 @@ const UserDataSchema = new mongoose.Schema({
   urlStatus: String
 });
 
-const UserDataModel = mongoose.model('userData', UserDataSchema);
-
-export { UserDataModel };
+export const User = mongoose.model('user', UserSchema);

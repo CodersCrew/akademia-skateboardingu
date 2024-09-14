@@ -1,7 +1,7 @@
-import { UserDataModel } from '../models/user';
+import { User } from '../models/user';
 
 export const getUserData = async (userId: string) => {
-  const userData = await UserDataModel.findById(userId);
+  const userData = await User.findById(userId);
 
   if (!userData) {
     throw { message: 'Failed to get user data', status: 500 };

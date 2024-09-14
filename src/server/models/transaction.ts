@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-export type TransactionRegistrationType = {
+export type TransactionRegistration = {
   sessionId: string;
   amount: number;
   currency: string;
@@ -10,7 +10,7 @@ export type TransactionRegistrationType = {
   urlStatus: string;
 };
 
-export type TransactionVerificationType = {
+export type TransactionVerification = {
   merchantId: number;
   posId: number;
   sessionId: string;
@@ -30,7 +30,7 @@ const transactionRegistrationSchema = new mongoose.Schema({
   urlStatus: String
 });
 
-const TransactionVerificationSchema = new mongoose.Schema({
+const transactionVerificationSchema = new mongoose.Schema({
   merchantId: Number,
   posId: Number,
   sessionId: String,
@@ -40,23 +40,17 @@ const TransactionVerificationSchema = new mongoose.Schema({
   sign: String
 });
 
-const transactionRegistrationModel = mongoose.model(
-  'transaction',
+export const transactionRegistrationModel = mongoose.model(
+  'transactionRegistration',
   transactionRegistrationSchema
 );
 
-const transactionVerificationModel = mongoose.model(
-  'transaction',
-  TransactionVerificationSchema
+export const TransactionVerification = mongoose.model(
+  'transactionVerification',
+  transactionVerificationSchema
 );
 
-const transactionNotificationModel = mongoose.model(
-  'transaction',
-  TransactionVerificationSchema
+export const TransactionNotification = mongoose.model(
+  'transactionNotification',
+  transactionVerificationSchema
 );
-
-export {
-  transactionNotificationModel,
-  transactionRegistrationModel,
-  transactionVerificationModel
-};

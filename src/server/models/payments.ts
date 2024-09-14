@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-export type PaymentRegistrationData = {
+export type PaymentRegistration = {
   merchantId: number;
   posId: number;
   sessionId: string;
@@ -70,7 +70,7 @@ const paymentRegistrationSchema = new mongoose.Schema({
   }
 });
 
-export type PaymentVerificationData = {
+export type PaymentVerification = {
   merchantId: number;
   posId: number;
   sessionId: string;
@@ -90,14 +90,12 @@ const PaymentVeryficationSchema = new mongoose.Schema({
   sign: String
 });
 
-const paymentRegistrationModel = mongoose.model(
+export const PaymentRegistration = mongoose.model(
   'paymentRegistration',
   paymentRegistrationSchema
 );
 
-const paymentVerificationModel = mongoose.model(
+export const PaymentVerification = mongoose.model(
   'paymentVeryfication',
   PaymentVeryficationSchema
 );
-
-export { paymentRegistrationModel, paymentVerificationModel };
