@@ -1,12 +1,12 @@
 import mongoose from 'mongoose';
 
-const commentSchema = new mongoose.Schema({
+const schema = new mongoose.Schema({
   date: Date,
+  name: String,
   rating: Number,
-  text: String,
-  name: String
+  text: String
 });
 
-const commentModel = mongoose.model('comments', commentSchema);
+const Comment = mongoose.model('comments', schema);
 
-export default commentModel;
+export default Comment;

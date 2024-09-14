@@ -17,22 +17,20 @@ export type Item = {
   photos: string[];
 };
 
-const PriceHistorySchema = new mongoose.Schema({
+const priceHistorySchema = new mongoose.Schema({
   date: Date,
   price: Number
 });
 
-const itemSchema = new mongoose.Schema({
+const schema = new mongoose.Schema({
   name: String,
   description: String,
   price: Number,
   quantity: Number,
   visible: Boolean,
   category: String,
-  priceHistory: [PriceHistorySchema],
+  priceHistory: [priceHistorySchema],
   photos: [String]
 });
 
-const itemModel = mongoose.model('items', itemSchema);
-
-export { itemModel };
+export const itemModel = mongoose.model('items', schema);

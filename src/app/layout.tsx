@@ -1,18 +1,24 @@
-import '@/tailwind.css';
+import '@/tailwind';
 
 import type { Metadata } from 'next';
 
-import { Footer, Navbar } from '@/components/homepage';
+import { Footer, Navbar } from '@/home';
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => (
-  <html lang="pl">
-    <body className="bg-[#171717] font-inter">
-      <Navbar />
-      {children}
-      <Footer />
-    </body>
-  </html>
-);
+export default function RootLayout({
+  children
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="pl">
+      <body className="bg-[#171717] font-inter">
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
+    </html>
+  );
+}
 
 export const metadata: Metadata = {
   title: 'Akademia Skateboardingu',
@@ -102,5 +108,3 @@ export const metadata: Metadata = {
     ]
   }
 };
-
-export default RootLayout;

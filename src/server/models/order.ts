@@ -28,7 +28,7 @@ export type Order = {
   paymentMethod: PaymentMethod;
 };
 
-const orderSchema = new mongoose.Schema({
+const schema = new mongoose.Schema({
   products: [
     {
       productId: mongoose.Types.ObjectId,
@@ -43,4 +43,4 @@ const orderSchema = new mongoose.Schema({
   paymentMethod: { type: String, enum: Object.values(PaymentMethod) }
 });
 
-export const orderModel = mongoose.model('orders', orderSchema);
+export const Order = mongoose.model('orders', schema);
