@@ -1,7 +1,6 @@
 'use client';
 import { Table } from '@tremor/react';
 import { useRouter } from 'next/navigation';
-import React from 'react';
 
 import { ButtonProduct, TableBody, TableHead } from '@/admin';
 
