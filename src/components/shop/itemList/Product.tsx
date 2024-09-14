@@ -5,12 +5,13 @@ import { Description } from './Descripton';
 import { Photo } from './Photo';
 import { Rating } from './Rating';
 
-const Product = () => {
+export function Product() {
   const [rating, setRating] = useState();
+
   return (
     <div>
       <div>
-        <Photo src={} alt="" />
+        <Photo src="" alt="" />
         <Title />
         <Rating rating={rating} setRating={setRating} />
         <Description />
@@ -20,4 +21,4 @@ const Product = () => {
       </div>
     </div>
   );
-};
+}

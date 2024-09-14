@@ -19,6 +19,7 @@ export default function ProductsEdit({ params }: { params: { id: string } }) {
     priceHistory: { cena: 20, data: new Date() },
     photos: []
   };
+
   useEffect(() => {
     //for when database connection works
     // const fetchData = async (id: string) => {
@@ -29,6 +30,7 @@ export default function ProductsEdit({ params }: { params: { id: string } }) {
     //   }
     // };
     setProduct(data);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleButtonClick = () => {
