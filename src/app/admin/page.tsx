@@ -3,7 +3,7 @@ import { Table } from '@tremor/react';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 
-import { ButtonProduct, TableBody, TableHead } from '@/components/admin';
+import { ButtonProduct, TableBody, TableHead } from '@/admin';
 
 export default function Admin() {
   const { push } = useRouter();

@@ -1,4 +1,4 @@
-import { type EmailData, emailService } from '@/server/services/emailService';
+import { type EmailData, emailService } from '@/services/emailService';
 
 export const postEmail = async (mailData: EmailData) => {
   const response = await emailService.sendEmail(mailData);

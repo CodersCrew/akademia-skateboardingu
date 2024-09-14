@@ -1,11 +1,11 @@
 import mongoose from 'mongoose';
 
-const deliverySchema = new mongoose.Schema({
-  method: [String],
+const schema = new mongoose.Schema({
   description: String,
+  method: [String],
   price: Number
 });
 
-const deliveryModel = mongoose.model('deliveries', deliverySchema);
+const Delivery = mongoose.model('deliveries', schema);
 
-export default deliveryModel;
+export default Delivery;
