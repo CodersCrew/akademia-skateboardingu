@@ -45,12 +45,12 @@ export const transactionRegistrationModel = mongoose.model(
   transactionRegistrationSchema
 );
 
-export const TransactionVerification = mongoose.model(
+export const transactionVerificationModel = mongoose.model(
   'transactionVerification',
   transactionVerificationSchema
 );
 
-export const TransactionNotification = mongoose.model(
+export const transactionNotificationModel = mongoose.model(
   'transactionNotification',
   transactionVerificationSchema
 );

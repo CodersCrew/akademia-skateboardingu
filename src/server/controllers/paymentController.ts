@@ -12,10 +12,10 @@ import {
 
 import {
   transactionNotificationModel,
-  TransactionVerificationType
+  TransactionVerification
 } from '../models/transaction';
 
-type TransactionNotification = Omit<TransactionVerificationType, 'sign'>;
+type TransactionNotification = Omit<TransactionVerification, 'sign'>;
 
 export const registerPayment = async ({
   userId,
