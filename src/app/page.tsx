@@ -1,5 +1,5 @@
-import CommentsSection from '@/components/homepage/sections/CommentsSection';
 import {
+  CommentsSection,
   FifthSection,
   FirstSection,
   FourthSection,
