@@ -1,6 +1,7 @@
 import { TripleExclamationMark } from './TripleExclamationMark';
 
 type TitleProps = {
+  className?: string;
   subtitle?: string;
   subtitleClassName?: string;
   title: string;
@@ -10,6 +11,7 @@ type TitleProps = {
 };
 
 export function Title({
+  className,
   subtitle,
   subtitleClassName,
   title,
@@ -18,7 +20,9 @@ export function Title({
   withQuestions = false
 }: TitleProps) {
   return (
-    <div className="relative text-center font-poetsen-one text-white">
+    <div
+      className={`relative text-center font-poetsen-one text-white ${className}`}
+    >
       {withQuestions && (
         <>
           <span
