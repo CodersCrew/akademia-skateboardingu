@@ -9,13 +9,13 @@ import Checkbox from './Checkbox';
 import Input from './Input';
 import Textarea from './Textarea';
 
-interface ContactFormInput {
+type ContactFormInput = {
   name: string;
   email: string;
   message: string;
   rules: boolean;
   rules2: boolean;
-}
+};
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required('Imię i nazwisko jest wymagane'),
@@ -48,7 +48,7 @@ export default function ContactForm() {
 
   return (
     <form
-      className="flex w-full flex-col items-center gap-4 py-3 md:max-w-[75%] lg:max-w-[65%] xl:max-w-[55%] 2xl:max-w-[1000px]"
+      className="mx-auto flex w-full flex-col items-center justify-center gap-4 py-3 md:max-w-[75%] lg:max-w-[65%] xl:max-w-[55%] 2xl:max-w-[1000px]"
       onSubmit={handleSubmit(onSubmit)}
     >
       <Input

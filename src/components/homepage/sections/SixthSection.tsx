@@ -10,9 +10,7 @@ export function SixthSection() {
         title="Masz pytania?"
         titleClassName="text-[#D7B3FD] -left-2"
       />
-      <div className="flex justify-center">
-        <ContactForm />
-      </div>
+      <ContactForm />
     </div>
   );
 }
