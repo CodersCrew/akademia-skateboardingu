@@ -1,10 +1,10 @@
 import mongoose from 'mongoose';
 
-const adminSchema = new mongoose.Schema({
+const schema = new mongoose.Schema({
   login: String,
   password: String
 });
 
-const adminModel = mongoose.model('admins', adminSchema);
+const Admin = mongoose.model('admins', schema);
 
-export default adminModel;
+export default Admin;

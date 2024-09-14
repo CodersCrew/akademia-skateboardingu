@@ -10,8 +10,8 @@ const config: Config = {
     transparent: 'transparent',
     current: 'currentColor',
     extend: {
-      screens: {
-        tablet: '768px'
+      aspectRatio: {
+        pill: '5 / 13'
       },
       fontFamily: {
         'poetsen-one': ['Poetsen One', 'sans-serif'],

@@ -1,6 +1,6 @@
 import { IMGBB_API_KEY, IMGBB_UPLOAD_URL } from '@/environment';
-import isImage from '@/utils/isImage';
-import isVideo from '@/utils/isVideo';
+import isImage from '@/server/utils/isImage';
+import isVideo from '@/server/utils/isVideo';
 
 const imageService = async (file: File) => {
   if (!isVideo(file) || !isImage(file)) {

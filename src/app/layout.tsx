@@ -1,12 +1,18 @@
-import '@/tailwind.css';
+import '@/tailwind';
 
 import type { Metadata } from 'next';
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => (
-  <html lang="pl">
-    <body className="bg-[#171717] font-inter">{children}</body>
-  </html>
-);
+export default function RootLayout({
+  children
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="pl">
+      <body className="bg-[#171717] font-inter">{children}</body>
+    </html>
+  );
+}
 
 export const metadata: Metadata = {
   title: 'Akademia Skateboardingu',
@@ -96,5 +102,3 @@ export const metadata: Metadata = {
     ]
   }
 };
-
-export default RootLayout;

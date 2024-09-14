@@ -1,4 +1,4 @@
-import { Item, itemModel, PriceHistory } from '@/server/models/item';
+import { Item, itemModel, PriceHistory } from '@/models/item';
 
 export const addItem = async (data: Omit<Item, 'priceHistory'>) => {
   const newItemData: Item = {
