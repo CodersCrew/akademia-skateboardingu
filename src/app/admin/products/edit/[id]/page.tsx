@@ -11,6 +11,7 @@ export default function NewProductForm({ params }: { params: { id: string } }) {
   const [product, setProduct] = useState<FormValues>();
 
   const data = {
+    _id: '1',
     name: 'deska',
     description: 'deska',
     price: 230,

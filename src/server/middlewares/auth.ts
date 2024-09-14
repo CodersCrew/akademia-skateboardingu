@@ -1,14 +1,14 @@
-import { authenticate } from 'auth-provider';
+// import { authenticate } from 'auth-provider';
 import { NextRequest, NextResponse } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  const isAuthenticated = authenticate(request);
+  // const isAuthenticated = authenticate(request);
 
-  if (isAuthenticated) {
-    return NextResponse.next();
-  }
+  // if (isAuthenticated) {
+  return NextResponse.next();
+  // }
 
-  return NextResponse.redirect(new URL('/login', request.url));
+  // return NextResponse.redirect(new URL('/login', request.url));
 }
 
 export const config = {

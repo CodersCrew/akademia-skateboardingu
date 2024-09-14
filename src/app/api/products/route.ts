@@ -6,8 +6,8 @@ export const GET = async () => {
   try {
     const response = await getAllItems();
 
-    NextResponse.json(response);
+    return NextResponse.json(response);
   } catch (error) {
-    NextResponse.json(error);
+    return NextResponse.json(error);
   }
 };

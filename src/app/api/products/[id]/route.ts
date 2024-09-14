@@ -14,9 +14,9 @@ export const GET = async (
   try {
     const response = await getItem(params.id);
 
-    NextResponse.json(response);
+    return NextResponse.json(response);
   } catch (error) {
-    NextResponse.json(error);
+    return NextResponse.json(error);
   }
 };
 
@@ -25,9 +25,9 @@ export const POST = async (req: NextRequest) => {
     const data = await req.json();
     const response = await addItem(data);
 
-    NextResponse.json(response);
+    return NextResponse.json(response);
   } catch (error) {
-    NextResponse.json(error);
+    return NextResponse.json(error);
   }
 };
 
@@ -39,9 +39,9 @@ export const PUT = async (
     const data = await req.json();
     const response = await updateItem(params.id, data);
 
-    NextResponse.json(response);
+    return NextResponse.json(response);
   } catch (error) {
-    NextResponse.json(error);
+    return NextResponse.json(error);
   }
 };
 
@@ -52,8 +52,8 @@ export const DELETE = async (
   try {
     const response = await deleteItem(params.id);
 
-    NextResponse.json(response);
+    return NextResponse.json(response);
   } catch (error) {
-    NextResponse.json(error);
+    return NextResponse.json(error);
   }
 };
