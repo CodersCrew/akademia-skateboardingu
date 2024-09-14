@@ -1,11 +1,11 @@
 type QuoteProps = {
-  quoteClassName: string;
+  className: string;
 };
 
-export function Quote({ quoteClassName = '' }: QuoteProps) {
+export function Quote({ className = '' }: QuoteProps) {
   return (
     <div
-      className={`mx-auto text-pretty text-center font-poetsen-one text-xs text-white md:text-base lg:text-xl xl:text-2xl ${quoteClassName}`}
+      className={`mx-auto text-pretty text-center font-poetsen-one text-xs text-white md:text-base lg:text-xl xl:text-2xl ${className}`}
     >
       <p>
         „OGROMNĄ CZĘŚCIĄ SKATEBOARDINGU, ZARÓWNO FIZYCZNIE, JAK I KULTUROWO,

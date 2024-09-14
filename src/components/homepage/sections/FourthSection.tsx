@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { PersonPill } from '../PersonPill';
 import { Quote } from '../Quote';
 import { Title } from '../Title';
@@ -34,9 +36,9 @@ export function FourthSection() {
           </p>
           <p className="mb-4">
             Zajęcia prowadzę od ponad 3 lat. Posiadam{' '}
-            <span className="text-[#FFC600]">
+            <Link href="TODO" className="text-[#FFC600]">
               certyfikat licencjonowanego instruktora Polish Skate Federation.{' '}
-            </span>
+            </Link>
             Współpracuję z największymi obozami deskorolkowymi w Europie -{' '}
             <span className="text-[#FFC600]">Woodcamp.</span>
           </p>
@@ -46,11 +48,11 @@ export function FourthSection() {
             <li>warsztaty dla szkół i fundacji,</li>
             <li>zajęcia wyjazdowe w różnych miastach.</li>
           </ul>
-          <Quote quoteClassName="hidden md:block mt-11" />
+          <Quote className="mt-11 hidden md:block" />
         </div>
         <PersonPill withExclamationMarkRightTop={true} />
       </div>
-      <Quote quoteClassName="md:hidden max-w-[450px] md:max-w-full" />
+      <Quote className="max-w-[450px] md:hidden md:max-w-full" />
     </div>
   );
 }

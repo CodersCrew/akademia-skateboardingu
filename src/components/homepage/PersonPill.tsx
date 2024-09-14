@@ -3,16 +3,16 @@ import Image from 'next/image';
 import { TripleExclamationMark } from './TripleExclamationMark';
 
 type PersonPillProps = {
-  personPillClassName?: string;
+  className?: string;
   withExclamationMarkRightTop?: boolean;
 };
 
 export function PersonPill({
-  personPillClassName = '',
+  className = '',
   withExclamationMarkRightTop
 }: PersonPillProps) {
   return (
-    <div className={`relative ${personPillClassName} lg:mt-16 xl:mt-16`}>
+    <div className={`relative lg:mt-16 xl:mt-16 ${className}`}>
       {withExclamationMarkRightTop && (
         <TripleExclamationMark className="-top-6 right-8 md:-top-10 md:right-12" />
       )}
