@@ -18,7 +18,7 @@ export function FourthSection() {
         <div className="max-w-[385px] text-pretty font-roboto text-xs text-white md:max-w-[515px] md:text-base lg:max-w-[630px] lg:text-xl xl:max-w-[730px]">
           <Title
             className="hidden md:block"
-            titleClassName="text-[#FFF] md:text-[3.8rem] lg:text-[4.5rem] xl:text-[5rem] mb-11"
+            titleClassName="md:text-[3.8rem] lg:text-[4.5rem] xl:text-[5rem] mb-11"
             title="Kilka słów o mnie"
           />
           <p className="mb-4">
