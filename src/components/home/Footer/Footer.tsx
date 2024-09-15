@@ -81,10 +81,12 @@ export function Footer() {
               if (item.sublist) {
                 return (
                   <li
-                    className="max-w-fit font-roboto text-xs lg:text-base"
+                    className="max-w-fit font-roboto text-xs lg:text-base "
                     key={item.id}
                   >
-                    <Link href={item.href}>{item.name}</Link>
+                    <Link href={item.href} className="hover:text-purple-400">
+                      {item.name}
+                    </Link>
                     <ul className="mt-2 flex flex-col gap-2 pl-4">
                       {item.sublist.map(subitem => (
                         <FooterItem href={subitem.href} key={subitem.id}>
