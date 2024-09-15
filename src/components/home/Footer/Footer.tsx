@@ -14,6 +14,7 @@ const footerElements = {
       {
         id: 1,
         name: 'Oferta',
+        href: '#/oferta',
         sublist: [
           { id: 10, name: 'Zajęcia grupowe', href: '#/oferta/zajecia-grupowe' },
           {
@@ -54,24 +55,37 @@ const footerElements = {
 };
 
 const footerIcons = [
-  { id: 0, iconComponent: IoLogoFacebook, href: '#facebook' },
-  { id: 1, iconComponent: IoLogoInstagram, href: '#instagram' },
-  { id: 2, iconComponent: IoLogoTiktok, href: '#tiktok' }
+  {
+    id: 0,
+    iconComponent: IoLogoFacebook,
+    href: '#facebook',
+    aria: 'Go to Facebook'
+  },
+  {
+    id: 1,
+    iconComponent: IoLogoInstagram,
+    href: '#instagram',
+    aria: 'Go to Instagram'
+  },
+  { id: 2, iconComponent: IoLogoTiktok, href: '#tiktok', aria: 'Go to TikTok' }
 ];
 
 export function Footer() {
   return (
     <footer className="w-full bg-black text-white">
-      <div className="flex flex-wrap gap-5 px-5 py-6">
+      <div className="flex flex-col justify-between gap-5 px-5 py-6 sm:flex-row sm:flex-wrap sm:px-12 md:px-12 lg:px-16">
         <div>
           <FooterTitle>{footerElements.firstList.title}</FooterTitle>
-          <ul className="flex flex-col gap-1">
+          <ul className="flex flex-col gap-2">
             {footerElements.firstList.items.map(item => {
               if (item.sublist) {
                 return (
-                  <li className="max-w-fit font-roboto text-xs" key={item.id}>
-                    {item.name}
-                    <ul className="flex flex-col gap-1 pl-4">
+                  <li
+                    className="max-w-fit font-roboto text-xs lg:text-base"
+                    key={item.id}
+                  >
+                    <Link href={item.href}>{item.name}</Link>
+                    <ul className="mt-2 flex flex-col gap-2 pl-4">
                       {item.sublist.map(subitem => (
                         <FooterItem href={subitem.href} key={subitem.id}>
                           {subitem.name}
@@ -90,9 +104,9 @@ export function Footer() {
             })}
           </ul>
         </div>
-        <div className="flex flex-col items-end">
+        <div className="flex flex-col">
           <FooterTitle>{footerElements.secondList.title}</FooterTitle>
-          <ul className="flex flex-col items-end gap-1">
+          <ul className="flex flex-col gap-2">
             {footerElements.secondList.items.map(item => (
               <FooterItem href={item.href} key={item.id}>
                 {item.name}
@@ -100,9 +114,9 @@ export function Footer() {
             ))}
           </ul>
         </div>
-        <div className="flex flex-col items-end">
+        <div className="flex flex-col">
           <FooterTitle>{footerElements.thirdList.title}</FooterTitle>
-          <ul className="flex flex-col items-end gap-1">
+          <ul className="flex flex-col gap-2">
             {footerElements.thirdList.items.map(item => (
               <FooterItem href={item.href} key={item.id}>
                 {item.name}
@@ -110,26 +124,27 @@ export function Footer() {
             ))}
           </ul>
         </div>
-        <div className="flex flex-col items-end">
-          <div className="flex items-center gap-1">
+        <div className="flex w-full flex-col items-end lg:w-fit">
+          <div className="flex items-center gap-2 lg:gap-4">
             <Image
               src="/images/homepage/logo.png"
-              alt=""
+              alt="Logo Akademii Skateboardingu"
               width={20}
               height={20}
+              className="lg:scale-150"
             />
-            <p className="py-1 text-end font-poetsen-one text-sm text-white">
+            <p className="py-1 text-end font-poetsen-one text-sm text-white lg:text-xl">
               Akademia Skateboardingu
             </p>
           </div>
-          <p className="font-roboto text-xs font-semibold text-amber-300">
+          <p className="font-roboto text-xs font-semibold text-amber-300 lg:text-sm">
             Jeździj z nami!
           </p>
-          <ul className="flex gap-2 pt-2">
+          <ul className="flex gap-2 pt-2 lg:gap-4 lg:text-sm">
             {footerIcons.map(icon => (
               <li key={icon.id} className="hover:text-purple-400">
-                <Link href={icon.href}>
-                  <icon.iconComponent size={16} />
+                <Link href={icon.href} aria-label={icon.aria}>
+                  <icon.iconComponent size={16} className="lg:scale-150" />
                 </Link>
               </li>
             ))}

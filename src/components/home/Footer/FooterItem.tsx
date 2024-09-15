@@ -19,7 +19,7 @@ export function FooterItem({
 }: FooterItemProps) {
   return (
     <li
-      className={`max-w-fit font-roboto text-xs hover:text-purple-400 ${footerItemClassName}`}
+      className={`max-w-fit font-roboto text-xs hover:text-purple-400 lg:text-base ${footerItemClassName}`}
     >
       <Link href={href}>{children}</Link>
     </li>

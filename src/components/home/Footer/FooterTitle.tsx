@@ -9,7 +9,7 @@ export function FooterTitle({
 }: FooterTitleProps) {
   return (
     <h3
-      className={`mb-2 max-w-fit border-b border-amber-300 pb-2 font-poetsen-one text-base ${footerTitleClassName}`}
+      className={`mb-2 max-w-fit border-b border-amber-300 pb-2 font-poetsen-one text-base lg:text-xl ${footerTitleClassName}`}
     >
       {children}
     </h3>
