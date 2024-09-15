@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 type OfferProps = {
   containerClassName: string;
@@ -6,6 +7,7 @@ type OfferProps = {
   primaryColor: string;
   text: string;
   title: string;
+  href: string;
 };
 
 export function Offer({
@@ -13,36 +15,41 @@ export function Offer({
   img,
   primaryColor,
   text,
-  title
+  title,
+  href
 }: OfferProps) {
   return (
-    <button
-      className={`grid grid-cols-[min-content,1fr,min-content] items-center gap-3 rounded-[50px] px-[5px] py-1 text-left ${containerClassName}`}
+    <Link
+      className={`grid grid-cols-[min-content_1fr_min-content] items-center gap-3 rounded-full p-[5px] text-left md:max-w-[368px] md:grid-flow-col md:grid-cols-1 md:grid-rows-[min-content_min-content_min-content] md:gap-6 md:p-[15px] md:text-center lg:max-w-[427px] ${containerClassName}`}
+      href={href}
     >
-      <div className="relative h-[70px] w-[70px] overflow-hidden rounded-full md:h-[90px] md:w-[90px]">
+      <div className="relative mx-auto h-[70px] w-[70px] overflow-hidden rounded-full md:h-[307px] md:w-[307px]">
         <Image
           src={img}
           alt=""
           layout="fill"
           objectFit="cover"
           objectPosition="center"
+          className="rounded-full"
         />
       </div>
-      <div>
+      <div className="gap-4 md:flex md:flex-col">
         <p
-          className="font-poetsen-one text-base md:text-lg"
+          className="font-poetsen-one text-base md:text-3xl"
           style={{ color: primaryColor }}
         >
           {title}
         </p>
-        <p className="text-xs text-[#171717] md:text-base">{text}</p>
+        <p className="text-xs text-[#171717] md:mx-auto md:max-w-[224px] md:text-xl">
+          {text}
+        </p>
       </div>
       <div
-        className="mr-3 font-poetsen-one text-[32px] text-transparent md:text-5xl"
+        className="mr-3 font-poetsen-one text-[32px] text-transparent md:-translate-y-5 md:text-[96px] md:font-semibold"
         style={{ WebkitTextStroke: `2px ${primaryColor}` }}
       >
         &gt;&gt;
       </div>
-    </button>
+    </Link>
   );
 }
