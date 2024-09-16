@@ -1,10 +1,10 @@
 import { QuestionMark } from './QuestionMark';
 
-type Side = 'left' | 'right';
+type TripleQuestionnMarkProps = { side?: 'left' | 'right' };
 
-type TripleQuestionnMarkProps = { side?: Side };
-
-export function TripleQuestionMark({ side }: TripleQuestionnMarkProps) {
+export function TripleQuestionMark({
+  side = 'left'
+}: TripleQuestionnMarkProps) {
   const leftMarks = [
     {
       position: {
@@ -65,16 +65,19 @@ export function TripleQuestionMark({ side }: TripleQuestionnMarkProps) {
     }
   ];
 
-  const marks = side === 'left' ? leftMarks : rightMarks;
+  const sides = {
+    left: leftMarks,
+    right: rightMarks
+  };
+
+  const marks = sides[side];
 
   return (
     <>
       {marks.map((mark, index) => (
         <QuestionMark
           key={index}
-          positionStyle={`${mark.position.top} ${mark.position.left}`}
-          rotationDegree={mark.rotation}
-          textSize={`${mark.size} ${mark.mdSize}`}
+          className={`${mark.size} ${mark.mdSize} ${mark.position.top} ${mark.position.left} ${mark.rotation}`}
         />
       ))}
     </>
