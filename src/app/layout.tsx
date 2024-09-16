@@ -2,6 +2,8 @@ import '@/tailwind';
 
 import type { Metadata } from 'next';
 
+import { Footer, Navbar } from '@/home';
+
 export default function RootLayout({
   children
 }: {
@@ -9,7 +11,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pl">
-      <body className="bg-[#171717] font-inter">{children}</body>
+      <body className="bg-[#171717] font-inter">
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
