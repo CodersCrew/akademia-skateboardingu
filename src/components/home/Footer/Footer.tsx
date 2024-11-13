@@ -154,7 +154,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-amber-300 px-5 py-2 text-center font-poetsen-one text-xs">
-        2024 © Copyright Akademia Skateboardingu
+        {new Date().getFullYear()} © Copyright Akademia Skateboardingu
       </div>
     </footer>
   );
