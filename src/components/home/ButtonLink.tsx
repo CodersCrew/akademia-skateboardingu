@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 const colors = {
   green: 'border-[#2DD3BE] bg-[#5EE9D3]',
   orange: 'border-[#FABE24] bg-[#FBD24D]',
@@ -5,18 +7,25 @@ const colors = {
   blue: 'border-[#4A90E2] bg-[#6FADE2]'
 };
 
-type ButtonProps = {
+type ButtonLinkProps = {
   children: string;
   className?: string;
   color: keyof typeof colors;
+  href: string;
 };
 
-export function Button({ children, className, color }: ButtonProps) {
+export function ButtonLink({
+  children,
+  className,
+  color,
+  href
+}: ButtonLinkProps) {
   return (
-    <button
+    <Link
+      href={href}
       className={`rounded-[50px] border px-4 py-1 text-sm text-[#404040] md:text-lg xl:px-7 xl:py-2 xl:text-2xl ${colors[color]} ${className}`}
     >
       {children}
-    </button>
+    </Link>
   );
 }

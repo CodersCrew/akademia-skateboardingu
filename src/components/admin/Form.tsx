@@ -1,6 +1,5 @@
 'use client';
 import { Card } from '@tremor/react';
-import React from 'react';
 import { useForm } from 'react-hook-form';
 
 import { addItem } from '@/server/controllers/itemController';
@@ -25,6 +24,7 @@ export const fields = [
 ];
 
 export type FormValues = Omit<Item, 'priceHistory'>;
+
 type FormProps = {
   handleButtonClick: () => void;
   data?: FormValues;
