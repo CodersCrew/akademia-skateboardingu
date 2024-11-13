@@ -1,10 +1,16 @@
-import { FooterItem, FooterItemType } from './FooterItem';
+import { FooterItem } from './FooterItem';
 
-export interface FooterItemWithSublistProps {
+type FooterItemType = {
+  id: number;
+  name: string;
+  href: string;
+};
+
+type FooterItemWithSublistProps = {
   children: React.ReactNode;
   sublist: FooterItemType[];
   footerSublistClassName?: string;
-}
+};
 
 export function FooterItemWithSublist({
   children,

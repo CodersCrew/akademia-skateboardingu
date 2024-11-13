@@ -6,13 +6,13 @@ import { NavbarElementType, NavbarIconType } from './Navbar';
 import NavbarDropdown from './NavbarDropdown';
 import NavbarItem from './NavbarItem';
 
-export interface NavbarMenuProps {
+type NavbarMenuProps = {
   isOpen: boolean;
   currentPathname: string;
   menuElements: NavbarElementType[];
   menuIcons?: NavbarIconType[];
   navbarMenuClassName?: string;
-}
+};
 
 export default function NavbarMenu({
   isOpen,

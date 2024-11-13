@@ -6,12 +6,12 @@ import { IoCaretDown } from 'react-icons/io5';
 import { NavbarItemType } from './Navbar';
 import NavbarItem from './NavbarItem';
 
-export interface NavbarDropdownProps {
+type NavbarDropdownProps = {
   children: string;
   currentPathname: string;
   sublist: NavbarItemType[];
   navbarDropDownClassName?: string;
-}
+};
 
 export default function NavbarDropdown({
   children,

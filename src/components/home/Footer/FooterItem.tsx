@@ -1,16 +1,10 @@
 import Link from 'next/link';
 
-export type FooterItemType = {
-  id: number;
-  name: string;
-  href: string;
-};
-
-export interface FooterItemProps {
+type FooterItemProps = {
   children: React.ReactNode;
   href: string;
   footerItemClassName?: string;
-}
+};
 
 export function FooterItem({
   children,

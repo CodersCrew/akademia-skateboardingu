@@ -1,7 +1,7 @@
-export interface FooterTitleProps {
+type FooterTitleProps = {
   children: React.ReactNode;
   footerTitleClassName?: string;
-}
+};
 
 export function FooterTitle({
   children,

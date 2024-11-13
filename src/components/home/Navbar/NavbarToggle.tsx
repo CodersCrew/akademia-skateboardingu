@@ -1,9 +1,9 @@
 import { IoClose, IoMenu } from 'react-icons/io5';
 
-export interface NavbarToggleProps {
+type NavbarToggleProps = {
   toggleMenu: () => void;
   isOpen: boolean;
-}
+};
 
 export default function NavbarToggle({
   toggleMenu,

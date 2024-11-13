@@ -1,11 +1,11 @@
 import Link from 'next/link';
 
-export interface NavbarItemProps {
+type NavbarItemProps = {
   href: string;
   children: string;
   isActive: boolean;
   navbarItemClassName?: string;
-}
+};
 
 export default function NavbarItem({
   children,
