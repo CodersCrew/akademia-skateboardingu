@@ -2,11 +2,12 @@ import Link from 'next/link';
 
 import { PersonPill } from '../PersonPill';
 import { Quote } from '../Quote';
+import SectionContainer from '../SectionContainer';
 import { Title } from '../Title';
 
 export function FourthSection() {
   return (
-    <div className="flex flex-col items-center justify-center gap-5 p-5 md:my-14">
+    <SectionContainer className="flex flex-col items-center justify-center gap-5">
       <Title
         className="md:hidden"
         titleClassName="text-[#FBD24D] -left-[10px]"
@@ -15,26 +16,27 @@ export function FourthSection() {
         subtitle="o mnie"
       />
       <div className="flex items-center gap-4 lg:gap-10">
-        <div className="max-w-[385px] text-pretty font-roboto text-xs text-white md:max-w-[515px] md:text-base lg:max-w-[630px] lg:text-xl xl:max-w-[730px]">
+        <div className="flex flex-col gap-4 font-roboto text-xs text-white sm:text-base xl:text-xl">
           <Title
             className="hidden md:block"
-            titleClassName="text-[#FFF] md:text-[3.8rem] lg:text-[4.5rem] xl:text-[5rem] mb-11"
+            titleClassName="md:text-[3.8rem] lg:text-[4.5rem] xl:text-[5rem] mb-11"
             title="Kilka słów o mnie"
           />
-          <p className="mb-4">
+          <p>
             Cześć!{' '}
             <span className="text-[#FFC600]">
-              Na deskorolce jeżdzę już od 13 lat.{' '}
+              Na deskorolce jeżdzę już od&nbsp;14&nbsp;lat.{' '}
             </span>
-            To, co zaczęło się jako prosta zajawka, stało się nieodłączną
-            częścią mojego życia. Deskorolka daje mi ogromną radość, a dzięki
-            niej zmieniłem postrzeganie świata, poznałem dużo wspaniałych ludzi
-            i odwiedziłem wiele ciekawych miejsc.{' '}
+            To,&nbsp;co&nbsp;zaczęło się&nbsp;jako prosta zajawka, stało
+            się&nbsp;nieodłączną częścią mojego życia. Deskorolka daje
+            mi&nbsp;ogromną radość, a&nbsp;dzięki niej zmieniłem postrzeganie
+            świata, poznałem dużo wspaniałych ludzi i&nbsp;odwiedziłem wiele
+            ciekawych miejsc.{' '}
             <span className="text-[#FFC600]">
-              A teraz chce się tym dzielić z innymi!
+              A&nbsp;teraz chce się&nbsp;tym&nbsp;dzielić z&nbsp;innymi!
             </span>
           </p>
-          <p className="mb-4">
+          <p>
             Zajęcia prowadzę od ponad 3 lat. Posiadam{' '}
             <Link href="TODO" className="text-[#FFC600]">
               certyfikat licencjonowanego instruktora Polish Skate Federation.{' '}
@@ -42,17 +44,19 @@ export function FourthSection() {
             Współpracuję z największymi obozami deskorolkowymi w Europie -{' '}
             <span className="text-[#FFC600]">Woodcamp.</span>
           </p>
-          <p>W mojej ofercie znajdziesz:</p>
-          <ul className="relative left-3 mb-4 list-inside list-disc">
-            <li>regularne zajęcia we Wrocławiu,</li>
-            <li>warsztaty dla szkół i fundacji,</li>
-            <li>zajęcia wyjazdowe w różnych miastach.</li>
-          </ul>
+          <div>
+            <p>W mojej ofercie znajdziesz:</p>
+            <ul className="relative left-3 mb-4 list-inside list-disc">
+              <li>regularne zajęcia we&nbsp;Wrocławiu,</li>
+              <li>warsztaty dla&nbsp;szkół i&nbsp;fundacji,</li>
+              <li>zajęcia wyjazdowe w&nbsp;różnych miastach.</li>
+            </ul>
+          </div>
           <Quote className="mt-11 hidden md:block" />
         </div>
-        <PersonPill withExclamationMarkRightTop={true} />
+        <PersonPill withExclamationMarkRightTop />
       </div>
       <Quote className="max-w-[450px] md:hidden md:max-w-full" />
-    </div>
+    </SectionContainer>
   );
 }

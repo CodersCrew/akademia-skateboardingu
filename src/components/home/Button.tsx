@@ -14,7 +14,7 @@ type ButtonProps = {
 export function Button({ children, className, color }: ButtonProps) {
   return (
     <button
-      className={`rounded-[50px] border px-4 py-1 text-sm text-[#404040] md:text-lg ${colors[color]} ${className}`}
+      className={`rounded-[50px] border px-4 py-1 text-sm text-[#404040] md:text-lg xl:px-7 xl:py-2 xl:text-2xl ${colors[color]} ${className}`}
     >
       {children}
     </button>

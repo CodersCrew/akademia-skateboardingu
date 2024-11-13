@@ -4,6 +4,7 @@ export { Footer } from './Footer/Footer';
 export { Navbar } from './Navbar/Navbar';
 export { NextSectionButton } from './NextSectionButton';
 export { Offer } from './Offer';
+export { CommentsSection } from './sections/CommentsSection';
 export { FifthSection } from './sections/FifthSection';
 export { FirstSection } from './sections/FirstSection';
 export { FourthSection } from './sections/FourthSection';

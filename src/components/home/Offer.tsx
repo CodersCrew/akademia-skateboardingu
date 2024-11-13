@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { DoubleGreaterThanMark } from './DoubleGreaterThanMark';
+
 type OfferProps = {
   containerClassName: string;
   img: string;
@@ -20,10 +22,10 @@ export function Offer({
 }: OfferProps) {
   return (
     <Link
-      className={`grid grid-cols-[min-content_1fr_min-content] items-center gap-3 rounded-full p-[5px] text-left md:max-w-[368px] md:grid-flow-col md:grid-cols-1 md:grid-rows-[min-content_min-content_min-content] md:gap-6 md:p-[15px] md:text-center lg:max-w-[427px] ${containerClassName}`}
+      className={`grid grid-cols-[min-content_1fr_min-content] items-center gap-3 rounded-full p-[5px] text-left md:grid-flow-col md:grid-cols-1 md:grid-rows-[min-content_min-content_min-content] md:content-between md:gap-6 md:px-4 md:py-6 md:text-center lg:max-w-[427px] xl:gap-10 ${containerClassName}`}
       href={href}
     >
-      <div className="relative mx-auto h-[70px] w-[70px] overflow-hidden rounded-full md:h-[307px] md:w-[307px]">
+      <div className="relative mx-auto h-[70px] w-[70px] overflow-hidden rounded-full md:h-[170px] md:w-[170px]">
         <Image
           src={img}
           alt=""
@@ -33,23 +35,21 @@ export function Offer({
           className="rounded-full"
         />
       </div>
-      <div className="gap-4 md:flex md:flex-col">
+      <div className="gap-3 md:flex md:max-w-[200px] md:flex-col">
         <p
-          className="font-poetsen-one text-base md:text-3xl"
+          className="font-poetsen-one text-base md:text-xl lg:text-2xl xl:text-3xl"
           style={{ color: primaryColor }}
         >
           {title}
         </p>
-        <p className="text-xs text-[#171717] md:mx-auto md:max-w-[224px] md:text-xl">
+        <p className="text-xs text-[#171717] md:mx-auto md:max-w-[224px] md:text-sm lg:text-lg xl:text-xl">
           {text}
         </p>
       </div>
-      <div
-        className="mr-3 font-poetsen-one text-[32px] text-transparent md:-translate-y-5 md:text-[96px] md:font-semibold"
-        style={{ WebkitTextStroke: `2px ${primaryColor}` }}
-      >
-        &gt;&gt;
-      </div>
+      <DoubleGreaterThanMark
+        markColor={primaryColor}
+        className="mr-3 text-[32px] md:mr-0 md:h-10 md:-translate-y-5 md:justify-self-center md:text-[50px] md:font-semibold xl:h-16 xl:-translate-y-8 xl:text-[64px]"
+      />
     </Link>
   );
 }

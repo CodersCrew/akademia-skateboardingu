@@ -1,4 +1,5 @@
 import {
+  CommentsSection,
   FifthSection,
   FirstSection,
   FourthSection,
@@ -16,6 +17,7 @@ export default function HomePage() {
       <SecondSection />
       <ThirdSection />
       <FourthSection />
+      <CommentsSection />
       <FifthSection />
       <SixthSection />
       <SeventhSection />

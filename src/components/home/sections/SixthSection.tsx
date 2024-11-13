@@ -1,9 +1,10 @@
 import ContactForm from '../ContactForm';
+import SectionContainer from '../SectionContainer';
 import { Title } from '../Title';
 
 export function SixthSection() {
   return (
-    <div className="flex flex-col gap-5 overflow-hidden p-5">
+    <SectionContainer className="flex flex-col gap-5 overflow-hidden">
       <Title
         subtitle="Napisz do mnie!"
         subtitleClassName="left-14"
@@ -11,6 +12,6 @@ export function SixthSection() {
         titleClassName="text-[#D7B3FD] -left-2"
       />
       <ContactForm />
-    </div>
+    </SectionContainer>
   );
 }

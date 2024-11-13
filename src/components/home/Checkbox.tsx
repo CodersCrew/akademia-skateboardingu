@@ -24,8 +24,8 @@ export default function Checkbox({
   isDisabled = false
 }: CheckboxProps) {
   return (
-    <div className="flex w-full flex-col flex-wrap gap-2 font-roboto text-sm text-white lg:text-base">
-      <div className="flex w-full items-center gap-2 ">
+    <div className="flex w-full flex-col flex-wrap gap-2 font-roboto text-xs text-white sm:text-sm">
+      <div className="flex w-full items-center gap-2">
         <input
           id={name}
           type="checkbox"
@@ -44,7 +44,7 @@ export default function Checkbox({
         </label>
       </div>
       {errorMessage && (
-        <span className="text-xs text-red-400 lg:text-sm ">{errorMessage}</span>
+        <span className="text-xs text-red-400 lg:text-sm">{errorMessage}</span>
       )}
     </div>
   );
