@@ -9,3 +9,13 @@
 body {
   @apply font-inter;
 }
+
+.react-multi-carousel-dot--active button {
+  background: #ffffff !important;
+}
+
+.react-multi-carousel-dot button {
+  width: 14px !important;
+  height: 14px !important;
+  border-color: #ffffff !important;
+}
