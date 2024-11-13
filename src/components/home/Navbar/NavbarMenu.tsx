@@ -18,8 +18,7 @@ export default function NavbarMenu({
   isOpen,
   currentPathname,
   menuElements,
-  menuIcons,
-  navbarMenuClassName
+  menuIcons
 }: NavbarMenuProps) {
   return (
     <Transition
@@ -32,9 +31,7 @@ export default function NavbarMenu({
       leaveFrom="transform translate-x-0"
       leaveTo="transform translate-x-full"
     >
-      <div
-        className={`absolute left-0 top-14 z-40 flex h-[calc(100vh-56px)] w-full flex-col justify-between overflow-y-auto bg-neutral-700 ${navbarMenuClassName}`}
-      >
+      <div className="absolute left-0 top-14 z-40 flex h-[calc(100vh-56px)] w-full flex-col justify-between overflow-y-auto bg-neutral-700">
         <ul>
           {menuElements.map(item => {
             if ('sublist' in item) {

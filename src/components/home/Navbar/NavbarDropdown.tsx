@@ -10,14 +10,12 @@ type NavbarDropdownProps = {
   children: string;
   currentPathname: string;
   sublist: NavbarItemType[];
-  navbarDropDownClassName?: string;
 };
 
 export default function NavbarDropdown({
   children,
   currentPathname,
-  sublist,
-  navbarDropDownClassName
+  sublist
 }: NavbarDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -31,9 +29,7 @@ export default function NavbarDropdown({
   }, [currentPathname, sublist]);
 
   return (
-    <li
-      className={`font-roboto text-xs font-bold uppercase leading-5 tracking-widest text-white ${navbarDropDownClassName}`}
-    >
+    <li className="font-roboto text-xs font-bold uppercase leading-5 tracking-widest text-white">
       <button
         className="flex w-full items-center gap-2 px-5 py-3 text-start uppercase hover:bg-purple-400 hover:text-neutral-700"
         onClick={() => setIsOpen(!isOpen)}
@@ -56,7 +52,7 @@ export default function NavbarDropdown({
             <NavbarItem
               key={subitem.id}
               href={subitem.href}
-              navbarItemClassName="pl-12 pr-5"
+              className="pl-12 pr-5"
               isActive={currentPathname === subitem.href}
             >
               {subitem.name}

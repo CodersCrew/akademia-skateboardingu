@@ -29,7 +29,6 @@ export type NavbarIconType = {
   href: string;
 };
 
-// Maybe this should be moved to a separate file
 const menuElements = [
   { id: 0, name: 'Strona główna', href: '/' },
   {
@@ -88,7 +87,6 @@ const menuElements = [
   }
 ];
 
-// Maybe this should be moved to a separate file
 const menuIcons = [
   { id: 0, iconComponent: IoLogoFacebook, href: '#facebook' },
   {
